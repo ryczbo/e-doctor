@@ -1,0 +1,25 @@
+.mat-typography{
+  color: #2196f3;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stepper {
+  width: 70%;
+}
+
+.jumbotron {
+  color: white;
+  font-weight: normal;
+}
+
+
