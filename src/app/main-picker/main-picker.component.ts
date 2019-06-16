@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
+export interface specialty {
+  value: string;
+  viewValue: string
+}
+
 @Component({
   selector: 'app-main-picker',
   templateUrl: './main-picker.component.html',
@@ -13,6 +18,12 @@ export class MainPickerComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
+
+  specialties: specialty[] = [
+    {value: 'orthopedist-0', viewValue: 'Orthopedist'},
+    {value: 'cardiologist-1', viewValue: 'Cardiologist'},
+    {value: 'gastrologist-2', viewValue: 'Gastrologist'}
+  ]
 
   constructor(private _formBuilder: FormBuilder) {}
 

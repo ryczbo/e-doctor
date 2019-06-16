@@ -1,9 +1,13 @@
  <mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Pick a Specialty</ng-template>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel><p class="choice">Pick a Specialty</p></ng-template>
       <mat-form-field>
-        <input matInput placeholder="Specialty" formControlName="firstCtrl" required>
+        <mat-label>Specialty</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let specialty of specialties" [value]="specialty.value">
+            {{specialty.viewValue}}</mat-option>
+        </mat-select>
       </mat-form-field>
       <div>
         <button mat-button matStepperNext>Next</button>
@@ -12,9 +16,9 @@
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Pick your City</ng-template>
+      <ng-template matStepLabel><p class="choice">Pick your City</p></ng-template>
       <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        <input matInput placeholder="City" formControlName="secondCtrl" required>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
@@ -23,7 +27,7 @@
     </form>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
-    <ng-template matStepLabel>Pick a Doctor</ng-template>
+    <ng-template matStepLabel><p class="choice">Pick a Doctor</p></ng-template>
     You are now done.
     <div>
       <button mat-button matStepperPrevious>Back</button>
@@ -31,7 +35,7 @@
     </div>
   </mat-step>
   <mat-step [stepControl]="fourthFormGroup">
-    <ng-template matStepLabel>Make an Appointment</ng-template>
+    <ng-template matStepLabel><p class="choice">Make an Appointment</p></ng-template>
     You are now done.
     <div>
       <button mat-button matStepperPrevious>Back</button>

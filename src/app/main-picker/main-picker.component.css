@@ -1,4 +1,29 @@
 mat-horizontal-stepper {
   background-color: #2196f3;
+}
+
+
+.choice {
+  color: white;
+  font-size: large;
+  margin-left: 2px;
+  text-wrap: avoid;
+}
+
+::ng-deep .mat-step-icon {
+  font-size: large;
+  border: 2px solid white;
+  transform: scale(1.5);
+}
+
+::ng-deep mat-select {
+  color: cyan;
+}
+
+::ng-deep .mat-horizontal-stepper-header {
+  color: white;
+}
+
+form {
   color: white;
 }
