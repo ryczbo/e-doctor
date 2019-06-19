@@ -2,12 +2,23 @@ mat-horizontal-stepper {
   background-color: #2196f3;
 }
 
+mat-option {
+  color: white;
+}
 
 .choice {
   color: white;
   font-size: large;
   margin-left: 2px;
   text-wrap: avoid;
+}
+
+::ng-deep .mat-select-value {
+  color: white;
+}
+
+::ng-deep .ng-star-inserted {
+  color: white;
 }
 
 ::ng-deep .mat-step-icon {
@@ -22,6 +33,20 @@ mat-horizontal-stepper {
 
 ::ng-deep .mat-horizontal-stepper-header {
   color: white;
+}
+
+::ng-deep .mat-horizontal-stepper-content {
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+}
+
+::ng-deep .mat-button {
+  border: 1px solid white;
+}
+
+::ng-deep .ng-trigger-transformPanel {
+  background-color: #2156f3;
 }
 
 form {

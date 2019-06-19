@@ -6,6 +6,11 @@ export interface specialty {
   viewValue: string
 }
 
+export interface city {
+  value: string;
+  viewValue: string
+}
+
 @Component({
   selector: 'app-main-picker',
   templateUrl: './main-picker.component.html',
@@ -23,6 +28,12 @@ export class MainPickerComponent implements OnInit {
     {value: 'orthopedist-0', viewValue: 'Orthopedist'},
     {value: 'cardiologist-1', viewValue: 'Cardiologist'},
     {value: 'gastrologist-2', viewValue: 'Gastrologist'}
+  ]
+
+  cities: city[] = [
+    {value: 'warsaw-0', viewValue: 'Warsaw'},
+    {value: 'cracow-0', viewValue: 'Cracow'},
+    {value: 'gdansk-0', viewValue: 'Gdansk'}
   ]
 
   constructor(private _formBuilder: FormBuilder) {}

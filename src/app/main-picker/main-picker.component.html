@@ -14,11 +14,16 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+  <mat-step>
+    <form>
       <ng-template matStepLabel><p class="choice">Pick your City</p></ng-template>
       <mat-form-field>
-        <input matInput placeholder="City" formControlName="secondCtrl" required>
+        <mat-label>City</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let city of cities" [value]="city.value">
+            {{city.viewValue}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
