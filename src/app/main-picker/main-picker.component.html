@@ -1,10 +1,10 @@
  <mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step>
+  <mat-step [stepControl]="firstFormGroup">
     <form>
       <ng-template matStepLabel><p class="choice">Pick a Specialty</p></ng-template>
       <mat-form-field>
         <mat-label>Specialty</mat-label>
-        <mat-select>
+        <mat-select name="specialty" [(ngModel)]="specialty" (selectionChange)="specialtyChange()">
           <mat-option *ngFor="let specialty of specialties" [value]="specialty.value">
             {{specialty.viewValue}}</mat-option>
         </mat-select>
@@ -19,7 +19,7 @@
       <ng-template matStepLabel><p class="choice">Pick your City</p></ng-template>
       <mat-form-field>
         <mat-label>City</mat-label>
-        <mat-select>
+        <mat-select name='city' [(ngModel)]="city" (selectionChange)='cityChange(city, specialty)'>
           <mat-option *ngFor="let city of cities" [value]="city.value">
             {{city.viewValue}}
           </mat-option>
@@ -32,20 +32,27 @@
     </form>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
-    <ng-template matStepLabel><p class="choice">Pick a Doctor</p></ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
+    <form>
+      <ng-template matStepLabel><p class="choice">Choose a Doctor</p></ng-template>
+      <mat-form-field>
+        <mat-label>Doctor</mat-label>
+        <mat-select name="doctor">
+          <mat-option *ngFor="let doctor of doctorsList" [value]="doctor">
+            {{doctor}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
   </mat-step>
   <mat-step [stepControl]="fourthFormGroup">
     <ng-template matStepLabel><p class="choice">Make an Appointment</p></ng-template>
-    You are now done.
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+
 
