@@ -28,7 +28,7 @@ export class MainPickerComponent implements OnInit {
   specialty;
   city;
   doctorsList: Array<string> = [];
-
+  status = false;
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -53,7 +53,13 @@ export class MainPickerComponent implements OnInit {
     {city: 'cracow-1', specialty: 'gastrologist-2', value: 'jack-2', viewValue: 'Jack Shepard'},
     {city: 'cracow-1', specialty: 'orthopedist-0', value: 'skylar-3', viewValue: 'Skylar White'},
     {city: 'warsaw-0', specialty: 'cardiologist-1', value: 'purple-4', viewValue: 'Purple Hays'},
-    {city: 'warsaw-0', specialty: 'gastrologist-2', value: 'marty-5', viewValue: 'Marty Byrde'}
+    {city: 'warsaw-0', specialty: 'gastrologist-2', value: 'marty-5', viewValue: 'Marty Byrde'},
+    {city: 'gdansk-2', specialty: 'orthopedist-0', value: 'valerij-6', viewValue: 'Valerij Legasov'},
+    {city: 'gdansk-2', specialty: 'cardiologist-1', value: 'tony-7', viewValue: 'Tony Soprano'},
+    {city: 'cracow-1', specialty: 'gastrologist-2', value: 'chris-8', viewValue: 'Chris Moltisanti'},
+    {city: 'cracow-1', specialty: 'orthopedist-0', value: 'charles-9', viewValue: 'Charles Widmore'},
+    {city: 'warsaw-0', specialty: 'cardiologist-1', value: 'richard-10', viewValue: 'Richard Winters'},
+    {city: 'warsaw-0', specialty: 'gastrologist-2', value: 'saul-11', viewValue: 'Saul Goodman'}
   ];
 
 
@@ -87,6 +93,18 @@ export class MainPickerComponent implements OnInit {
         this.doctorsList.push(this.doctors[i].viewValue)
       }
       }
+    }
+
+    //click event with a flag to run only once, preventing DOM elements to appear again unnecessarily
+
+    executed = false;
+
+    clickEvent(){
+      if (!this.executed) {
+        this.executed = true;
+        this.status = !this.status;
+      }
+
     }
 
 

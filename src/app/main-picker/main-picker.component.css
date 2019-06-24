@@ -17,9 +17,10 @@ mat-option {
   color: white;
 }
 
-::ng-deep .ng-star-inserted {
+::ng-deep .mat-form-field-infix * {
   color: white;
 }
+
 
 ::ng-deep .mat-step-icon {
   font-size: large;
@@ -33,6 +34,7 @@ mat-option {
 
 ::ng-deep .mat-horizontal-stepper-header {
   color: white;
+  display: flex;
 }
 
 ::ng-deep .mat-horizontal-stepper-content {
@@ -41,7 +43,7 @@ mat-option {
   font-size: x-large;
 }
 
-::ng-deep .mat-button {
+::ng-deep button.mat-button {
   border: 1px solid white;
 }
 
@@ -52,3 +54,66 @@ mat-option {
 form {
   color: white;
 }
+
+.card {
+  margin-top: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tillbutton {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardbutton {
+  display: flex;
+  flex-direction: column;
+}
+
+.lower {
+  padding-top: -10%;
+}
+
+.stepper {
+  width: 70%;
+  justify-content: center;
+  margin: auto;
+}
+
+.jumbotron {
+  display: flex;
+  color: white;
+  font-weight: normal;
+  font-family: "Raleway", sans-serif;
+  width: 38%;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+}
+
+@media (max-width: 600px) {
+  .jumbotron {
+    width: 70%
+  }
+}
+
+
+.example-header-image {
+  background-image: url('https://i.chzbgr.com/full/8334924288/hCFACD046/');
+  background-size: cover;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+}
+
+
+

@@ -1,4 +1,7 @@
- <mat-horizontal-stepper [linear]="isLinear" #stepper>
+<div class="jumbotron" *ngIf="!status">
+  <h1>Make a doctor's appointment in 4 simple steps</h1>
+</div>
+<mat-horizontal-stepper [linear]="isLinear" #stepper class="stepper" [ngClass]="{'lower' : status}">
   <mat-step [stepControl]="firstFormGroup">
     <form>
       <ng-template matStepLabel><p class="choice">Pick a Specialty</p></ng-template>
@@ -27,25 +30,53 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext (click)="clickEvent()" >Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
-    <form>
+<!--    <form>-->
       <ng-template matStepLabel><p class="choice">Choose a Doctor</p></ng-template>
-      <mat-form-field>
-        <mat-label>Doctor</mat-label>
-        <mat-select name="doctor">
-          <mat-option *ngFor="let doctor of doctorsList" [value]="doctor">
-            {{doctor}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
+    <div class="cards">
+      <mat-card *ngFor='let doctor of doctorsList' class="card">
+        <div class="tillbutton">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{doctor}}</mat-card-title>
+          <mat-card-subtitle>Specialty</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Coś tam coś tam bęc bęc
+          </p>
+
+        </mat-card-content>
+        </div>
+        <div class="cardbutton">
+
+          <button mat-button matTooltip="Check Calendar"><i class="material-icons">
+            date_range
+          </i></button>
+
+        </div>
+      </mat-card>
+    </div>
+<!--    </form>-->
   </mat-step>
+
+
+<!--      <mat-form-field>-->
+<!--        <mat-label>Doctor</mat-label>-->
+<!--        <mat-select name="doctor">-->
+<!--          <mat-option *ngFor="let doctor of doctorsList" [value]="doctor">-->
+<!--            {{doctor}}</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--      <div>-->
+<!--        <button mat-button matStepperNext>Next</button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </mat-step>-->
   <mat-step [stepControl]="fourthFormGroup">
     <ng-template matStepLabel><p class="choice">Make an Appointment</p></ng-template>
     <div>
@@ -54,5 +85,3 @@
     </div>
   </mat-step>
 </mat-horizontal-stepper>
-
-
