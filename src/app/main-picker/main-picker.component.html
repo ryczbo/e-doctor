@@ -1,87 +1,33 @@
-<div class="jumbotron" *ngIf="!status">
-  <h1>Make a doctor's appointment in 4 simple steps</h1>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Make a doctor's appointment in 4 simple steps</h1>
+  </div>
+  <div class="stepper">
+    <ul>
+      <li (click)="stepCounter = 1"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==1}">1</span><span class="label">Pick a Specialty</span></li>
+      <li (click)="stepCounter = 2"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==2}">2</span><span class="label">Pick a City</span></li>
+      <li (click)="stepCounter = 3"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==3}">3</span><span class="label">Choose a Doctor</span></li>
+      <li (click)="stepCounter = 4"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==4}">4</span><span class="label">Make an Appointment</span>
+      </li>
+    </ul>
+  </div>
+  <div class="form">
+    <mat-form-field>
+      <mat-label>Specialty</mat-label>
+      <mat-select>
+        <mat-option>
+          Ortopeda
+        </mat-option>
+        <mat-option>
+          Psycholog
+        </mat-option>
+        <mat-option>
+          Lekarz
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
 </div>
-<mat-horizontal-stepper [linear]="isLinear" #stepper class="stepper" [ngClass]="{'lower' : status}">
-  <mat-step [stepControl]="firstFormGroup">
-    <form>
-      <ng-template matStepLabel><p class="choice">Pick a Specialty</p></ng-template>
-      <mat-form-field>
-        <mat-label>Specialty</mat-label>
-        <mat-select name="specialty" [(ngModel)]="specialty" (selectionChange)="specialtyChange()">
-          <mat-option *ngFor="let specialty of specialties" [value]="specialty.value">
-            {{specialty.viewValue}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <form>
-      <ng-template matStepLabel><p class="choice">Pick your City</p></ng-template>
-      <mat-form-field>
-        <mat-label>City</mat-label>
-        <mat-select name='city' [(ngModel)]="city" (selectionChange)='cityChange(city, specialty)'>
-          <mat-option *ngFor="let city of cities" [value]="city.value">
-            {{city.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext (click)="clickEvent()" >Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
-<!--    <form>-->
-      <ng-template matStepLabel><p class="choice">Choose a Doctor</p></ng-template>
-    <div class="cards">
-      <mat-card *ngFor='let doctor of doctorsList' class="card">
-        <div class="tillbutton">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{doctor}}</mat-card-title>
-          <mat-card-subtitle>Specialty</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            Coś tam coś tam bęc bęc
-          </p>
-
-        </mat-card-content>
-        </div>
-        <div class="cardbutton">
-
-          <button mat-button matTooltip="Check Calendar"><i class="material-icons">
-            date_range
-          </i></button>
-
-        </div>
-      </mat-card>
-    </div>
-<!--    </form>-->
-  </mat-step>
 
 
-<!--      <mat-form-field>-->
-<!--        <mat-label>Doctor</mat-label>-->
-<!--        <mat-select name="doctor">-->
-<!--          <mat-option *ngFor="let doctor of doctorsList" [value]="doctor">-->
-<!--            {{doctor}}</mat-option>-->
-<!--        </mat-select>-->
-<!--      </mat-form-field>-->
-<!--      <div>-->
-<!--        <button mat-button matStepperNext>Next</button>-->
-<!--      </div>-->
-<!--    </form>-->
-<!--  </mat-step>-->
-  <mat-step [stepControl]="fourthFormGroup">
-    <ng-template matStepLabel><p class="choice">Make an Appointment</p></ng-template>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>

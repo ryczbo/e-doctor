@@ -1,53 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatAutocompleteModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatStepperModule, MatSelectModule, MatTooltipModule
-} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainPickerComponent } from './main-picker/main-picker.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MainPickerComponent } from "./main-picker/main-picker.component";
 import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { CalendarComponent } from "./calendar/calendar.component";
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { MatSelectModule } from '@angular/material/select'
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPickerComponent,
     ToolbarComponent,
-    CalendarComponent
+    MainPickerComponent
   ],
   imports: [
     BrowserModule,
-
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatAutocompleteModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatTooltipModule,
     NgbModalModule,
+    FontAwesomeModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
@@ -56,4 +37,8 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    library.add(faEllipsisV)
+  }
+}

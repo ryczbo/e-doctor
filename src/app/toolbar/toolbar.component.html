@@ -1,23 +1,18 @@
 <div class="toolbar">
-  <mat-toolbar color="accent">
-    <mat-toolbar-row class="mat-typography">
-      <span style="font-size: x-large">eDoctor</span>
-      <span class="example-spacer"></span>
-      <button mat-button>Log In</button>
-      <button mat-button>Sign Up</button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>contact_support</mat-icon>
-          <span>About</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>perm_phone_msg</mat-icon>
-          <span>Contact</span>
-        </button>
-      </mat-menu>
-    </mat-toolbar-row>
-  </mat-toolbar>
+  <div class="title">
+    <h3>eDoctor</h3>
+  </div>
+  <div class="toolbarButtons">
+    <ul>
+      <li><a href="#">Sign Up</a></li>
+      <li><a href="#">Log In</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropdownBtn" (click)="drop = !drop"><fa-icon icon="ellipsis-v"></fa-icon></a>
+        <div class="dropdownContent" *ngIf="drop">
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>

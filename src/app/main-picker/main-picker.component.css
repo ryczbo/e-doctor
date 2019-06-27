@@ -1,119 +1,87 @@
-mat-horizontal-stepper {
-  background-color: #2196f3;
-}
-
-mat-option {
-  color: white;
-}
-
-.choice {
-  color: white;
-  font-size: large;
-  margin-left: 2px;
-  text-wrap: avoid;
-}
-
-::ng-deep .mat-select-value {
-  color: white;
-}
-
-::ng-deep .mat-form-field-infix * {
-  color: white;
-}
-
-
-::ng-deep .mat-step-icon {
-  font-size: large;
-  border: 2px solid white;
-  transform: scale(1.5);
-}
-
-::ng-deep mat-select {
-  color: cyan;
-}
-
-::ng-deep .mat-horizontal-stepper-header {
-  color: white;
-  display: flex;
-}
-
-::ng-deep .mat-horizontal-stepper-content {
-  display: flex;
-  justify-content: center;
-  font-size: x-large;
-}
-
-::ng-deep button.mat-button {
-  border: 1px solid white;
-}
-
-::ng-deep .ng-trigger-transformPanel {
-  background-color: #2156f3;
-}
-
-form {
-  color: white;
-}
-
-.card {
-  margin-top: 2px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.cards {
-  width: 600px;
+.container {
   display: flex;
   flex-direction: column;
-}
-
-.tillbutton {
-  display: flex;
-  flex-direction: column;
-}
-
-.cardbutton {
-  display: flex;
-  flex-direction: column;
-}
-
-.lower {
-  padding-top: -10%;
-}
-
-.stepper {
-  width: 70%;
-  justify-content: center;
-  margin: auto;
+  align-items: center;
+  align-content: center;
+  margin-top: 4em;
 }
 
 .jumbotron {
-  display: flex;
   color: white;
-  font-weight: normal;
-  font-family: "Raleway", sans-serif;
-  width: 38%;
   text-align: center;
-  justify-content: center;
-  margin: auto;
+  width: 70%;
 }
 
-@media (max-width: 600px) {
-  .jumbotron {
-    width: 70%
-  }
-}
-
-
-.example-header-image {
-  background-image: url('https://i.chzbgr.com/full/8334924288/hCFACD046/');
-  background-size: cover;
-}
-
-mat-card-content {
+.stepper {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-top: 2em;
 }
 
+ul {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+li {
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.numberCircle {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  background: #2156f3;
+  border: 2px solid white;
+  color: white;
+  text-align: center;
+  font: 32px Arial, sans-serif;
+  margin-right: 10px;
+}
+
+li:hover .label {
+  cursor: pointer;
+}
+
+li:hover .numberCircle {
+  background: white;
+  color: #2156f3;
+  border: 2px solid #2156f3;
+  cursor: pointer;
+}
+
+.currentStep {
+  background: white;
+  color: #2156f3;
+  border: 2px solid #2156f3;
+}
+
+.label {
+  font: 20px Raleway, sans-serif;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+}
+
+mat-form-field * {
+  color: white;
+  font: 20px Raleway, sans-serif;
+}
+
+mat-option:hover {
+  background: #00AAFF;
+}
 
