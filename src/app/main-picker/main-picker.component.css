@@ -66,8 +66,23 @@ li:hover .numberCircle {
   border: 2px solid #2156f3;
 }
 
+.currentStepLabel {
+  color: cyan;
+}
+
 .label {
   font: 20px Raleway, sans-serif;
+}
+
+.stepperLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.subLabel {
+  color: cyan;
+  font: 15px Raleway, sans-serif;
 }
 
 .form {
@@ -79,7 +94,7 @@ li:hover .numberCircle {
 
 mat-form-field * {
   color: white;
-  font: 20px Raleway, sans-serif;
+  font: 22px Raleway, sans-serif;
 }
 
 ::ng-deep .mat-select-value {
@@ -88,6 +103,62 @@ mat-form-field * {
 
 .formButtons {
   display: flex;
+  justify-content: space-around;
+}
+
+.actionBtn {
+  border: 1px solid white;
+  background: #2156f3;
+  color: white;
+  font: 18px Raleway, sans-serif;
+}
+
+.actionBtn:hover {
+  cursor: pointer;
+  color: #2156f3;
+  background: white;
+  border: none;
+}
+
+.card {
+  width: 400px;
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  display: flex;
+}
+
+.cardName {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  margin-top: 8px;
+}
+
+.cardBtn {
+  display: flex;
   justify-content: center;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+h3 {
+  margin: 0;
+}
+
+h5 {
+  margin: 0;
+  color: cyan;
 }
 

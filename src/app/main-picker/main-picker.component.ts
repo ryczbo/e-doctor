@@ -11,9 +11,9 @@ export class MainPickerComponent implements OnInit {
 
   specialty;
   city;
-
   cities;
   doctors;
+  specialtyPicked = 0;
 
   doctorsList: Array<Doctor> = [
     {name: 'John Locke', city: 'Warsaw', specialty: 'Orthopedist'},
@@ -45,10 +45,14 @@ export class MainPickerComponent implements OnInit {
 
   pickSpecialty(specialty) {
     this.cities = this.doctorsList.filter(e => e.specialty == specialty).map(d => d.city).filter((e, i, a) => a.indexOf(e) === i);
+    this.specialty = specialty;
+    this.specialtyPicked = 1;
+
   }
 
   pickCity(specialty,city) {
     this.doctors = this.doctorsList.filter(e => e.specialty == specialty && e.city == city);
+    console.log(this.doctors);
   }
 
   stepCounter: number = 1;

@@ -4,14 +4,22 @@
   </div>
   <div class="stepper">
     <ul>
-      <li (click)="stepCounter = 1"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==1}">1</span><span
-        class="label">Pick a Specialty</span></li>
-      <li (click)="stepCounter = 2"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==2}">2</span><span
-        class="label">Pick a City</span></li>
+      <li (click)="stepCounter = 1"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==1}">1</span>
+        <div class="stepperLabel">
+          <span class="label" [ngClass]="{currentStepLabel : stepCounter==1}">Pick a Specialty</span>
+          <span class="subLabel" *ngIf="stepCounter !== 1">{{specialty}}</span>
+        </div>
+      </li>
+      <li (click)="stepCounter = 2"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==2}">2</span>
+        <div class="stepperLabel">
+          <span class="label" [ngClass]="{currentStepLabel : stepCounter==2}">Pick a City</span>
+          <span class="subLabel" *ngIf="stepCounter !== 2 && stepCounter !== 1">{{city}}</span>
+        </div>
+      </li>
       <li (click)="stepCounter = 3"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==3}">3</span><span
-        class="label">Choose a Doctor</span></li>
+        class="label" [ngClass]="{currentStepLabel : stepCounter==3}">Choose a Doctor</span></li>
       <li (click)="stepCounter = 4"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==4}">4</span><span
-        class="label">Make an Appointment</span>
+        class="label" [ngClass]="{currentStepLabel : stepCounter==4}">Make an Appointment</span>
       </li>
     </ul>
   </div>
@@ -25,7 +33,7 @@
       </mat-select>
     </mat-form-field>
     <div class="formButtons">
-      <button (click)="stepCounter = 2">Next</button>
+      <button class="actionBtn" (click)="stepCounter = 2">Next</button>
     </div>
   </div>
 
@@ -39,23 +47,24 @@
       </mat-select>
     </mat-form-field>
     <div class="formButtons">
-      <button (click)="stepCounter = 1">Back</button>
-      <button (click)="stepCounter = 3">Next</button>
+      <button class="actionBtn" (click)="stepCounter = 1">Back</button>
+      <button class="actionBtn" (click)="stepCounter = 3">Next</button>
     </div>
   </div>
 
   <div class="form" *ngIf="stepCounter == 3">
-    <mat-form-field>
-      <mat-label>Doctor</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let doctor of doctors" [value]="doctor">
-          {{doctor.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div class="formButtons">
-      <button (click)="stepCounter = 2">Back</button>
-      <button (click)="stepCounter = 4">Next</button>
+    <div class="card" *ngFor="let doctor of doctors">
+      <div class="cardTitle">
+        <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
+             alt="Avatar">
+        <div class="cardName">
+          <h3>{{doctor.name}}</h3>
+          <h5>{{doctor.specialty}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="cardBtn">
+      <button class="actionBtn" (click)="stepCounter = 2">Back</button>
     </div>
   </div>
 
