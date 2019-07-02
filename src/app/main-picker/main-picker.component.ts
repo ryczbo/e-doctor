@@ -1,10 +1,35 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 import { Doctor } from "../doctor";
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from "@angular/animations";
 
 @Component({
   selector: 'app-main-picker',
   templateUrl: './main-picker.component.html',
+  animations: [trigger('removeTrigger', [
+    transition(':leave', [
+      animate('200ms ease-in', style({transform: 'translateY(-100%)', opacity: 0}))
+    ])
+  ]),
+  trigger('slideLeft', [
+    state('initial', style({
+      display: 'flex',
+      justifyContent: 'center'
+    })),
+    state('final', style({
+      display: 'flex',
+      justifyContent: 'space-around',
+      width: '100%',
+      alignItems: 'center'
+    })),
+    transition('initial=>final', animate('500ms')),
+  ])],
   styleUrls: ['./main-picker.component.css']
 })
 export class MainPickerComponent implements OnInit {
@@ -14,6 +39,9 @@ export class MainPickerComponent implements OnInit {
   cities;
   doctors;
   specialtyPicked = 0;
+  stepCounter: number = 1;
+  calendarClicked = false;
+  currentState = 'initial';
 
   doctorsList: Array<Doctor> = [
     {name: 'John Locke', city: 'Warsaw', specialty: 'Orthopedist'},
@@ -55,8 +83,6 @@ export class MainPickerComponent implements OnInit {
     console.log(this.doctors);
   }
 
-  stepCounter: number = 1;
-
   constructor() {
   }
 
@@ -64,6 +90,9 @@ export class MainPickerComponent implements OnInit {
     this.uniqueCities()
   }
 
-
+  calendarClick() {
+    this.calendarClicked = true;
+    this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
+  }
 
 }

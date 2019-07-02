@@ -9,6 +9,7 @@
 .jumbotron {
   color: white;
   text-align: center;
+  margin-bottom: 2em;
   width: 70%;
 }
 
@@ -17,7 +18,6 @@
   justify-content: center;
   align-items: center;
   width: 80%;
-  margin-top: 2em;
 }
 
 ul {
@@ -92,6 +92,13 @@ li:hover .numberCircle {
   flex-direction: column;
 }
 
+/*.cardLeft {*/
+/*  display: flex;*/
+/*  width: 100%;*/
+/*  flex-direction: row;*/
+/*  justify-content: space-around;*/
+/*}*/
+
 mat-form-field * {
   color: white;
   font: 22px Raleway, sans-serif;
@@ -127,7 +134,7 @@ mat-form-field * {
   padding: 5px;
   margin-bottom: 5px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
 .cardTitle {
@@ -142,6 +149,31 @@ mat-form-field * {
 }
 
 .cardBtn {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding-right: 5px;
+}
+
+#calendarIcon {
+  font-size: x-large;
+}
+
+#calendarLabel {
+  padding-right: 5px;
+  transition: opacity 0.5s ease-out;
+  opacity: 0;
+}
+
+#calendarIcon:hover {
+  cursor: pointer;
+}
+
+#calendarIcon:hover ~ #calendarLabel {
+  opacity: 1;
+}
+
+.underCardBtn {
   display: flex;
   justify-content: center;
 }
@@ -161,4 +193,20 @@ h5 {
   margin: 0;
   color: cyan;
 }
+
+.calendar {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  border: 2px solid white;
+  -webkit-animation: benc 2s ease-in;
+}
+
+@-webkit-keyframes benc {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
 

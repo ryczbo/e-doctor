@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="jumbotron">
+  <div class="jumbotron" @removeTrigger *ngIf="stepCounter !== 3">
     <h1>Make a doctor's appointment in 4 simple steps</h1>
   </div>
   <div class="stepper">
@@ -52,20 +52,28 @@
     </div>
   </div>
 
-  <div class="form" *ngIf="stepCounter == 3">
-    <div class="card" *ngFor="let doctor of doctors">
-      <div class="cardTitle">
-        <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
-             alt="Avatar">
-        <div class="cardName">
-          <h3>{{doctor.name}}</h3>
-          <h5>{{doctor.specialty}}</h5>
+  <div [@slideLeft]=currentState *ngIf="stepCounter == 3">
+    <div class="form">
+      <div class="card" *ngFor="let doctor of doctors">
+        <div class="cardTitle">
+          <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
+               alt="Avatar">
+          <div class="cardName">
+            <h3>{{doctor.name}}</h3>
+            <h5>{{doctor.specialty}}</h5>
+          </div>
+        </div>
+        <div class="cardBtn">
+          <fa-icon icon="calendar-alt" id="calendarIcon" (click)="calendarClick()"></fa-icon>
+          <h5 id="calendarLabel">Check Calendar</h5>
         </div>
       </div>
+      <div class="underCardBtn">
+        <button class="actionBtn" (click)="stepCounter = 2">Back</button>
+      </div>
     </div>
-    <div class="cardBtn">
-      <button class="actionBtn" (click)="stepCounter = 2">Back</button>
-    </div>
+    <div *ngIf="calendarClicked == true" class="calendar"></div>
   </div>
+</div>
 
-
+<!--[ngClass]="{cardLeft : calendarClicked == true}"-->
