@@ -8,9 +8,15 @@
 
 .title {
   display: flex;
+  flex-direction: row;
   color: #2156f3;
   height: 50px;
   align-items: center;
+  justify-content: space-between;
+}
+
+h4 {
+  margin-left: 20px;
 }
 
 .toolbarButtons {
@@ -88,4 +94,21 @@ li:last-of-type:hover {
 
 .dropdownContent a:hover {
   background-color: #00CCFF;
+}
+
+.homeBtn {
+  text-decoration: none;
+}
+
+.homeBtn:hover {
+  cursor: pointer;
+}
+
+.logOut {
+  display: flex;
+  margin-right: 15px;
+}
+
+.logOut:hover {
+  cursor: pointer;
 }

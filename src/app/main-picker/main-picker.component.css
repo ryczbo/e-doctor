@@ -118,6 +118,7 @@ mat-form-field * {
   background: #2156f3;
   color: white;
   font: 18px Raleway, sans-serif;
+  padding: 3px 8px;
 }
 
 .actionBtn:hover {

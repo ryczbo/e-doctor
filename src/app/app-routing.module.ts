@@ -7,11 +7,11 @@ import {AppComponent} from "./app.component";
 import {HomeComponent} from "./_home/home.component";
 
 const routes: Routes = [
-      {path: 'home', component: HomeComponent},
-      {path: '', component: HomeComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent},
-    ];
+  {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+];
 
 
 @NgModule({

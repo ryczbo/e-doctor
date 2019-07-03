@@ -22,6 +22,7 @@ import { AlertComponent } from "./_alert/alert.component";
 import { HomeComponent } from "./_home/home.component";
 import { LoginComponent } from "./_login/login.component";
 import { RegisterComponent } from "./_register/register.component";
+import {MatInputModule} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { RegisterComponent } from "./_register/register.component";
     ReactiveFormsModule,
     HttpClientModule,
     MatSelectModule,
+    MatInputModule,
     NgbModalModule,
     FontAwesomeModule,
     CalendarModule.forRoot({

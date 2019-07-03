@@ -7,7 +7,10 @@ import { AlertService } from "../_services/alert.service";
 import { AuthenticationService } from "../_services/authentication.service";
 import { UserService } from "../_services/user.service";
 
-@Component({templateUrl: 'register.component.html'})
+@Component({
+  templateUrl: 'register.component.html',
+  styleUrls: ['./register.component.css']
+})
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
@@ -21,9 +24,9 @@ export class RegisterComponent implements OnInit {
     private alertService: AlertService
   ) {
     // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
+    // if (this.authenticationService.currentUserValue) {
+    //   this.router.navigate(['/']);
+    // }
   }
 
   ngOnInit() {

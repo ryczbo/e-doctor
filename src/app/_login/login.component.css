@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 100px;
+}
+
+h2 {
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+
+mat-form-field {
+  color: cyan;
+
+}
+
+mat-form-field * {
+  color: white;
+}
+
+input {
+  font-size: x-large;
+  padding: 5px 0;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.actionBtn {
+  border: 1px solid white;
+  background: #2156f3;
+  color: white;
+  font: 18px Raleway, sans-serif;
+  padding: 5px 10px;
+}
+
+.actionBtn:hover {
+  cursor: pointer;
+  color: #2156f3;
+  background: white;
+  border: none;
+}
+
+hr {
+  border-top: 0.5px solid black;
+  width: 120px;
+  margin-right: 0;
+  opacity: 0.5;
+}
+
+.underForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+
+h4 {
+  margin: 0;
+  color: white;
+  font-weight: lighter;
+}
+
+a {
+  color: cyan;
+}
+
