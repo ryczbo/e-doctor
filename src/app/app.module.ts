@@ -17,12 +17,17 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { MatSelectModule } from '@angular/material/select';
 import { AlertComponent } from "./_alert/alert.component";
 import { HomeComponent } from "./_home/home.component";
 import { LoginComponent } from "./_login/login.component";
 import { RegisterComponent } from "./_register/register.component";
 import {MatInputModule} from "@angular/material";
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,9 @@ import {MatInputModule} from "@angular/material";
     AlertComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidebarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +69,9 @@ import {MatInputModule} from "@angular/material";
 export class AppModule {
   constructor() {
     library.add(faEllipsisV);
-    library.add(faCalendarAlt)
+    library.add(faCalendarAlt);
+    library.add(faAngleDoubleDown);
+    library.add(faAngleLeft);
+    library.add(faAngleRight);
   }
 }

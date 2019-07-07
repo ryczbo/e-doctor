@@ -1,0 +1,101 @@
+.container {
+  width: 250px;
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid cyan;
+  margin-left: -250px;
+  background-color: #3c4b63;
+  position: absolute;
+}
+
+.title {
+  margin-left: 10px;
+}
+
+h3 {
+  margin-bottom: 5px;
+  color: white
+}
+
+h4 {
+  color: white;
+  margin-left: 10px;
+  margin-bottom: 4px;
+}
+
+#subTitle {
+  font-style: italic;
+  margin: 0;
+  color: cyan;
+}
+
+hr {
+  border: 1px solid white;
+}
+
+p {
+  color: white;
+  margin: 0;
+}
+
+.visits {
+  margin: 4px 4px 2px 8px;
+  border-width: 1px;
+  border-style: inset;
+  padding: 4px;
+}
+
+.visits:hover {
+  background-color: #3c4b56;
+  border-width: 2px;
+}
+
+.detailsBtn {
+  color: white;
+  font-weight: lighter;
+}
+
+.visitHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detLabel {
+  font-style: italic;
+  color: cyan;
+  margin-bottom: 4px;
+}
+
+.visitDate {
+  font: 16px "Roboto";
+}
+
+.visitDetails {
+  margin-top: 5px;
+}
+
+.showSdbr {
+  position: absolute;
+  margin-top: 250px;
+  margin-left: auto;
+  color: #2156f3;
+  width: 30px;
+  height: 60px;
+  background-color: cyan;
+  text-align: center;
+  border-top-right-radius: 20%;
+  border-bottom-right-radius: 20%;
+  font-size: large;
+}
+
+.showSdbr:hover {
+  background-color: #3c4b63;
+  color: cyan;
+}
+
+.arrow {
+  margin-top: 15px;
+  font-size: x-large;
+}
+

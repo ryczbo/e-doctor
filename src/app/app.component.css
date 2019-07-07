@@ -1,4 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
+app-toolbar {
+  width: 100%;
+}
+
+app-footer {
+  margin-bottom: 0;
+  margin-top: auto;
+}
 
 
 

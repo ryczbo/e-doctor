@@ -1,6 +1,6 @@
 <div class="toolbar">
   <div class="title">
-    <a class='homeBtn' routerLink="/home"><h3>eDoctor</h3></a><h4 *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
+    <a class='homeBtn' routerLink="/home"><h3>ePatient</h3></a><h4 *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
   </div>
   <a *ngIf="currentUser" (click)="logout()" class="logOut">Log Out</a>
   <div class="toolbarButtons" *ngIf="!currentUser">

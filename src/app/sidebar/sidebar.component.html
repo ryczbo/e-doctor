@@ -1,0 +1,39 @@
+
+  <div class="container" *ngIf="currentUser" [@slideSdbr]=currentState>
+    <div *ngIf="currentState === 'final'">
+      <div class="title">
+        <h3>{{currentUser.firstName}} {{currentUser.lastName}}</h3>
+        <h5 id="subTitle">My Profile</h5>
+        <hr>
+      </div>
+
+      <h4>My Visits</h4>
+
+      <div class="visits" *ngFor="let visit of currentUser.visits; let show = false" (click)="show = !show">
+        <div class="visitHead">
+          <p class="visitDate">{{visit.date}}</p>
+          <a class="detailsBtn">
+            <fa-icon icon="angle-double-down"></fa-icon>
+          </a>
+        </div>
+        <div class="visitDetails" *ngIf="show">
+          <h5 class="detLabel">Diagnosis</h5>
+          <p>{{visit.diagnosis}}</p>
+          <h5 class="detLabel">Prescription</h5>
+          <p>{{visit.meds}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="showSdbr" [@slideArrow]=currentState (click)="showSdbr()">
+    <div class="arrow" *ngIf="currentState == 'initial'">
+      <fa-icon icon='angle-right'></fa-icon>
+    </div>
+    <div class="arrow" *ngIf="currentState == 'final'">
+      <fa-icon icon='angle-left'></fa-icon>
+    </div>
+  </div>
+
+
+

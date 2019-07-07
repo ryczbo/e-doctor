@@ -15,17 +15,17 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   currentUserSubscription: Subscription;
   users: User[] = [];
   drop: boolean = false;
-  logout() {
-    this.authenticationService.logout();
-  }
 
   constructor(
     private authenticationService: AuthenticationService,
-    private userService: UserService
   ) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
   ngOnInit() {
@@ -36,16 +36,5 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.currentUserSubscription.unsubscribe();
   }
 
-  deleteUser(id: number) {
-    this.userService.delete(id).pipe(first()).subscribe(() => {
-      this.loadAllUsers()
-    });
-  }
-
-  private loadAllUsers() {
-    this.userService.getAll().pipe(first()).subscribe(users => {
-      this.users = users;
-    });
-  }
 }
 

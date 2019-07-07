@@ -5,4 +5,5 @@ export class User {
   firstName: string;
   lastName: string;
   token: string;
+  visits?: {date: string, diagnosis: string, meds: string}[];
 }

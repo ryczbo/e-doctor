@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { AlertService } from "../_services/alert.service";
 import { AuthenticationService } from "../_services/authentication.service";
 import { UserService } from "../_services/user.service";
+import {User} from "../_models/user";
 
 @Component({
   templateUrl: 'register.component.html',
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
       lastName: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
-    });
+  });
   }
 
   // convenience getter for easy access to form fields
