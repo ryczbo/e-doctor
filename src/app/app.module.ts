@@ -26,8 +26,12 @@ import { HomeComponent } from "./_home/home.component";
 import { LoginComponent } from "./_login/login.component";
 import { RegisterComponent } from "./_register/register.component";
 import {MatInputModule} from "@angular/material";
+import { MatDatepickerModule } from "@angular/material";
+import { MatNativeDateModule } from "@angular/material";
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
+import { NotLoggedComponent } from './not-logged/not-logged.component';
+import { CalendarComponent } from "./calendar/calendar.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     RegisterComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    NotLoggedComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +55,8 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatInputModule,
     NgbModalModule,
     FontAwesomeModule,

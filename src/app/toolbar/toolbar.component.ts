@@ -28,6 +28,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.authenticationService.logout();
   }
 
+  reload() {
+    window.location.reload();
+  }
+
   ngOnInit() {
   }
 

@@ -6,9 +6,9 @@ import { first } from 'rxjs/operators';
 import { AlertService } from "../_services/alert.service";
 import { AuthenticationService } from "../_services/authentication.service";
 import { UserService } from "../_services/user.service";
-import {User} from "../_models/user";
 
 @Component({
+  selector: 'app-register',
   templateUrl: 'register.component.html',
   styleUrls: ['./register.component.css']
 })

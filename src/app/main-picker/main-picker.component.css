@@ -196,19 +196,36 @@ h5 {
   color: cyan;
 }
 
-.calendar {
+#cover {
+  filter:blur(5px);
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.accessDenied {
+  width: auto;
+  height: 500px;
+  background-color: white;
+  position: absolute;
+  z-index: 3;
+  top: 120px;
+  left: 400px;
+  right: 400px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 200px;
-  width: 200px;
-  border: 2px solid white;
-  -webkit-animation: benc 2s ease-in;
+  justify-content: space-evenly;
 }
 
-@-webkit-keyframes benc {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+form {
+  display: flex;
+  flex-direction: column;
 }
 
+.calendar {
+  margin-top: 45px;
+}
 
 

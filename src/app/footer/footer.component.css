@@ -1,8 +1,14 @@
 .container {
   height: 30px;
-  background-color: cyan;
+  background-color: rgba(0,212,255,1);
   bottom: 0;
   position: absolute;
   margin-top: auto;
   width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+h4 {
+  margin: 2px 5px 0 0;
 }

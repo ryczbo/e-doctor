@@ -1,79 +1,85 @@
-<div class="container">
-  <div class="jumbotron" @removeTrigger *ngIf="stepCounter !== 3">
-    <h1>Make a doctor's appointment in 4 simple steps</h1>
-  </div>
-  <div class="stepper">
-    <ul>
-      <li (click)="stepCounter = 1"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==1}">1</span>
-        <div class="stepperLabel">
-          <span class="label" [ngClass]="{currentStepLabel : stepCounter==1}">Pick a Specialty</span>
-          <span class="subLabel" *ngIf="stepCounter !== 1">{{specialty}}</span>
-        </div>
-      </li>
-      <li (click)="stepCounter = 2"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==2}">2</span>
-        <div class="stepperLabel">
-          <span class="label" [ngClass]="{currentStepLabel : stepCounter==2}">Pick a City</span>
-          <span class="subLabel" *ngIf="stepCounter !== 2 && stepCounter !== 1">{{city}}</span>
-        </div>
-      </li>
-      <li (click)="stepCounter = 3"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==3}">3</span><span
-        class="label" [ngClass]="{currentStepLabel : stepCounter==3}">Choose a Doctor</span></li>
-      <li (click)="stepCounter = 4"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==4}">4</span><span
-        class="label" [ngClass]="{currentStepLabel : stepCounter==4}">Make an Appointment</span>
-      </li>
-    </ul>
-  </div>
-  <div class="form" *ngIf="stepCounter == 1">
-    <mat-form-field>
-      <mat-label>Specialty</mat-label>
-      <mat-select name="specialty" [(ngModel)]="specialty" (selectionChange)="pickSpecialty(specialty)">
-        <mat-option *ngFor="let specialty of uniqueCities()" [value]="specialty">
-          {{specialty}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div class="formButtons">
-      <button class="actionBtn" (click)="stepCounter = 2">Next</button>
-    </div>
-  </div>
 
-  <div class="form" *ngIf="stepCounter == 2">
-    <mat-form-field>
-      <mat-label>City</mat-label>
-      <mat-select name="city" [(ngModel)]="city" (selectionChange)="pickCity(specialty,city)">
-        <mat-option *ngFor="let city of cities" [value]="city">
-          {{city}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div class="formButtons">
-      <button class="actionBtn" (click)="stepCounter = 1">Back</button>
-      <button class="actionBtn" (click)="stepCounter = 3">Next</button>
+  <div class="container" *ngIf="canActivate">
+    <div class="jumbotron" @removeTrigger *ngIf="stepCounter !== 3">
+      <h1>Make a doctor's appointment in 4 simple steps</h1>
     </div>
-  </div>
+    <div class="stepper">
+      <ul>
+        <li (click)="stepCounter = 1"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==1}">1</span>
+          <div class="stepperLabel">
+            <span class="label" [ngClass]="{currentStepLabel : stepCounter==1}">Pick a Specialty</span>
+            <span class="subLabel" *ngIf="stepCounter !== 1">{{specialty}}</span>
+          </div>
+        </li>
+        <li (click)="stepCounter = 2"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==2}">2</span>
+          <div class="stepperLabel">
+            <span class="label" [ngClass]="{currentStepLabel : stepCounter==2}">Pick a City</span>
+            <span class="subLabel" *ngIf="stepCounter !== 2 && stepCounter !== 1">{{city}}</span>
+          </div>
+        </li>
+        <li (click)="stepCounter = 3"><span class="numberCircle"
+                                            [ngClass]="{currentStep : stepCounter==3}">3</span><span
+          class="label" [ngClass]="{currentStepLabel : stepCounter==3}">Choose a Doctor</span></li>
+        <li (click)="stepCounter = 4"><span class="numberCircle"
+                                            [ngClass]="{currentStep : stepCounter==4}">4</span><span
+          class="label" [ngClass]="{currentStepLabel : stepCounter==4}">Make an Appointment</span>
+        </li>
+      </ul>
+    </div>
+    <div class="form" *ngIf="stepCounter == 1">
+      <mat-form-field>
+        <mat-label>Specialty</mat-label>
+        <mat-select name="specialty" [(ngModel)]="specialty" (selectionChange)="pickSpecialty(specialty)">
+          <mat-option *ngFor="let specialty of uniqueCities()" [value]="specialty">
+            {{specialty}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="formButtons">
+        <button class="actionBtn" (click)="stepCounter = 2">Next</button>
+      </div>
+    </div>
 
-  <div [@slideLeft]=currentState *ngIf="stepCounter == 3">
-    <div class="form">
-      <div class="card" *ngFor="let doctor of doctors">
-        <div class="cardTitle">
-          <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
-               alt="Avatar">
-          <div class="cardName">
-            <h3>{{doctor.name}}</h3>
-            <h5>{{doctor.specialty}}</h5>
+    <div class="form" *ngIf="stepCounter == 2">
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <mat-select name="city" [(ngModel)]="city" (selectionChange)="pickCity(specialty,city)">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{city}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="formButtons">
+        <button class="actionBtn" (click)="stepCounter = 1">Back</button>
+        <button class="actionBtn" (click)="stepCounter = 3">Next</button>
+      </div>
+    </div>
+
+    <div [@slideLeft]=currentState *ngIf="stepCounter == 3">
+      <div class="form">
+        <div class="card" *ngFor="let doctor of doctors">
+          <div class="cardTitle">
+            <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
+                 alt="Avatar">
+            <div class="cardName">
+              <h3>{{doctor.name}}</h3>
+              <h5>{{doctor.specialty}}</h5>
+            </div>
+          </div>
+          <div class="cardBtn">
+            <fa-icon icon="calendar-alt" id="calendarIcon" (click)="calendarClick()"></fa-icon>
+            <h5 id="calendarLabel">Check Calendar</h5>
           </div>
         </div>
-        <div class="cardBtn">
-          <fa-icon icon="calendar-alt" id="calendarIcon" (click)="calendarClick()"></fa-icon>
-          <h5 id="calendarLabel">Check Calendar</h5>
+        <div class="underCardBtn">
+          <button class="actionBtn" (click)="stepCounter = 2">Back</button>
         </div>
       </div>
-      <div class="underCardBtn">
-        <button class="actionBtn" (click)="stepCounter = 2">Back</button>
-      </div>
+      <div *ngIf="calendarClicked == true && canActivate == true" class="calendar"><app-calendar></app-calendar></div>
+      <div class="warning" *ngIf="calendarClicked == true && canActivate == false">You need to log in!</div>
     </div>
-    <div *ngIf="calendarClicked == true" class="calendar"></div>
   </div>
-</div>
+
+  <app-not-logged @cover *ngIf="calendarClicked && !canActivate && !currentUser" (logged)="canActivate = true"></app-not-logged>
 
 <!--[ngClass]="{cardLeft : calendarClicked == true}"-->

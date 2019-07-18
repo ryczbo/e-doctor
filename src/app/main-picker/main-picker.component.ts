@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 import { Doctor } from "../doctor";
 import {
@@ -8,31 +8,45 @@ import {
   animate,
   transition
 } from "@angular/animations";
+import {AuthenticationService} from "../_services/authentication.service";
+import {UserService} from "../_services/user.service";
+import {User} from "../_models/user";
+import {Subscription} from "rxjs";
+import { Router, ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
+import {AlertService} from "../_services/alert.service";
+import {NotLoggedComponent} from "../not-logged/not-logged.component";
 
 @Component({
   selector: 'app-main-picker',
   templateUrl: './main-picker.component.html',
   animations: [trigger('removeTrigger', [
     transition(':leave', [
-      animate('200ms ease-in', style({transform: 'translateY(-100%)', opacity: 0}))
+      animate('500ms ease-in', style({transform: 'translateY(-100%)', opacity: 0}))
     ])
   ]),
+    trigger('cover', [
+        transition(':enter', [
+          style({ opacity: 0 }),
+          animate('0.9s', style({ opacity: 1 })),
+        ])]),
   trigger('slideLeft', [
     state('initial', style({
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      alignItems: 'flex-start'
     })),
     state('final', style({
       display: 'flex',
+      alignItems: 'flex-start',
       justifyContent: 'space-around',
       width: '100%',
-      alignItems: 'center'
     })),
     transition('initial=>final', animate('500ms')),
   ])],
   styleUrls: ['./main-picker.component.css']
 })
-export class MainPickerComponent implements OnInit {
+export class MainPickerComponent implements OnInit, OnDestroy {
 
   specialty;
   city;
@@ -42,6 +56,10 @@ export class MainPickerComponent implements OnInit {
   stepCounter: number = 1;
   calendarClicked = false;
   currentState = 'initial';
+  currentUser: User;
+  currentUserSubscription: Subscription;
+  users: User[] = [];
+  canActivate = true;
 
   doctorsList: Array<Doctor> = [
     {name: 'John Locke', city: 'Warsaw', specialty: 'Orthopedist'},
@@ -83,16 +101,32 @@ export class MainPickerComponent implements OnInit {
     console.log(this.doctors);
   }
 
-  constructor() {
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService,
+  ) {
+    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
   }
 
   ngOnInit() {
-    this.uniqueCities()
+    this.uniqueCities();
+  }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.currentUserSubscription.unsubscribe();
   }
 
   calendarClick() {
     this.calendarClicked = true;
     this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
+      if(!this.currentUser){
+        this.canActivate = false;
+      }
   }
 
 }

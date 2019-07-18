@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="showSdbr" [@slideArrow]=currentState (click)="showSdbr()">
+  <div class="showSdbr" *ngIf="currentUser" [@slideArrow]=currentState (click)="showSdbr()">
     <div class="arrow" *ngIf="currentState == 'initial'">
       <fa-icon icon='angle-right'></fa-icon>
     </div>
@@ -34,6 +34,7 @@
       <fa-icon icon='angle-left'></fa-icon>
     </div>
   </div>
+
 
 
 
