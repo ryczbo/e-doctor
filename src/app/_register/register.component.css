@@ -6,6 +6,24 @@
   margin-top: 20px;
 }
 
+.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.formBothColumns {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
 h2 {
   color: white;
 }
@@ -13,7 +31,8 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 70%;
+  align-content: space-around;
 }
 
 mat-form-field {
@@ -25,13 +44,25 @@ mat-form-field * {
   color: white;
 }
 
+::ng-deep .mat-select-value {
+  color: white;
+  padding: 3px 0;
+  font-size: x-large;
+}
+
 input {
   font-size: x-large;
   padding: 3px 0;
 }
 
+.formButtonsWrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .formButtons {
   display: flex;
+  width: 60%;
   justify-content: space-around;
 }
 
@@ -52,9 +83,9 @@ input {
 
 .underForm {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-top: 20px;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  margin-right: 0;
 }
 
 h4 {

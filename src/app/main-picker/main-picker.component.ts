@@ -96,7 +96,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
 
   }
 
-  pickCity(specialty,city) {
+  pickCity(specialty, city) {
     this.doctors = this.doctorsList.filter(e => e.specialty == specialty && e.city == city);
     console.log(this.doctors);
   }

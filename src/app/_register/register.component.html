@@ -1,50 +1,87 @@
 <div class="container">
   <h2>Register</h2>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-    <mat-form-field>
-      <label for="firstName">First Name</label>
-      <input matInput type="text" formControlName="firstName" class="form-control"
-             [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
-      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+  <div class="wrapper">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="formBothColumns">
+
+        <div class="formColumn">
+          <mat-form-field>
+            <label for="firstName">First Name</label>
+            <input matInput type="text" formControlName="firstName" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <label for="lastName">Last Name</label>
+            <input matInput type="text" formControlName="lastName" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"/>
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+              <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <label for="username">Username</label>
+            <input matInput type="text" formControlName="username" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <label for="password">Password</label>
+            <input matInput type="password" formControlName="password" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+          </mat-form-field>
+        </div>
+
+
+        <div class="formColumn">
+
+          <mat-form-field>
+            <label for="userType">You are a:</label>
+            <mat-select name="userType" formControlName="userType" #user class="form-control" (selectionChange)="pickUserType(user.value)">
+              <mat-option *ngFor="let users of userType; let i = index" [value]="userType[i].val">
+                {{userType[i].val}}
+              </mat-option>
+            </mat-select>
+            <div *ngIf="submitted && f.userType.errors" class="invalid-feedback">
+              <div *ngIf="f.userType.errors.required">Are you a doctor, or a patient?</div>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="pickedUserType === 'Doctor'">
+            <label for="npi">Type in your NPI number:</label>
+            <input matInput type="number" formControlName="npi" class="form-control">
+            <div *ngIf="submitted && f.npi.errors" class="invalid-feedback">
+              <div *ngIf="f.npi.errors.required">Please, type your NPI number</div>
+            </div>
+          </mat-form-field>
+
+        </div>
       </div>
-    </mat-form-field>
 
-    <mat-form-field>
-      <label for="lastName">Last Name</label>
-      <input matInput type="text" formControlName="lastName" class="form-control"
-             [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"/>
-      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+
+      <div class="formButtonsWrapper">
+          <button [disabled]="loading" class="actionBtn">Register</button>
       </div>
-    </mat-form-field>
 
-    <mat-form-field>
-      <label for="username">Username</label>
-      <input matInput type="text" formControlName="username" class="form-control"
-             [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
-      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-        <div *ngIf="f.username.errors.required">Username is required</div>
-      </div>
-    </mat-form-field>
+    </form>
 
-    <mat-form-field>
-      <label for="password">Password</label>
-      <input matInput type="password" formControlName="password" class="form-control"
-             [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-      </div>
-    </mat-form-field>
 
-    <div class="formButtons">
-      <button [disabled]="loading" class="actionBtn">Register</button>
-    </div>
-    <div class="underForm form-group">
-      <h4>Already a User?</h4>
-      <a routerLink="/login">Log In</a>
-    </div>
-  </form>
+  </div>
+<!--  <div class="underForm">-->
+<!--    <h4>Already a User?</h4>-->
+<!--    <a routerLink="/login">Log In</a>-->
+<!--  </div>-->
 </div>

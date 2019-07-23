@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { User } from '../_models/user';
 import { UserService } from "../_services/user.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-toolbar',
@@ -17,6 +18,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   drop: boolean = false;
 
   constructor(
+    private router: Router,
     private authenticationService: AuthenticationService,
   ) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
@@ -26,10 +28,12 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authenticationService.logout();
+    window.location.reload();
+    this.router.navigate(['/home']);
   }
 
   reload() {
-    window.location.reload();
+    this.router.navigate(['/home']);
   }
 
   ngOnInit() {

@@ -1,4 +1,5 @@
 export class User {
+  userType: string;
   id: number;
   username: string;
   password: string;
@@ -6,4 +7,6 @@ export class User {
   lastName: string;
   token: string;
   visits?: {date: string, diagnosis: string, meds: string}[];
+  lastLogged?: string[];
+  npi?: number;
 }

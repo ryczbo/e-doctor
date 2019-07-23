@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../_models/user';
-import { environment} from "../../environments/environment";
+import {environment} from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -16,11 +16,12 @@ export class UserService {
   }
 
   register(user: User) {
-    console.log(user);
+    user.lastLogged = new Array<string>();
     return this.http.post(`${environment.apiUrl}/users/register`, user);
   }
 
   update(user: User) {
+    console.log('jest');
     return this.http.put(`${environment.apiUrl}/users/${user.id}`, user);
   }
 
