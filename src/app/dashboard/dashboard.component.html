@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="navigationMenu">
+    <div class="title">
+      <h1>My Dashboard</h1>
+    </div>
+    <div class="buttons">
+      <button class="actionBtn" (click)="getPatients()">My Patients List</button>
+    </div>
+  </div>
+  <div class="content">
+    <ul *ngFor="let patient of patients">
+      <li>
+        {{patient.firstName}} {{patient.lastName}}
+      </li>
+    </ul>
+  </div>
+</div>

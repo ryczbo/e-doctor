@@ -32,6 +32,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotLoggedComponent } from './not-logged/not-logged.component';
 import { CalendarComponent } from "./calendar/calendar.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CalendarComponent } from "./calendar/calendar.component";
     SidebarComponent,
     FooterComponent,
     NotLoggedComponent,
-    CalendarComponent
+    CalendarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

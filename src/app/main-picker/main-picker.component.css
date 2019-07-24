@@ -126,7 +126,7 @@ mat-form-field * {
   cursor: pointer;
   color: #2156f3;
   background: white;
-  border: none;
+  border: 1px solid white;
 }
 
 .card {

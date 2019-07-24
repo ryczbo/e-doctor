@@ -1,6 +1,6 @@
 <div class="container">
   <app-toolbar></app-toolbar>
-  <app-sidebar></app-sidebar>
+  <app-sidebar *ngIf="currentUser?.userType === 'Patient'"></app-sidebar>
   <router-outlet></router-outlet>
 </div>
 

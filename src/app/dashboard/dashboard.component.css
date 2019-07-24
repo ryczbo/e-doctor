@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+}
+
+.navigationMenu {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  margin-left: 100px;
+}
+
+h1 {
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  margin-left: 100px;
+}
+
+.actionBtn {
+  border: 1px solid white;
+  background: #2156f3;
+  color: white;
+  font: 18px Raleway, sans-serif;
+  padding: 3px 8px;
+}
+
+.actionBtn:hover {
+  cursor: pointer;
+  color: #2156f3;
+  background: white;
+  border: 1px solid white;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  color: white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+

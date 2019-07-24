@@ -15,6 +15,10 @@ export class UserService {
     return this.http.get(`${environment.apiUrl}/users/${id}`);
   }
 
+  getByType(userType: string) {
+    return this.http.get<User[]>(`${environment.apiUrl}/users/${userType}`);
+  }
+
   register(user: User) {
     user.lastLogged = new Array<string>();
     return this.http.post(`${environment.apiUrl}/users/register`, user);
