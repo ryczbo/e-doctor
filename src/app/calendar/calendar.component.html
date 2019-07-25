@@ -1,5 +1,5 @@
-<mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date"
-         #keepOpen>
-  <mat-datepicker #picker (closed)="openCalendar(picker)" [opened]="true"></mat-datepicker>
+<mat-form-field style="width:1px;visibility:hidden;">
+  <input matInput [matDatepicker]="picker" (click)="picker.open()" (dateChange)="addEvent($event)">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker [opened]="true" ></mat-datepicker>
 </mat-form-field>

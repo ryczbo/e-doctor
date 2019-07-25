@@ -21,6 +21,10 @@
   width: 80%;
 }
 
+.stepperUp {
+  margin-top: 30px;
+}
+
 ul {
   display: flex;
   justify-content: space-around;
@@ -120,6 +124,8 @@ mat-form-field * {
   color: white;
   font: 18px Raleway, sans-serif;
   padding: 3px 8px;
+  width: 70px;
+  margin-bottom: 10px;
 }
 
 .actionBtn:hover {
@@ -189,6 +195,7 @@ mat-form-field * {
 
 h3 {
   margin: 0;
+  color: white;
 }
 
 h5 {
@@ -224,8 +231,37 @@ form {
   flex-direction: column;
 }
 
-.calendar {
-  margin-top: 45px;
+.timePicker {
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+  flex-direction: column;
 }
 
+.calendar {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  flex-direction: column;
+}
 
+.chooseDoctor {
+  display: flex;
+  width: 1000px;
+}
+
+.timePickerLabel {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.timeTable {
+  width: 400px;
+  border: 1px solid white;
+  color: white;
+  padding: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

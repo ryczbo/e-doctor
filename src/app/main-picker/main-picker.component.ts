@@ -16,6 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import {AlertService} from "../_services/alert.service";
 import {NotLoggedComponent} from "../not-logged/not-logged.component";
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-main-picker',
@@ -39,27 +40,27 @@ import {NotLoggedComponent} from "../not-logged/not-logged.component";
     state('final', style({
       display: 'flex',
       alignItems: 'flex-start',
-      justifyContent: 'space-around',
-      width: '100%',
+      justifyContent: 'space-around'
     })),
     transition('initial=>final', animate('500ms')),
   ])],
   styleUrls: ['./main-picker.component.css']
 })
 export class MainPickerComponent implements OnInit, OnDestroy {
-
   specialty;
   city;
   cities;
   doctors;
   specialtyPicked = 0;
-  stepCounter: number = 1;
+  stepCounter = 1;
   calendarClicked = false;
   currentState = 'initial';
   currentUser: User;
   currentUserSubscription: Subscription;
   users: User[] = [];
   canActivate = true;
+  date: string;
+  datePicked = false;
 
   doctorsList: Array<Doctor> = [
     {name: 'John Locke', city: 'Warsaw', specialty: 'Orthopedist'},
@@ -83,6 +84,11 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     {name: 'Michael Dawson', city: 'Poznan', specialty: 'Gastrologist'},
     {name: 'Frank Lapidus', city: 'Warsaw', specialty: 'Psychiatrist'},
   ];
+
+  addEvent(event: MatDatepickerInputEvent<Date>) {
+    this.date = event.value.toLocaleDateString();
+    this.datePicked = true;
+  };
 
   uniqueCities() {
     const unique = this.doctorsList.map(s => s.specialty).filter((e, i, a) => a.indexOf(e) === i);
@@ -122,11 +128,12 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   }
 
   calendarClick() {
-    this.calendarClicked = true;
+    this.calendarClicked = !this.calendarClicked;
     this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
-      if(!this.currentUser){
+    if (!this.currentUser) {
         this.canActivate = false;
       }
+    this.datePicked = false;
   }
 
 }

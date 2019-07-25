@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild, ElementRef } from "@angular/core";
 import {MatDatepicker} from "@angular/material";
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-calendar',
@@ -8,11 +9,11 @@ import {MatDatepicker} from "@angular/material";
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  date: string;
 
-  @ViewChild('keepOpen', {static: true}) _input: ElementRef;
-
-  openCalendar(picker: MatDatepicker<Date>){
-    picker.open()
+  addEvent(event: MatDatepickerInputEvent<Date>) {
+    this.date = event.value.toLocaleDateString();
+    console.log(this.date);
   }
 
   constructor() { }
