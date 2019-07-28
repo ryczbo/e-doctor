@@ -68,6 +68,20 @@
             </div>
           </mat-form-field>
 
+          <mat-form-field *ngIf="pickedUserType === 'Doctor'">
+            <label for="specialty">What's your specialty?</label>
+            <mat-select formControlName="specialty">
+              <mat-option *ngFor="let specialty of specialties" [value]="specialty">
+                {{specialty}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="pickedUserType === 'Doctor'">
+            <label for="city">What's your city?</label>
+            <input matInput type="text" formControlName="city" class="form-control">
+          </mat-form-field>
+
         </div>
       </div>
 

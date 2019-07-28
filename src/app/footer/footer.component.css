@@ -1,6 +1,6 @@
 .container {
   height: 30px;
-  background-color: rgba(0,212,255,1);
+  background-color: transparent;
   bottom: 0;
   position: absolute;
   margin-top: auto;

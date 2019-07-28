@@ -20,6 +20,7 @@ import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { MatSelectModule } from '@angular/material/select';
 import { AlertComponent } from "./_alert/alert.component";
 import { HomeComponent } from "./_home/home.component";
@@ -83,5 +84,6 @@ export class AppModule {
     library.add(faAngleDoubleDown);
     library.add(faAngleLeft);
     library.add(faAngleRight);
+    library.add(faUserEdit);
   }
 }

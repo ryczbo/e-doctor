@@ -28,6 +28,7 @@ h4 {
   font-style: italic;
   margin: 0;
   color: cyan;
+  padding-right: 5px;
 }
 
 hr {
@@ -97,5 +98,17 @@ p {
 .arrow {
   margin-top: 15px;
   font-size: x-large;
+}
+
+#editProfile {
+  display: flex;
+  text-decoration: none;
+  color: white;
+  font-weight: lighter;
+  width: 100px;
+}
+
+#editProfile:hover {
+  text-decoration: underline;
 }
 

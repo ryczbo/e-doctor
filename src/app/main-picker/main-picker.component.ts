@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, HostListener } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 import { Doctor } from "../doctor";
 import {
@@ -9,7 +9,7 @@ import {
   transition
 } from "@angular/animations";
 import {AuthenticationService} from "../_services/authentication.service";
-import {UserService} from "../_services/user.service";
+import { ViewChild } from "@angular/core";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
 import { Router, ActivatedRoute } from '@angular/router';
@@ -17,6 +17,7 @@ import { first } from 'rxjs/operators';
 import {AlertService} from "../_services/alert.service";
 import {NotLoggedComponent} from "../not-logged/not-logged.component";
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { MatDatepicker } from "@angular/material/datepicker";
 
 @Component({
   selector: 'app-main-picker',
@@ -31,19 +32,7 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
           style({ opacity: 0 }),
           animate('0.9s', style({ opacity: 1 })),
         ])]),
-  trigger('slideLeft', [
-    state('initial', style({
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'flex-start'
-    })),
-    state('final', style({
-      display: 'flex',
-      alignItems: 'flex-start',
-      justifyContent: 'space-around'
-    })),
-    transition('initial=>final', animate('500ms')),
-  ])],
+],
   styleUrls: ['./main-picker.component.css']
 })
 export class MainPickerComponent implements OnInit, OnDestroy {
@@ -57,10 +46,12 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   currentState = 'initial';
   currentUser: User;
   currentUserSubscription: Subscription;
+  selectedDoctor;
   users: User[] = [];
-  canActivate = true;
   date: string;
   datePicked = false;
+
+  @ViewChild('datePicker', {static: true}) datePicker: MatDatepicker<Date>;
 
   doctorsList: Array<Doctor> = [
     {name: 'John Locke', city: 'Warsaw', specialty: 'Orthopedist'},
@@ -88,11 +79,12 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   addEvent(event: MatDatepickerInputEvent<Date>) {
     this.date = event.value.toLocaleDateString();
     this.datePicked = true;
-  };
+    this.calendarClicked = false;
+  }
 
   uniqueCities() {
     const unique = this.doctorsList.map(s => s.specialty).filter((e, i, a) => a.indexOf(e) === i);
-    return unique
+    return unique;
   }
 
   pickSpecialty(specialty) {
@@ -127,13 +119,15 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.currentUserSubscription.unsubscribe();
   }
 
-  calendarClick() {
-    this.calendarClicked = !this.calendarClicked;
-    this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
-    if (!this.currentUser) {
-        this.canActivate = false;
-      }
+  calendarClick(i: number) {
+    this.calendarClicked = false;
+    this.selectedDoctor = i;
+    setTimeout(() => this.calendarClicked = true, 100);
     this.datePicked = false;
+  }
+
+  reopenCalendar() {
+    this.datePicker.open();
   }
 
 }

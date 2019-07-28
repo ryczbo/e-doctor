@@ -18,6 +18,14 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   userType = [{val: 'Doctor'}, {val: 'Patient'}];
   pickedUserType: string;
+  specialties = [
+    'Orthopedist',
+    'Gastrologist',
+    'Cardiologist',
+    'Psychiatrist',
+    'Neurologist',
+    'Dermatologist'
+  ]
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,7 +47,9 @@ export class RegisterComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       userType: ['', Validators.required],
-      npi: ''
+      npi: '',
+      specialty: '',
+      city: ''
   });
     this.setConditionalValidator();
   }

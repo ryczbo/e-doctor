@@ -1,5 +1,5 @@
-<div class="container" *ngIf="canActivate" [ngClass]="{stepperUp : stepCounter == 3}">
-  <div class="jumbotron" @removeTrigger *ngIf="stepCounter !== 3">
+<div class="container" [ngClass]="{stepperUp : stepCounter == 3 || stepCounter == 4}">
+  <div class="jumbotron" @removeTrigger *ngIf="stepCounter !== 3 && stepCounter !== 4">
     <h1>Make a doctor's appointment in 4 simple steps</h1>
   </div>
   <div class="stepper">
@@ -56,25 +56,35 @@
 
   <div [@slideLeft]=currentState *ngIf="stepCounter == 3" class="chooseDoctor">
     <div class="form">
-      <div class="card" *ngFor="let doctor of doctors">
+      <div class="card" *ngFor="let doctor of doctors; let i = index" (click)="calendarClick(i)">
         <div class="cardTitle">
-          <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
-               alt="Avatar">
-          <div class="cardName">
-            <h3>{{doctor.name}}</h3>
-            <h5>{{doctor.specialty}}</h5>
+          <div class="cardBasic">
+            <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
+                 alt="Avatar">
+            <div class="cardName">
+              <h3>{{doctor.name}}</h3>
+              <h5>{{doctor.specialty}}</h5>
+            </div>
+          </div>
+          <div class="cardBtn">
+            <fa-icon icon="calendar-alt" id="calendarIcon"></fa-icon>
+            <h5 id="calendarLabel">Check Calendar</h5>
           </div>
         </div>
-        <div class="cardBtn">
-          <fa-icon icon="calendar-alt" id="calendarIcon" (click)="calendarClick()"></fa-icon>
-          <h5 id="calendarLabel">Check Calendar</h5>
+
+        <div *ngIf="selectedDoctor === i" class="cardDetails">
+          <h5>{{doctor.city}}</h5>
         </div>
       </div>
+
       <div class="underCardBtn">
         <button class="actionBtn" (click)="stepCounter = 2">Back</button>
       </div>
     </div>
-    <div *ngIf="calendarClicked && canActivate && !datePicked" class="calendar">
+
+    <div *ngIf="!calendarClicked" class="emptyDiv"></div>
+
+    <div *ngIf="calendarClicked && !datePicked" class="calendar">
       <mat-form-field style="width:1px;visibility:hidden;">
         <input matInput [matDatepicker]="datePicker" (click)="datePicker.open()" (dateChange)="addEvent($event)">
         <mat-datepicker #datePicker [opened]="true"></mat-datepicker>
@@ -95,11 +105,13 @@
 
       </div>
     </div>
-    <div class="warning" *ngIf="calendarClicked == true && canActivate == false">You need to log in!</div>
+  </div>
+
+  <div *ngIf="stepCounter === 4">
+    {{date}}
   </div>
 </div>
 
-<app-not-logged @cover *ngIf="calendarClicked && !canActivate && !currentUser"
-                (logged)="canActivate = true"></app-not-logged>
+<app-not-logged @cover *ngIf="calendarClicked && !currentUser"></app-not-logged>
 
 <!--[ngClass]="{cardLeft : calendarClicked == true}"-->

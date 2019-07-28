@@ -9,4 +9,6 @@ export class User {
   visits?: {date: string, diagnosis: string, meds: string}[];
   lastLogged?: string[];
   npi?: number;
+  specialty?: string;
+  city?: string;
 }

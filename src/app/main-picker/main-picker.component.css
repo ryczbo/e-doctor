@@ -142,10 +142,44 @@ mat-form-field * {
   padding: 5px;
   margin-bottom: 5px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
+.card:hover {
+  background-color: cyan;
+  color: #2156f3;
+  cursor: pointer;
+}
+
+.card:hover h3 {
+  color: #2156f3;
+}
+
+.card:hover h5 {
+  color: #3c4b56;
+}
+
+.card:focus {
+  background-color: cyan;
+  color: #2156f3;
+  cursor: pointer;
+}
+
+.card:focus h3 {
+  color: #2156f3;
+}
+
+.card:focus h5 {
+  color: #3c4b56;
+}
+
 .cardTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardBasic {
   display: flex;
 }
 
@@ -233,14 +267,14 @@ form {
 
 .timePicker {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 3em;
   flex-direction: column;
 }
 
 .calendar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 400px;
   flex-direction: column;
 }
@@ -248,6 +282,11 @@ form {
 .chooseDoctor {
   display: flex;
   width: 1000px;
+  justify-content: space-around;
+}
+
+.emptyDiv {
+  width: 400px;
 }
 
 .timePickerLabel {
