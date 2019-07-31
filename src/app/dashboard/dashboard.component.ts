@@ -26,12 +26,17 @@ export class DashboardComponent implements OnInit {
   }
 
   patients;
+  getPatientsCheck = false;
 
   getPatients() {
     this.userService.getAll().pipe(first()).subscribe(patients => {
       this.patients = patients.filter(e => e.userType === 'Patient');
     });
-    console.log(this.patients);
+    this.getPatientsCheck = true;
+  }
+
+  updateUser(user) {
+    this.userService.update(user).subscribe();
   }
 
 ngOnInit() {

@@ -47,6 +47,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   currentUser: User;
   currentUserSubscription: Subscription;
   selectedDoctor;
+  selectedDoctorDetails;
   users: User[] = [];
   date: string;
   datePicked = false;
@@ -124,10 +125,8 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.selectedDoctor = i;
     setTimeout(() => this.calendarClicked = true, 100);
     this.datePicked = false;
+    console.log(this.selectedDoctorDetails);
   }
 
-  reopenCalendar() {
-    this.datePicker.open();
-  }
 
 }

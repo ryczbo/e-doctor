@@ -3,15 +3,23 @@
     <div class="title">
       <h1>My Dashboard</h1>
     </div>
+    <hr>
     <div class="buttons">
-      <button class="actionBtn" (click)="getPatients()">My Patients List</button>
+    <button class="actionBtn" (click)="getPatients()">My Patients List</button>
     </div>
   </div>
+
   <div class="content">
-    <ul *ngFor="let patient of patients">
-      <li>
-        {{patient.firstName}} {{patient.lastName}}
-      </li>
-    </ul>
+    <div class="tableHeaders">
+    <h2 *ngIf="getPatientsCheck">My Patients</h2>
+    </div>
+    <div class="list">
+
+        <ul *ngFor="let patient of patients; let i = index" class="patientsList">
+          <li>
+            {{i + 1}}. {{patient.firstName}} {{patient.lastName}}
+          </li>
+        </ul>
+    </div>
   </div>
 </div>

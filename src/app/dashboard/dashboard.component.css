@@ -1,24 +1,31 @@
 .container {
   display: flex;
+  margin-left: 50px;
+  margin-top: 20px;
 }
 
 .navigationMenu {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 500px;
+  margin-top: 20px;
+  border-right: 1px solid white;
 }
 
 .title {
   display: flex;
-  margin-left: 100px;
 }
 
 h1 {
   color: white;
+  margin-bottom: 0;
 }
 
 .buttons {
   display: flex;
-  margin-left: 100px;
+  margin-top: 20px;
 }
 
 .actionBtn {
@@ -47,7 +54,27 @@ li {
 .content {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
-  margin-left: 50px;
+  margin-top: 20px;
+  align-items: center;
 }
 
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  color: white;
+  margin-top: 28px;
+}
+
+hr {
+  color: white;
+  border: 1px solid white;
+  width: 75em
+}
+
+.tableHeaders {
+  display: flex;
+  margin-left: 40px;
+}

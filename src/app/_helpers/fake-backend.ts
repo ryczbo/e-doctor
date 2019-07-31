@@ -30,6 +30,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return getUserById();
         case url.match(/\/users\/\d+$/) && method === 'DELETE':
           return deleteUser();
+        case url.match(/\/users\/\d+$/) && method === 'PUT':
+          return updateUser();
         default:
           // pass through any requests not handled above
           return next.handle(request);
@@ -58,13 +60,15 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       return ok({
         id: user.id,
         username: user.username,
+        password: user.password,
         firstName: user.firstName,
         lastName: user.lastName,
         token: 'fake-jwt-token',
         lastLogged: user.lastLogged,
         userType: user.userType,
         specialty: user.specialty,
-        city: user.city
+        city: user.city,
+        visits: user.visits
       });
     }
 
@@ -87,6 +91,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       localStorage.setItem('users', JSON.stringify(users));
       return ok();
     }
+
+    function updateUser() {
+      const user = body;
+      const foundIndex = users.findIndex(x => x.id === user.id);
+      users[foundIndex] = user;
+      // if (!isLoggedIn()) return unauthorized();
+      localStorage.setItem(`users`, JSON.stringify(users));
+      return ok();
+    }
+
 
     // helper functions
 

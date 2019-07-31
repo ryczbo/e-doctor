@@ -56,7 +56,8 @@
 
   <div [@slideLeft]=currentState *ngIf="stepCounter == 3" class="chooseDoctor">
     <div class="form">
-      <div class="card" *ngFor="let doctor of doctors; let i = index" (click)="calendarClick(i)">
+      <div class="card" *ngFor="let doctor of doctors; let i = index"
+           (click)="selectedDoctorDetails = doctor; calendarClick(i)">
         <div class="cardTitle">
           <div class="cardBasic">
             <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
@@ -107,11 +108,35 @@
     </div>
   </div>
 
-  <div *ngIf="stepCounter === 4">
-    {{date}}
+  <div class="wrapper">
+    <div class="jumbotron" *ngIf="stepCounter === 4">
+      <h1>Do you confirm the appointment?</h1>
+    </div>
+
+    <div *ngIf="stepCounter === 4 && selectedDoctor !== undefined" class="confirm">
+      <div class="card">
+        <div class="cardTitle">
+          <div class="cardBasic">
+            <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
+                 alt="Avatar">
+            <div class="cardName">
+              <h3>{{selectedDoctorDetails.name}}</h3>
+              <h5>{{selectedDoctorDetails.specialty}}</h5>
+            </div>
+          </div>
+          <div class="cardBtn">
+            <h2>{{date}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="finalBtn">
+        <button id="confirmBtn">Yes, I confirm</button>
+        <button id="cancelBtn">Cancel</button>
+      </div>
+    </div>
+
+    <app-not-logged @cover *ngIf="calendarClicked && !currentUser"></app-not-logged>
+
+    <!--[ngClass]="{cardLeft : calendarClicked == true}"-->
   </div>
 </div>
-
-<app-not-logged @cover *ngIf="calendarClicked && !currentUser"></app-not-logged>
-
-<!--[ngClass]="{cardLeft : calendarClicked == true}"-->

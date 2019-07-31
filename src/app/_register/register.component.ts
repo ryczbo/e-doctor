@@ -65,7 +65,6 @@ export class RegisterComponent implements OnInit {
 
   pickUserType(val) {
     this.pickedUserType = val;
-    console.log('jest');
   }
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }

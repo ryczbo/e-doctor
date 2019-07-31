@@ -10,7 +10,6 @@
 .jumbotron {
   color: white;
   text-align: center;
-  margin-bottom: 2em;
   width: 70%;
 }
 
@@ -19,6 +18,7 @@
   justify-content: center;
   align-items: center;
   width: 80%;
+  margin-top: 2em;
 }
 
 .stepperUp {
@@ -96,13 +96,6 @@ li:hover .numberCircle {
   margin-top: 3em;
   flex-direction: column;
 }
-
-/*.cardLeft {*/
-/*  display: flex;*/
-/*  width: 100%;*/
-/*  flex-direction: row;*/
-/*  justify-content: space-around;*/
-/*}*/
 
 mat-form-field * {
   color: white;
@@ -303,4 +296,41 @@ form {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+}
+
+h2 {
+  margin: 0;
+}
+
+#confirmBtn {
+  border: 1px solid white;
+  background: #00aa30;
+  color: white;
+  font: 16px Raleway, sans-serif;
+  padding: 3px 8px;
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+#cancelBtn {
+  border: 1px solid white;
+  background: #ff0000;
+  color: white;
+  font: 16px Raleway, sans-serif;
+  padding: 3px 8px;
+  width: 70px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.finalBtn {
+  display: flex;
+  justify-content: flex-end;
 }

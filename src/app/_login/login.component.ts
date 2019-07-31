@@ -59,12 +59,16 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate(['/home']);
+          this.lastLogged = new Date().toLocaleString('pl-PL');
+          this.authenticationService.user.lastLogged.push(this.lastLogged);
+          this.userService.update(this.authenticationService.user).subscribe();
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
         });
 
-    this.userService.update(this.authenticationService.user);
   }
 }
+
+
