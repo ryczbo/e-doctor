@@ -11,4 +11,5 @@ export class User {
   npi?: number;
   specialty?: string;
   city?: string;
+  profilePic?: string;
 }

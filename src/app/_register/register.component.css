@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-evenly;
   margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .wrapper {
@@ -16,6 +17,7 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .formColumn {
@@ -46,13 +48,13 @@ mat-form-field * {
 
 ::ng-deep .mat-select-value {
   color: white;
-  padding: 3px 0;
+  padding: 2px 0;
   font-size: x-large;
 }
 
 input {
   font-size: x-large;
-  padding: 3px 0;
+  padding: 2px 0;
 }
 
 .formButtonsWrapper {
@@ -78,7 +80,6 @@ input {
   cursor: pointer;
   color: #2156f3;
   background: white;
-  border: none;
 }
 
 .underForm {
@@ -98,6 +99,18 @@ a {
   color: #2156f3;
 }
 
-.detale {
-  background-color: white;
+.invalid-feedback {
+  margin-top: -18px;
+}
+
+#secCol {
+  margin-top: -1px;
+}
+
+#secColDet {
+  margin-top: -1px;
+}
+
+#secColDet * {
+  width: 300px;
 }

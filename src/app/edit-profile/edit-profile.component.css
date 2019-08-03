@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  align-content: space-around;
+}
+
+h2 {
+  color: white;
+}
+
+input {
+  color: white;
+}
+
+label {
+  color: white;
+}

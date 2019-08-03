@@ -68,7 +68,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         userType: user.userType,
         specialty: user.specialty,
         city: user.city,
-        visits: user.visits
+        visits: user.visits,
+        profilePic: user.profilePic
       });
     }
 

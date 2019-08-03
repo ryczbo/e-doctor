@@ -46,7 +46,7 @@
         </div>
 
 
-        <div class="formColumn">
+        <div class="formColumn" id="secCol">
 
           <mat-form-field>
             <label for="userType">You are a:</label>
@@ -68,6 +68,7 @@
             </div>
           </mat-form-field>
 
+          <div id="secColDet">
           <mat-form-field *ngIf="pickedUserType === 'Doctor'">
             <label for="specialty">What's your specialty?</label>
             <mat-select formControlName="specialty">
@@ -82,6 +83,7 @@
             <input matInput type="text" formControlName="city" class="form-control">
           </mat-form-field>
 
+          </div>
         </div>
       </div>
 
@@ -92,10 +94,5 @@
 
     </form>
 
-
   </div>
-<!--  <div class="underForm">-->
-<!--    <h4>Already a User?</h4>-->
-<!--    <a routerLink="/login">Log In</a>-->
-<!--  </div>-->
 </div>

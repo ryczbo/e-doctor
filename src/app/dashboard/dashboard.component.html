@@ -5,21 +5,22 @@
     </div>
     <hr>
     <div class="buttons">
-    <button class="actionBtn" (click)="getPatients()">My Patients List</button>
+      <button class="actionBtn" (click)="getPatients()">My Patients List</button>
+      <button class="actionBtn" routerLink="/edit">Edit My Profile</button>
     </div>
   </div>
 
   <div class="content">
     <div class="tableHeaders">
-    <h2 *ngIf="getPatientsCheck">My Patients</h2>
+      <h2 *ngIf="getPatientsCheck">My Patients</h2>
     </div>
     <div class="list">
 
-        <ul *ngFor="let patient of patients; let i = index" class="patientsList">
-          <li>
-            {{i + 1}}. {{patient.firstName}} {{patient.lastName}}
-          </li>
-        </ul>
+      <ul *ngFor="let patient of patients; let i = index" class="patientsList">
+        <li>
+          {{i + 1}}. {{patient.firstName}} {{patient.lastName}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>

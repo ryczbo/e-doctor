@@ -34,6 +34,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NotLoggedComponent } from './not-logged/not-logged.component';
 import { CalendarComponent } from "./calendar/calendar.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FooterComponent,
     NotLoggedComponent,
     CalendarComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
