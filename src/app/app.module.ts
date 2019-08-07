@@ -15,12 +15,20 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faCheckCircle,
+  faEllipsisV,
+  faEnvelope,
+  faHome,
+  faHourglassHalf
+} from "@fortawesome/free-solid-svg-icons";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { MatSelectModule } from '@angular/material/select';
 import { AlertComponent } from "./_alert/alert.component";
 import { HomeComponent } from "./_home/home.component";
@@ -87,5 +95,10 @@ export class AppModule {
     library.add(faAngleLeft);
     library.add(faAngleRight);
     library.add(faUserEdit);
+    library.add(faBell);
+    library.add(faEnvelope);
+    library.add(faCheckCircle);
+    library.add(faHourglassHalf);
+    library.add(faHome);
   }
 }

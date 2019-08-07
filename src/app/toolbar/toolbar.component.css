@@ -16,6 +16,7 @@
 
 h4 {
   margin-left: 7px;
+  margin-right: 15px;
 }
 
 .toolbarButtons {
@@ -24,6 +25,45 @@ h4 {
   width: 220px;
   align-items: center;
   margin-right: 5px;
+}
+
+.indicators {
+  display: flex;
+  justify-content: space-between;
+  width: 65px;
+  height: 50px;
+  align-items: center;
+}
+
+.notification {
+  display: inline-block;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  color: white;
+  font: 10px "Helvetica Neue", sans-serif;
+  font-weight: bolder;
+  padding: 1px;
+  text-align: center;
+top: 0;
+  right: 0;
+  z-index: 50;
+  position: absolute;
+}
+
+.indicatorLink {
+  font-size: larger;
+}
+
+.indicator {
+  position: relative;
+  width: 30px;
+  height: 20px;
+}
+
+a:active {
+  color: white;
 }
 
 ul {
@@ -73,7 +113,7 @@ li:last-of-type:hover {
 
 .dropdownContent {
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background-color: #f9f9f9;
   position: absolute;
   z-index: 1;

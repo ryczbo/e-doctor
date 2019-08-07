@@ -1,3 +1,3 @@
 <div class="container">
-  <h4 *ngIf="currentUser">Last logged: {{currentUser.lastLogged[currentUser.lastLogged.length - 2]}}</h4>
+  <h5 *ngIf="currentUser">Last logged: <span *ngIf="currentUser.lastLogged[0] == undefined">First Login</span>{{currentUser.lastLogged[currentUser.lastLogged.length - 2]}}</h5>
 </div>

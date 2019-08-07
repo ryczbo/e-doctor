@@ -2,27 +2,37 @@
   <div class="container" *ngIf="currentUser" [@slideSdbr]=currentState>
     <div *ngIf="currentState === 'final'">
       <div class="title">
-        <h3>{{currentUser.firstName}} {{currentUser.lastName}}</h3>
-        <a href="" id="editProfile"><h5 id="subTitle">My Profile</h5><fa-icon icon="user-edit"></fa-icon></a>
-        <hr>
+        <h3>{{currentUser.firstName}} {{currentUser.lastName}}</h3><a routerLink="/edit" (click)="showSdbr()" id="editProfile"><fa-icon icon="user-edit"></fa-icon></a>
       </div>
-
+      <hr>
       <h4>My Visits</h4>
 
-      <div class="visits" *ngFor="let visit of currentUser.visits; let show = false" (click)="show = !show">
+      <ul class="visits" *ngFor="let visit of currentUser.visits; let show = false" (click)="show = !show" [ngClass]="[(show && visit.confirmed ? 'confirmed' : 'pending')]">
+        <li>
         <div class="visitHead">
-          <p class="visitDate">{{visit.date}}</p>
+          <p class="visitDate">
+            <fa-icon icon="check-circle" class='check' *ngIf="visit.confirmed"></fa-icon>
+            <fa-icon icon="hourglass-half" id="pendingIcon" *ngIf="!visit.confirmed"></fa-icon>
+            {{visit.date}}
+          </p>
           <a class="detailsBtn">
-            <fa-icon icon="angle-double-down"></fa-icon>
+<!--            <fa-icon icon="angle-double-down" *ngIf="!show"></fa-icon>-->
           </a>
         </div>
         <div class="visitDetails" *ngIf="show">
-          <h5 class="detLabel">Diagnosis</h5>
-          <p>{{visit.diagnosis}}</p>
-          <h5 class="detLabel">Prescription</h5>
-          <p>{{visit.meds}}</p>
+          <div class="visitDetailsLeft">
+          <h5 class="detLabel">Doctor</h5>
+          <p>{{visit.doctor}}</p>
+          </div>
+          <div class="visitDetailsRight">
+
+          <h5 class="detRightLabel" *ngIf="visit.confirmed">Confirmed</h5>
+
+          <h5 class="detRightLabel" *ngIf="!visit.confirmed">...pending</h5>
+          </div>
         </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
 

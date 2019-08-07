@@ -58,6 +58,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.currentUser.visits = [
+      {date: '21-07-2019', doctor: 'Jack Shepard', confirmed: true},
+      {date: '05-09-2019', doctor: 'Juliet Burke', confirmed: false}
+    ];
   }
 
   ngOnDestroy(): void {

@@ -71,7 +71,7 @@
           <div id="secColDet">
           <mat-form-field *ngIf="pickedUserType === 'Doctor'">
             <label for="specialty">What's your specialty?</label>
-            <mat-select formControlName="specialty">
+            <mat-select formControlName="specialty" multiple>
               <mat-option *ngFor="let specialty of specialties" [value]="specialty">
                 {{specialty}}
               </mat-option>

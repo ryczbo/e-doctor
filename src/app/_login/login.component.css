@@ -47,14 +47,10 @@ input {
   cursor: pointer;
   color: #2156f3;
   background: white;
-  border: none;
 }
 
-hr {
-  border-top: 0.5px solid black;
-  width: 120px;
-  margin-right: 0;
-  opacity: 0.5;
+.invalid-feedback {
+  margin-top: -18px;
 }
 
 .underForm {

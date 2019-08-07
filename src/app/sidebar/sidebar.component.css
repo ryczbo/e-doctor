@@ -11,17 +11,21 @@
 
 .title {
   margin-left: 10px;
+  display: flex;
+  margin-top: 15px;
 }
 
 h3 {
-  margin-bottom: 5px;
-  color: white
+  margin-bottom: 2px;
+  margin-right: 7px;
+  color: white;
+  margin-top: 0;
 }
 
 h4 {
   color: white;
   margin-left: 10px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 #subTitle {
@@ -41,15 +45,19 @@ p {
 }
 
 .visits {
-  margin: 4px 4px 2px 8px;
-  border-width: 1px;
-  border-style: inset;
+  margin: 4px 6px 2px 8px;
   padding: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+ul li{
+  text-align: left;
 }
 
 .visits:hover {
   background-color: #3c4b56;
-  border-width: 2px;
+  cursor: pointer;
 }
 
 .detailsBtn {
@@ -66,6 +74,7 @@ p {
   font-style: italic;
   color: cyan;
   margin-bottom: 4px;
+  margin-top: 2px;
 }
 
 .visitDate {
@@ -74,6 +83,25 @@ p {
 
 .visitDetails {
   margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.visitDetailsLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.visitDetailsRight {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.detRightLabel {
+  color: white;
+  font-weight: lighter;
+  margin-bottom: 0;
 }
 
 .showSdbr {
@@ -105,10 +133,26 @@ p {
   text-decoration: none;
   color: white;
   font-weight: lighter;
-  width: 100px;
+  align-items: center;
 }
 
 #editProfile:hover {
   text-decoration: underline;
 }
 
+.check {
+  color: #00aa30;
+}
+
+#pendingIcon {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.confirmed {
+  border: 1px solid #00aa30;
+}
+
+.pending {
+  border: 1px solid gray;
+}

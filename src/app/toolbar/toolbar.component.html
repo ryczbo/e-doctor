@@ -2,7 +2,29 @@
   <div class="title">
     <a class='homeBtn' routerLink="/home" (click)="reload()"><h3>ePatient</h3></a>
     <img class=avatar *ngIf="currentUser?.profilePic" [src]="imgPath" alt="">
+    <img class=avatar *ngIf="currentUser && !currentUser.profilePic" src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" alt="">
     <h4 *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
+    <div *ngIf="currentUser" class="indicators">
+
+      <div class="indicator">
+<!--                <span class="notification">1</span>-->
+        <a href="javascript:void(0)" class="indicatorLink">
+          <fa-icon icon="envelope" class="indicator"></fa-icon>
+
+        </a>
+      </div>
+
+      <div class="indicator">
+
+        <a href="javascript:void(0)" class="indicatorLink">
+          <span class="notification">2</span>
+          <fa-icon icon="bell" class="indicator"></fa-icon>
+
+        </a>
+      </div>
+
+    </div>
+
   </div>
   <a *ngIf="currentUser" (click)="logout()" class="logOut">Log Out</a>
   <div class="toolbarButtons" *ngIf="!currentUser">
@@ -10,7 +32,9 @@
       <li><a routerLink="/register">Sign Up</a></li>
       <li><a routerLink="/login">Log In</a></li>
       <li class="dropdown">
-        <a href="javascript:void(0)" class="dropdownBtn" (click)="drop = !drop"><fa-icon icon="ellipsis-v"></fa-icon></a>
+        <a href="javascript:void(0)" class="dropdownBtn" (click)="drop = !drop">
+          <fa-icon icon="ellipsis-v"></fa-icon>
+        </a>
         <div class="dropdownContent" *ngIf="drop">
           <a href="#">About</a>
           <a href="#">Contact</a>
