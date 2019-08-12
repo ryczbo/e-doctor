@@ -1,6 +1,6 @@
 <div class="container">
-  <h2>Register</h2>
-
+  <h2 *ngIf="!submitted || loading">Register</h2>
+  <alert></alert>
   <div class="wrapper">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
@@ -71,7 +71,7 @@
           <div id="secColDet">
           <mat-form-field *ngIf="pickedUserType === 'Doctor'">
             <label for="specialty">What's your specialty?</label>
-            <mat-select formControlName="specialty" multiple>
+            <mat-select formControlName="specialty">
               <mat-option *ngFor="let specialty of specialties" [value]="specialty">
                 {{specialty}}
               </mat-option>

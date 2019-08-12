@@ -1,1 +1,4 @@
-<div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>
+<div *ngIf="message" [ngClass]="{ 'alert-danger' : message?.type === 'error', 'alert-success' : message?.type === 'success' }">
+  <fa-icon icon="times" id="danger" *ngIf="message?.type === 'error'"></fa-icon>
+  <fa-icon icon="check" id="ok" *ngIf="message?.type === 'success'"></fa-icon>
+  {{message.text}}</div>

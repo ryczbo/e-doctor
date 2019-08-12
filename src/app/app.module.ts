@@ -21,7 +21,7 @@ import {
   faEllipsisV,
   faEnvelope,
   faHome,
-  faHourglassHalf
+  faHourglassHalf, faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
@@ -97,8 +97,10 @@ export class AppModule {
     library.add(faUserEdit);
     library.add(faBell);
     library.add(faEnvelope);
+    library.add(faCheck);
     library.add(faCheckCircle);
     library.add(faHourglassHalf);
     library.add(faHome);
+    library.add(faTimes);
   }
 }

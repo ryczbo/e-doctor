@@ -1,13 +1,16 @@
-<div class="toolbar">
-  <div class="title">
+<div class="toolbar" [ngClass]="{altToolbar : currentUser?.userType === 'Doctor'}">
+  <div class="title" [ngClass]="{altTitle : currentUser?.userType === 'Doctor'}">
     <a class='homeBtn' routerLink="/home" (click)="reload()"><h3>ePatient</h3></a>
-    <img class=avatar *ngIf="currentUser?.profilePic" [src]="imgPath" alt="">
-    <img class=avatar *ngIf="currentUser && !currentUser.profilePic" src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" alt="">
+    <img class=avatar *ngIf="currentUser?.profilePic" [src]="imgPath" alt=""
+         [ngClass]="{altAvatar : currentUser?.userType === 'Doctor'}">
+    <img class=avatar *ngIf="currentUser && !currentUser.profilePic"
+         src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" alt=""
+         [ngClass]="{altAvatar : currentUser?.userType === 'Doctor'}">
     <h4 *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
-    <div *ngIf="currentUser" class="indicators">
+    <div *ngIf="currentUser" class="indicators" [ngClass]="{altIndicators : currentUser?.userType === 'Doctor'}">
 
       <div class="indicator">
-<!--                <span class="notification">1</span>-->
+        <!--                <span class="notification">1</span>-->
         <a href="javascript:void(0)" class="indicatorLink">
           <fa-icon icon="envelope" class="indicator"></fa-icon>
 
@@ -26,11 +29,13 @@
     </div>
 
   </div>
-  <a *ngIf="currentUser" (click)="logout()" class="logOut">Log Out</a>
+  <div class="logOutBtn" [ngClass]="{altToolbarButtons : currentUser?.userType === 'Doctor'}" (click)="logout()">
+    <a *ngIf="currentUser" [ngClass]="{'logOut' : currentUser?.userType === 'Doctor'}">Log Out</a>
+  </div>
   <div class="toolbarButtons" *ngIf="!currentUser">
     <ul>
-      <li><a routerLink="/register">Sign Up</a></li>
-      <li><a routerLink="/login">Log In</a></li>
+      <li routerLink="/register">Sign Up</li>
+      <li routerLink="/login">Log In</li>
       <li class="dropdown">
         <a href="javascript:void(0)" class="dropdownBtn" (click)="drop = !drop">
           <fa-icon icon="ellipsis-v"></fa-icon>

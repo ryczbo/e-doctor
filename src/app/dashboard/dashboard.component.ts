@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {AuthenticationService} from "../_services/authentication.service";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
@@ -15,18 +15,21 @@ export class DashboardComponent implements OnInit {
   currentUser: User;
   currentUserSubscription: Subscription;
   users: User[] = [];
+  patients;
+  getPatientsCheck = false;
 
   constructor(
     private authenticationService: AuthenticationService,
-    private userService: UserService
+    private userService: UserService,
+    private renderer: Renderer2
   ) {
+    this.renderer.removeClass(document.body, 'body');
+    this.renderer.addClass(document.body, 'altBody');
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
   }
 
-  patients;
-  getPatientsCheck = false;
 
   getPatients() {
     this.userService.getAll().pipe(first()).subscribe(patients => {

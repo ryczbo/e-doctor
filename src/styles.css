@@ -1,5 +1,14 @@
 html, body { height: 100%; margin: 0; padding: 0;}
-body { margin: 0; height: 100%; font-family: Raleway, sans-serif; background: rgb(2,0,36);
-  background: repeating-linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 150%);
-background-repeat: no-repeat; background-attachment: fixed}
+body { margin: 0; height: 100%; font-family: Raleway, sans-serif;}
 
+.altBody {
+  background: rgb(0,212,255);
+  background: linear-gradient(0deg, rgba(0,212,255,1) 50%, rgba(0,160,215,1) 100%);
+  background-repeat: no-repeat; background-attachment: fixed
+}
+
+.body {
+  background: rgb(2,0,36);
+  background: repeating-linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 150%);
+  background-repeat: no-repeat; background-attachment: fixed
+}

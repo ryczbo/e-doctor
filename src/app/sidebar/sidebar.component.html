@@ -7,12 +7,12 @@
       <hr>
       <h4>My Visits</h4>
 
-      <ul class="visits" *ngFor="let visit of currentUser.visits; let show = false" (click)="show = !show" [ngClass]="[(show && visit.confirmed ? 'confirmed' : 'pending')]">
+      <ul class="visits" *ngFor="let visit of currentUser.visits; let show = false" (click)="show = !show" [ngClass]="{ 'confirmed' : visit.status === 'confirmed', 'pending' : visit.status === 'pending' }">
         <li>
         <div class="visitHead">
           <p class="visitDate">
-            <fa-icon icon="check-circle" class='check' *ngIf="visit.confirmed"></fa-icon>
-            <fa-icon icon="hourglass-half" id="pendingIcon" *ngIf="!visit.confirmed"></fa-icon>
+            <fa-icon icon="check-circle" class='check' *ngIf="visit.status === 'confirmed'"></fa-icon>
+            <fa-icon icon="hourglass-half" id="pendingIcon" *ngIf="visit.status === 'pending'"></fa-icon>
             {{visit.date}}
           </p>
           <a class="detailsBtn">

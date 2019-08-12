@@ -6,12 +6,20 @@
   padding-left: 10px;
 }
 
+.altToolbar {
+  background-color: #3c4b63;
+}
+
 .title {
   display: flex;
   flex-direction: row;
   color: #2156f3;
   height: 50px;
   align-items: center;
+}
+
+.altTitle * {
+  color: white;
 }
 
 h4 {
@@ -62,6 +70,10 @@ top: 0;
   height: 20px;
 }
 
+.altIndicators * {
+  color: cyan;
+}
+
 a:active {
   color: white;
 }
@@ -76,13 +88,14 @@ ul {
 }
 
 li {
-  color: #2156f3;
+  color: #3c4b63;
   width: 100%;
   display: flex;
   text-align: center;
   height: 50px;
   align-items: center;
   justify-content: center;
+  outline: none;
 }
 
 .dropdown {
@@ -105,6 +118,7 @@ li a, .dropdownBtn {
 li:hover {
   height: 50px;
   background-color: #00AAFF;
+  cursor: pointer;
 }
 
 li:last-of-type:hover {
@@ -145,7 +159,41 @@ li:last-of-type:hover {
 
 .logOut {
   display: flex;
-  margin-right: 15px;
+  color: white;
+}
+
+.altToolbarButtons {
+  height: 50px;
+  width: 73px;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: space-around;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.logOutBtn {
+  height: 50px;
+  width: 73px;
+  display: flex;
+  align-items: center;
+  color: #3c4b63;
+  justify-content: space-around;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.logOutBtn:hover {
+  cursor: pointer;
+  background-color: #00AAFF;
+}
+
+.altToolbarButtons:hover {
+  cursor: pointer;
+  background-color: #1a44c2;
 }
 
 .logOut:hover {
@@ -158,4 +206,8 @@ li:last-of-type:hover {
   border-radius: 50%;
   border: 2px solid #2156f3;
   margin-left: 20px;
+}
+
+.altAvatar {
+  border-color: cyan;
 }

@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, Renderer2 } from '@angular/core';
 import 'hammerjs';
 import { AuthenticationService } from "./_services/authentication.service";
 import { Subscription } from "rxjs";
@@ -17,8 +17,10 @@ export class AppComponent {
   users: User[] = [];
 
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private renderer: Renderer2
   ) {
+    this.renderer.addClass(document.body, 'body');
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
     });

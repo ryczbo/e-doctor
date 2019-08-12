@@ -25,6 +25,7 @@
       </li>
     </ul>
   </div>
+
   <div class="form" *ngIf="stepCounter == 1">
     <mat-form-field>
       <mat-label>Specialty</mat-label>
@@ -60,10 +61,12 @@
            (click)="selectedDoctorDetails = doctor; calendarClick(i)">
         <div class="cardTitle">
           <div class="cardBasic">
-            <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
+            <img class="avatar" [src]="imgPath" *ngIf="currentUser?.profilePic"
+                 alt="Avatar">
+            <img class="avatar" src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" *ngIf="currentUser && !currentUser.profilePic"
                  alt="Avatar">
             <div class="cardName">
-              <h3>{{doctor.name}}</h3>
+              <h3>{{doctor.firstName}} {{doctor.lastName}}</h3>
               <h5>{{doctor.specialty}}</h5>
             </div>
           </div>
@@ -74,7 +77,7 @@
         </div>
 
         <div *ngIf="selectedDoctor === i" class="cardDetails">
-          <h5>{{doctor.city}}</h5>
+<!--          <h5>{{doctor.city}}</h5>-->
         </div>
       </div>
 
@@ -110,17 +113,19 @@
 
   <div class="wrapper">
     <div class="jumbotron" *ngIf="stepCounter === 4">
-      <h1>Do you confirm the appointment?</h1>
+      <h1>Do you want to send a request?</h1>
     </div>
 
     <div *ngIf="stepCounter === 4 && selectedDoctor !== undefined" class="confirm">
       <div class="card">
         <div class="cardTitle">
           <div class="cardBasic">
-            <img class="avatar" src="http://www.dom1n.com/wp-content/uploads/2018/03/ebEO3LUqif4-e1521227418136.jpg"
+            <img class="avatar" [src]="imgPath" *ngIf="currentUser?.profilePic"
+                 alt="Avatar">
+            <img class="avatar" src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" *ngIf="currentUser && !currentUser.profilePic"
                  alt="Avatar">
             <div class="cardName">
-              <h3>{{selectedDoctorDetails.name}}</h3>
+              <h3>{{selectedDoctorDetails.firstName}} {{selectedDoctorDetails.lastName}}</h3>
               <h5>{{selectedDoctorDetails.specialty}}</h5>
             </div>
           </div>
@@ -130,8 +135,8 @@
         </div>
       </div>
       <div class="finalBtn">
-        <button id="confirmBtn">Yes, I confirm</button>
-        <button id="cancelBtn">Cancel</button>
+        <button id="confirmBtn" (click)="sendRequest()">Send a request</button>
+        <button id="cancelBtn" (click)="stepCounter = 3">Cancel</button>
       </div>
     </div>
 

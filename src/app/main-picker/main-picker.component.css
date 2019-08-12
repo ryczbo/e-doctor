@@ -315,8 +315,12 @@ h2 {
   color: white;
   font: 16px Raleway, sans-serif;
   padding: 3px 8px;
-  width: 120px;
+  width: 140px;
   margin-bottom: 10px;
+}
+
+#confirmBtn:hover {
+  cursor: pointer;
 }
 
 #cancelBtn {
@@ -328,6 +332,10 @@ h2 {
   width: 70px;
   margin-bottom: 10px;
   margin-left: 5px;
+}
+
+#cancelBtn {
+  cursor: pointer;
 }
 
 .finalBtn {

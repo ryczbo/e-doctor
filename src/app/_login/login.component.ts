@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   lastLogged;
+  hide = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.alertService.error(error);
+          this.hide = true;
           this.loading = false;
         });
 

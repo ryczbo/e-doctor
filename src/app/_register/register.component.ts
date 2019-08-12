@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {first} from 'rxjs/operators';
 
-import { AlertService } from "../_services/alert.service";
-import { AuthenticationService } from "../_services/authentication.service";
-import { UserService } from "../_services/user.service";
+import {AlertService} from "../_services/alert.service";
+import {AuthenticationService} from "../_services/authentication.service";
+import {UserService} from "../_services/user.service";
 
 @Component({
   selector: 'app-register',
@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  logged = false;
   userType = [{val: 'Doctor'}, {val: 'Patient'}];
   pickedUserType: string;
   specialties = [
@@ -50,7 +51,7 @@ export class RegisterComponent implements OnInit {
       npi: '',
       specialty: '',
       city: ''
-  });
+    });
     this.setConditionalValidator();
   }
 
@@ -66,8 +67,11 @@ export class RegisterComponent implements OnInit {
   pickUserType(val) {
     this.pickedUserType = val;
   }
+
   // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -77,13 +81,12 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
     this.userService.register(this.registerForm.value)
       .pipe(first())
       .subscribe(
         data => {
           this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
+          setTimeout(() => this.router.navigate(['/login']), 1000);
         },
         error => {
           this.alertService.error(error);

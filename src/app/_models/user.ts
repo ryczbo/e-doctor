@@ -6,10 +6,10 @@ export class User {
   firstName: string;
   lastName: string;
   token: string;
-  visits?: {date: string, doctor: string, confirmed: boolean}[];
+  visits?: {date: string, doctor: string, status: string}[];
   lastLogged?: string[];
   npi?: number;
-  specialty?: string[];
+  specialty?: string;
   city?: string;
   profilePic?: string;
 }

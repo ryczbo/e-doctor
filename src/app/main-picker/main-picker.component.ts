@@ -8,6 +8,7 @@ import {
   animate,
   transition
 } from "@angular/animations";
+import { DomSanitizer } from "@angular/platform-browser";
 import {AuthenticationService} from "../_services/authentication.service";
 import { ViewChild } from "@angular/core";
 import {User} from "../_models/user";
@@ -15,6 +16,7 @@ import {Subscription} from "rxjs";
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import {AlertService} from "../_services/alert.service";
+import { UserService } from "../_services/user.service";
 import {NotLoggedComponent} from "../not-logged/not-logged.component";
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { MatDatepicker } from "@angular/material/datepicker";
@@ -51,31 +53,11 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   users: User[] = [];
   date: string;
   datePicked = false;
+  imgPath;
+  request;
+  doctorsList;
 
   @ViewChild('datePicker', {static: true}) datePicker: MatDatepicker<Date>;
-
-  doctorsList: Array<Doctor> = [
-    {name: 'John Locke', city: 'Warsaw', specialty: 'Orthopedist'},
-    {name: 'Sayid Jarrah', city: 'Cracow', specialty: 'Cardiologist'},
-    {name: 'Jack Shepard', city: 'Gdansk', specialty: 'Gastrologist'},
-    {name: 'Charles Widmore', city: 'Warsaw', specialty: 'Orthopedist'},
-    {name: 'Hugo Reyes', city: 'Poznan', specialty: 'Neurologist'},
-    {name: 'Kate Austen', city: 'Cracow', specialty: 'Cardiologist'},
-    {name: 'James Ford', city: 'Warsaw', specialty: 'Gastrologist'},
-    {name: 'Benjamin Linus', city: 'Gdansk', specialty: 'Neurologist'},
-    {name: 'Desmond Hume', city: 'Cracow', specialty: 'Dermatologist'},
-    {name: 'Charlie Pace', city: 'Poznan', specialty: 'Psychiatrist'},
-    {name: 'Boone Carlyle', city: 'Warsaw', specialty: 'Psychiatrist'},
-    {name: 'Claire Littleton', city: 'Gdansk', specialty: 'Orthopedist'},
-    {name: 'Jin Soo-Kwon', city: 'Cracow', specialty: 'Cardiologist'},
-    {name: 'Juliet Burke', city: 'Kielce', specialty: 'Neurologist'},
-    {name: 'Shannon Rutherford', city: 'Warsaw', specialty: 'Dermatologist'},
-    {name: 'Richard Alpert', city: 'Cracow', specialty: 'Orthopedist'},
-    {name: 'Danielle Rousseau', city: 'Gdansk', specialty: 'Cardiologist'},
-    {name: 'Ana-Lucia Cortez', city: 'Poznan', specialty: 'Neurologist'},
-    {name: 'Michael Dawson', city: 'Poznan', specialty: 'Gastrologist'},
-    {name: 'Frank Lapidus', city: 'Warsaw', specialty: 'Psychiatrist'},
-  ];
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
     this.date = event.value.toLocaleDateString();
@@ -92,12 +74,11 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.cities = this.doctorsList.filter(e => e.specialty == specialty).map(d => d.city).filter((e, i, a) => a.indexOf(e) === i);
     this.specialty = specialty;
     this.specialtyPicked = 1;
-
   }
 
   pickCity(specialty, city) {
     this.doctors = this.doctorsList.filter(e => e.specialty == specialty && e.city == city);
-    console.log(this.doctors);
+    // console.log(this.doctors);
   }
 
   constructor(
@@ -105,13 +86,21 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
+    private sanitizer: DomSanitizer,
+    private userService: UserService
   ) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
+      if (this.currentUser) {
+        this.imgPath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
+          + this.currentUser.profilePic);
+      }
     });
   }
 
   ngOnInit() {
+    this.fetchDoctors();
+    // this.uniqueSpecialties();
     this.uniqueCities();
   }
 
@@ -126,6 +115,13 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     setTimeout(() => this.calendarClicked = true, 100);
     this.datePicked = false;
     console.log(this.selectedDoctorDetails);
+  }
+
+  fetchDoctors() {
+    this.userService.getAll().pipe(first()).subscribe(doctors => {
+      this.doctorsList = doctors.filter(e => e.userType === 'Doctor');
+    });
+    console.log(this.doctorsList);
   }
 
 
