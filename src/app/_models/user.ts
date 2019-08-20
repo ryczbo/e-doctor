@@ -6,7 +6,7 @@ export class User {
   firstName: string;
   lastName: string;
   token: string;
-  visits?: {date: string, doctor: string, status: string}[];
+  visits?: {date: string, hour: string, userId: number, status: string, userName: string, read?: boolean }[];
   lastLogged?: string[];
   npi?: number;
   specialty?: string;

@@ -18,6 +18,7 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
   lastLogged;
+  visits;
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;

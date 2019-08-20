@@ -87,6 +87,11 @@ ul {
   height: 50px;
 }
 
+.notList {
+  display: flex;
+  flex-direction: column;
+}
+
 li {
   color: #3c4b63;
   width: 100%;
@@ -96,6 +101,16 @@ li {
   align-items: center;
   justify-content: center;
   outline: none;
+}
+
+p {
+  margin: 0;
+}
+
+.notBtns {
+  display: flex;
+  justify-content: space-around;
+  min-width: 50px;
 }
 
 .dropdown {
@@ -121,28 +136,23 @@ li:hover {
   cursor: pointer;
 }
 
-li:last-of-type:hover {
-  background-color: cyan;
-}
-
-.dropdownContent {
-  min-width: 160px;
+.dropdownCnt {
+  display: flex;
+  flex-direction: column;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background-color: #f9f9f9;
   position: absolute;
   z-index: 1;
-  right: 0;
-  margin-right: 4px;
-  margin-top: 70px;
+  top: 47px;
+  left: 305px;
+  border: 2px solid #3c4b63;
 }
 
 .dropdownContent a {
   color: #2156f3;
-  padding: 12px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
-  right: 0;
 }
 
 .dropdownContent a:hover {
@@ -211,3 +221,32 @@ li:last-of-type:hover {
 .altAvatar {
   border-color: cyan;
 }
+
+.notCont {
+  color: #3c4b63;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-bottom: 1px solid lightgray;
+}
+
+.notCont:hover {
+  background-color: lightgray;
+}
+
+.confirmation {
+  display: flex;
+}
+
+.boldedInfo {
+  font-weight: bold;
+}
+
+.confirmIcon {
+  color: #00aa30;
+}
+
+.declineIcon {
+  color: red;
+}
+

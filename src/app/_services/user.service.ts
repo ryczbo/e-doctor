@@ -21,6 +21,7 @@ export class UserService {
 
   register(user: User) {
     user.lastLogged = new Array<string>();
+    user.visits = [];
     return this.http.post(`${environment.apiUrl}/users/register`, user);
   }
 

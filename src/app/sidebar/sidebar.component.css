@@ -12,7 +12,9 @@
 .title {
   margin-left: 10px;
   display: flex;
+  justify-content: space-between;
   margin-top: 15px;
+  margin-right: 8px;
 }
 
 h3 {
@@ -26,6 +28,11 @@ h4 {
   color: white;
   margin-left: 10px;
   margin-bottom: 8px;
+}
+
+#noVisits {
+  margin-left: 10px;
+  color: white;
 }
 
 #subTitle {
@@ -149,10 +156,36 @@ ul li{
   margin-left: 2px;
 }
 
+#declinedIcon {
+  color: #ff1155;
+}
+
 .confirmed {
   border: 1px solid #00aa30;
 }
 
 .pending {
   border: 1px solid gray;
+}
+
+.declined {
+  border: 1px solid #ff1155;
+}
+
+.myVisits {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-form-field {
+  width: 80px;
+}
+
+mat-form-field * {
+  color: white;
+  font: 11px Raleway;
+}
+
+::ng-deep .mat-select-value {
+  color: white;
 }

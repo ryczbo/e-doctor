@@ -1,49 +1,63 @@
-
-  <div class="container" *ngIf="currentUser" [@slideSdbr]=currentState>
-    <div *ngIf="currentState === 'final'">
-      <div class="title">
-        <h3>{{currentUser.firstName}} {{currentUser.lastName}}</h3><a routerLink="/edit" (click)="showSdbr()" id="editProfile"><fa-icon icon="user-edit"></fa-icon></a>
-      </div>
-      <hr>
+<div class="container" *ngIf="currentUser" [@slideSdbr]=currentState>
+  <div *ngIf="currentState === 'final'">
+    <div class="title">
+      <h3>{{currentUser.firstName}} {{currentUser.lastName}}</h3>
+      <a routerLink="/edit" (click)="showSdbr()" id="editProfile">
+        <fa-icon icon="user-edit"></fa-icon>
+      </a>
+    </div>
+    <hr>
+    <div class="myVisits">
       <h4>My Visits</h4>
-
-      <ul class="visits" *ngFor="let visit of currentUser.visits; let show = false" (click)="show = !show" [ngClass]="{ 'confirmed' : visit.status === 'confirmed', 'pending' : visit.status === 'pending' }">
-        <li>
+      <mat-form-field>
+        <mat-label>Sort by:</mat-label>
+          <mat-select [(ngModel)]="sortVal" (selectionChange)="sort(sortVal)">
+            <mat-option [value]="sortVal" *ngFor="let sortVal of sortTypes">
+            {{sortVal}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngIf="visitsArray.length === 0" id="noVisits">There are no visits!</div>
+    <ul class="visits" *ngFor="let visit of visitsArray; let show = false" (click)="show = !show"
+        [ngClass]="{ 'confirmed' : visit.status === 'confirmed', 'pending' : visit.status === 'pending', 'declined' : visit.status === 'declined' }">
+      <li>
         <div class="visitHead">
           <p class="visitDate">
             <fa-icon icon="check-circle" class='check' *ngIf="visit.status === 'confirmed'"></fa-icon>
             <fa-icon icon="hourglass-half" id="pendingIcon" *ngIf="visit.status === 'pending'"></fa-icon>
+            <fa-icon icon="times-circle" id="declinedIcon" *ngIf="visit.status === 'declined'"></fa-icon>
             {{visit.date}}
           </p>
           <a class="detailsBtn">
-<!--            <fa-icon icon="angle-double-down" *ngIf="!show"></fa-icon>-->
+            <!--            <fa-icon icon="angle-double-down" *ngIf="!show"></fa-icon>-->
           </a>
         </div>
         <div class="visitDetails" *ngIf="show">
           <div class="visitDetailsLeft">
-          <h5 class="detLabel">Doctor</h5>
-          <p>{{visit.doctor}}</p>
+            <h5 class="detLabel">Doctor</h5>
+            <p>{{visit.userName}}</p>
           </div>
           <div class="visitDetailsRight">
 
-          <h5 class="detRightLabel" *ngIf="visit.confirmed">Confirmed</h5>
-
-          <h5 class="detRightLabel" *ngIf="!visit.confirmed">...pending</h5>
+            <h5 class="detRightLabel" *ngIf="visit.status === 'confirmed'">Confirmed</h5>
+            <h5 class="detRightLabel" *ngIf="visit.status === 'declined'">Declined</h5>
+            <h5 class="detRightLabel" *ngIf="visit.status === 'pending'">...pending</h5>
           </div>
         </div>
-        </li>
-      </ul>
-    </div>
+      </li>
+    </ul>
   </div>
+</div>
 
-  <div class="showSdbr" *ngIf="currentUser" [@slideArrow]=currentState (click)="showSdbr()">
-    <div class="arrow" *ngIf="currentState == 'initial'">
-      <fa-icon icon='angle-right'></fa-icon>
-    </div>
-    <div class="arrow" *ngIf="currentState == 'final'">
-      <fa-icon icon='angle-left'></fa-icon>
-    </div>
+<div class="showSdbr" *ngIf="currentUser" [@slideArrow]=currentState (click)="showSdbr()">
+  <div class="arrow" *ngIf="currentState == 'initial'">
+    <fa-icon icon='angle-right'></fa-icon>
   </div>
+  <div class="arrow" *ngIf="currentState == 'final'">
+    <fa-icon icon='angle-left'></fa-icon>
+  </div>
+</div>
 
 
 

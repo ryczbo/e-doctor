@@ -55,15 +55,16 @@
     </div>
   </div>
 
-  <div [@slideLeft]=currentState *ngIf="stepCounter == 3" class="chooseDoctor">
-    <div class="form">
+  <div *ngIf="stepCounter == 3" class="chooseDoctor">
+    <div class="form" id="thirdForm">
       <div class="card" *ngFor="let doctor of doctors; let i = index"
            (click)="selectedDoctorDetails = doctor; calendarClick(i)">
         <div class="cardTitle">
           <div class="cardBasic">
-            <img class="avatar" [src]="imgPath" *ngIf="currentUser?.profilePic"
+            <img class="avatar" [src]="imgPath" *ngIf="doctor.profilePic"
                  alt="Avatar">
-            <img class="avatar" src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" *ngIf="currentUser && !currentUser.profilePic"
+            <img class="avatar" src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg"
+                 *ngIf="!doctor.profilePic"
                  alt="Avatar">
             <div class="cardName">
               <h3>{{doctor.firstName}} {{doctor.lastName}}</h3>
@@ -77,16 +78,16 @@
         </div>
 
         <div *ngIf="selectedDoctor === i" class="cardDetails">
-<!--          <h5>{{doctor.city}}</h5>-->
+          <!--          <h5>{{doctor.city}}</h5>-->
         </div>
       </div>
 
-      <div class="underCardBtn">
+      <div class="underCardBtn" *ngIf="!hourPicked">
         <button class="actionBtn" (click)="stepCounter = 2">Back</button>
       </div>
     </div>
 
-    <div *ngIf="!calendarClicked" class="emptyDiv"></div>
+    <div *ngIf="!calendarClicked && !datePicked" class="emptyDiv"></div>
 
     <div *ngIf="calendarClicked && !datePicked" class="calendar">
       <mat-form-field style="width:1px;visibility:hidden;">
@@ -96,24 +97,25 @@
     </div>
     <div *ngIf="datePicked" class="timePicker">
       <h3 class="timePickerLabel">{{date}}</h3>
-      <h5 class="timePickerLabel">Available hours:</h5>
-      <div class="timeTable">
-        <button class="actionBtn">7:00</button>
-        <button class="actionBtn">8:00</button>
-        <button class="actionBtn">9:00</button>
-        <button class="actionBtn">10:00</button>
-        <button class="actionBtn">12:00</button>
-        <button class="actionBtn">13:00</button>
-        <button class="actionBtn">15:00</button>
-        <button class="actionBtn">16:00</button>
+      <h4 class="timePickerLabel">Available hours:</h4>
 
+      <mat-form-field>
+        <mat-label id="hourLabel">Choose An Hour</mat-label>
+        <mat-select (selectionChange)="pickHour(hour)" [(ngModel)]="hour">
+          <mat-option *ngFor="let hour of avHours" [value]="hour">{{hour}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="formButtons" *ngIf="hourPicked">
+        <button class="actionBtn" (click)="stepCounter = 2; hourPicked = false">Back</button>
+        <button class="actionBtn" (click)="stepCounter = 4; hourPicked = false">Next</button>
       </div>
     </div>
   </div>
 
   <div class="wrapper">
     <div class="jumbotron" *ngIf="stepCounter === 4">
-      <h1>Do you want to send a request?</h1>
+      <h1 *ngIf="!requestSent">Do you want to send a request?</h1>
+      <alert></alert>
     </div>
 
     <div *ngIf="stepCounter === 4 && selectedDoctor !== undefined" class="confirm">
@@ -122,7 +124,8 @@
           <div class="cardBasic">
             <img class="avatar" [src]="imgPath" *ngIf="currentUser?.profilePic"
                  alt="Avatar">
-            <img class="avatar" src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" *ngIf="currentUser && !currentUser.profilePic"
+            <img class="avatar" src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg"
+                 *ngIf="currentUser && !currentUser.profilePic"
                  alt="Avatar">
             <div class="cardName">
               <h3>{{selectedDoctorDetails.firstName}} {{selectedDoctorDetails.lastName}}</h3>
@@ -130,7 +133,7 @@
             </div>
           </div>
           <div class="cardBtn">
-            <h2>{{date}}</h2>
+            <h3>{{date}}, {{hour}}</h3>
           </div>
         </div>
       </div>
@@ -145,3 +148,15 @@
     <!--[ngClass]="{cardLeft : calendarClicked == true}"-->
   </div>
 </div>
+
+
+<!--<div class="indicator" (click)="readNotifications(); drop=!drop">-->
+<!--  <a href="javascript:void(0)" class="indicatorLink">-->
+<!--    <span class="notification" *ngIf="notifications > 0">{{notifications}}</span>-->
+<!--    <fa-icon icon="bell" class="indicator"></fa-icon>-->
+<!--  </a>-->
+<!--  <div class="dropdownContent" *ngIf="drop">-->
+<!--    <ul *ngFor="let visit of currentUser.visits">-->
+<!--      <li>{{visit}}</li>-->
+<!--    </ul>-->
+<!--  </div>-->

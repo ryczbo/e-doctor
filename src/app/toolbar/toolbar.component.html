@@ -10,25 +10,46 @@
     <div *ngIf="currentUser" class="indicators" [ngClass]="{altIndicators : currentUser?.userType === 'Doctor'}">
 
       <div class="indicator">
-        <!--                <span class="notification">1</span>-->
+        <span class="notification" *ngIf="inbox > 0"></span>
         <a href="javascript:void(0)" class="indicatorLink">
           <fa-icon icon="envelope" class="indicator"></fa-icon>
 
         </a>
       </div>
 
-      <div class="indicator">
+      <div class="indicator" (click)="readNotifications(); drop = !drop">
 
         <a href="javascript:void(0)" class="indicatorLink">
-          <span class="notification">2</span>
+          <span class="notification" *ngIf="notifications > 0">{{notifications}}</span>
           <fa-icon icon="bell" class="indicator"></fa-icon>
-
         </a>
+
       </div>
-
     </div>
-
   </div>
+
+  <div class="dropdownCnt" *ngIf="drop" (clickOutside)="drop = !drop" [exclude]="'.indicator'" [delayClickOutsideInit]="true">
+    <div class="notList">
+      <div *ngFor="let visit of currentUser.visits.slice().reverse(); let declined = false; let confirmed = false" class="notCont">
+        <div><span class="boldedInfo">{{visit.userName}}</span> sent you a visit request on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
+        </div>
+        <div class="confirmation" *ngIf="visit.status === 'pending'">
+          <span>Do you confirm?</span>
+            <div class="notBtns">
+              <fa-icon icon="check" class="confirmIcon" (click)="confirm(visit); confirmed = !confirmed;">
+              </fa-icon>
+              <fa-icon icon="times" class="declineIcon" (click)="decline(visit); declined = !declined"></fa-icon>
+            </div>
+
+        </div>
+                <div class="solved" *ngIf="visit.status !== 'pending'">
+                    <div *ngIf="visit.status === 'confirmed'"><fa-icon icon="check-circle" class="confirmIcon"></fa-icon> Confirmed!</div>
+                    <div *ngIf="visit.status === 'declined'"><fa-icon icon="times-circle" class="declineIcon"></fa-icon> Declined!</div>
+                </div>
+      </div>
+    </div>
+  </div>
+
   <div class="logOutBtn" [ngClass]="{altToolbarButtons : currentUser?.userType === 'Doctor'}" (click)="logout()">
     <a *ngIf="currentUser" [ngClass]="{'logOut' : currentUser?.userType === 'Doctor'}">Log Out</a>
   </div>

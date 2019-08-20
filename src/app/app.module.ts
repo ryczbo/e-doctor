@@ -14,6 +14,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { ClickOutsideModule } from "ng-click-outside";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faCheck,
@@ -21,7 +22,7 @@ import {
   faEllipsisV,
   faEnvelope,
   faHome,
-  faHourglassHalf, faTimes
+  faHourglassHalf, faTimes, faTimesCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
@@ -44,6 +45,7 @@ import { CalendarComponent } from "./calendar/calendar.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +64,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
   ],
   imports: [
     BrowserModule,
+    ClickOutsideModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -102,5 +105,6 @@ export class AppModule {
     library.add(faHourglassHalf);
     library.add(faHome);
     library.add(faTimes);
+    library.add(faTimesCircle);
   }
 }

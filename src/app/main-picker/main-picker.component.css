@@ -11,6 +11,7 @@
   color: white;
   text-align: center;
   width: 70%;
+  margin-bottom: 10px;
 }
 
 .stepper {
@@ -109,6 +110,7 @@ mat-form-field * {
 .formButtons {
   display: flex;
   justify-content: space-around;
+  max-width: 180px;
 }
 
 .actionBtn {
@@ -261,7 +263,7 @@ form {
 .timePicker {
   display: flex;
   justify-content: flex-start;
-  margin-top: 3em;
+  width: 400px;
   flex-direction: column;
 }
 
@@ -276,6 +278,11 @@ form {
   display: flex;
   width: 1000px;
   justify-content: space-around;
+  margin-top: 10px;
+}
+
+#thirdForm {
+  justify-content: flex-start;
 }
 
 .emptyDiv {
@@ -307,6 +314,11 @@ form {
 
 h2 {
   margin: 0;
+}
+
+h4 {
+  margin: 0;
+  color: cyan;
 }
 
 #confirmBtn {
@@ -341,4 +353,8 @@ h2 {
 .finalBtn {
   display: flex;
   justify-content: flex-end;
+}
+
+#hourLabel {
+  font-size: medium;
 }

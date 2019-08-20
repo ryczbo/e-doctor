@@ -10,12 +10,13 @@ import {
 } from "@angular/animations";
 import { DomSanitizer } from "@angular/platform-browser";
 import {AuthenticationService} from "../_services/authentication.service";
+import { AlertService } from "../_services/alert.service";
 import { ViewChild } from "@angular/core";
 import {User} from "../_models/user";
+import { Request } from "../_models/request";
 import {Subscription} from "rxjs";
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import {AlertService} from "../_services/alert.service";
 import { UserService } from "../_services/user.service";
 import {NotLoggedComponent} from "../not-logged/not-logged.component";
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
@@ -52,10 +53,15 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   selectedDoctorDetails;
   users: User[] = [];
   date: string;
+  hour: string;
   datePicked = false;
+  hourPicked = false;
+  requestSent = false;
   imgPath;
-  request;
   doctorsList;
+  avHours = ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
+  request = {doctorId: 1, date: 'a', hour: 'b', status: 'c'};
+
 
   @ViewChild('datePicker', {static: true}) datePicker: MatDatepicker<Date>;
 
@@ -87,7 +93,8 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     private router: Router,
     private authenticationService: AuthenticationService,
     private sanitizer: DomSanitizer,
-    private userService: UserService
+    private userService: UserService,
+    private alertService: AlertService
   ) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
@@ -121,7 +128,33 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.userService.getAll().pipe(first()).subscribe(doctors => {
       this.doctorsList = doctors.filter(e => e.userType === 'Doctor');
     });
-    console.log(this.doctorsList);
+    // console.log(this.doctorsList);
+  }
+
+  pickHour(hour) {
+    this.hour = hour;
+    this.request.date = this.date;
+    this.request.doctorId = this.selectedDoctorDetails.id;
+    this.request.hour = this.hour;
+    this.request.status = 'pending';
+    // console.log(this.request);
+    this.hourPicked = true;
+  }
+
+  sendRequest() {
+    const foundIndex = this.doctorsList.findIndex(x => x.id === this.selectedDoctorDetails.id);
+    const doctorName = this.doctorsList[foundIndex].firstName + ' ' + this.doctorsList[foundIndex].lastName;
+    const patientName = this.currentUser.firstName + ' ' + this.currentUser.lastName;
+    // console.log(doctor);
+    this.currentUser.visits.push({date: this.request.date, userId: this.request.doctorId, userName: doctorName,
+      hour: this.request.hour, status: this.request.status});
+    this.selectedDoctorDetails.visits.push({date: this.request.date, userId: this.currentUser.id, userName: patientName,
+      hour: this.request.hour, status: this.request.status, read: false});
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    this.userService.update(this.currentUser).subscribe();
+    this.userService.update(this.selectedDoctorDetails).subscribe();
+    this.alertService.success('Request has been sent!', true);
+    this.requestSent = true;
   }
 
 
