@@ -3,37 +3,37 @@
   <div class="content">
 
     <div class="table">
-      <div class="tableHeaders">
-       <h1><fa-icon icon="home" id="homeIcon"></fa-icon> Dashboard</h1>
-      </div>
-      <div class="line">
-      </div>
-      <div class="tableHeaders">
-        <h2>Inbox</h2>
-      </div>
-      <div class="line">
-      </div>
-      <div class="tableHeaders">
-        <h2>My Visits</h2>
-      </div>
-      <div class="line">
-      </div>
-      <div class="tableHeaders">
-        <h2>My Patients</h2>
-      </div>
-      <div class="line">
-      </div>
-      <div class="tableHeaders">
-        <h2>Help</h2>
-      </div>
-    </div>
 
-    <div class="list">
-      <ul *ngFor="let patient of patients; let i = index" class="patientsList">
-        <li>
-          {{i + 1}}. {{patient.firstName}} {{patient.lastName}}
-        </li>
-      </ul>
+      <!--      left-->
+
+      <div id="dashboard">
+        <div>
+          <h1>My Calendar</h1>
+        </div>
+        <div id="dashboardContent">
+          <xunk-calendar [heatmap]="heatmap" [selectedDate]="selDate" (click)="setVisitsToDisplay()" primaryColor="#1a44c2" heatMapColor="cyan" primaryForeground="white"></xunk-calendar>
+        </div>
+      </div>
+
+      <!--      right-->
+      <div id="rightSide">
+        <div id="rightHeaders">
+          <div class="line">
+          </div>
+          <div class="tableHeaders">
+            <h2>My Visits </h2> <div id="date"><h2>{{selDate.date}}. {{selDate.month}}. {{selDate.year}}</h2></div>
+          </div>
+        </div>
+        <div id="rightSideContent">
+          <h3 *ngIf="visitsToDisplay?.length < 1">No visits on this date!</h3>
+          <div *ngIf="visitsToDisplay">
+
+            <div *ngFor="let visit of visitsToDisplay; let i = index">
+              {{visit.hour}} {{visit.patientName}}
+            </div>
+          </div>
+        </div>
+
     </div>
   </div>
 </div>

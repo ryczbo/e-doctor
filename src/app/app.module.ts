@@ -38,12 +38,15 @@ import { RegisterComponent } from "./_register/register.component";
 import {MatInputModule} from "@angular/material";
 import { MatDatepickerModule } from "@angular/material";
 import { MatNativeDateModule } from "@angular/material";
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotLoggedComponent } from './not-logged/not-logged.component';
 import { CalendarComponent } from "./calendar/calendar.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { XunkCalendarModule } from "xunk-calendar";
 
 
 @NgModule({
@@ -71,8 +74,11 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    XunkCalendarModule,
     MatInputModule,
     NgbModalModule,
     FontAwesomeModule,

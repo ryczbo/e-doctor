@@ -29,9 +29,10 @@
   </div>
 
   <div class="dropdownCnt" *ngIf="drop" (clickOutside)="drop = !drop" [exclude]="'.indicator'" [delayClickOutsideInit]="true">
-    <div class="notList">
+
+    <div class="notList" *ngIf="currentUser.userType === 'Doctor'">
       <div *ngFor="let visit of currentUser.visits.slice().reverse(); let declined = false; let confirmed = false" class="notCont">
-        <div><span class="boldedInfo">{{visit.userName}}</span> sent you a visit request on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
+        <div><span class="boldedInfo">{{visit.patientName}}</span> sent you a visit request on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
         </div>
         <div class="confirmation" *ngIf="visit.status === 'pending'">
           <span>Do you confirm?</span>
@@ -48,6 +49,24 @@
                 </div>
       </div>
     </div>
+
+    <div class="notList" *ngIf="currentUser.userType === 'Patient'">
+      <div *ngFor="let visit of currentUser.visits.slice().reverse()" class="notCont">
+
+        <div *ngIf="visit.status === 'confirmed'">
+          <fa-icon icon="check-circle" class="confirmIcon"></fa-icon>
+          <span class="boldedInfo"> {{visit.doctorName}}</span>
+          confirmed your visit on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
+        </div>
+
+        <div *ngIf="visit.status === 'declined'">
+          <fa-icon icon="times-circle" class="declineIcon"></fa-icon>
+          <span class="boldedInfo"> {{visit.doctorName}}</span>
+          declined your visit request on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
+        </div>
+
+      </div>
+  </div>
   </div>
 
   <div class="logOutBtn" [ngClass]="{altToolbarButtons : currentUser?.userType === 'Doctor'}" (click)="logout()">

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import { AuthenticationService } from "../_services/authentication.service";
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -20,7 +20,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   imgPath;
   notifications;
   patientsList;
+  doctorsPatientsList;
   inbox = 0;
+  visits = [];
 
   constructor(
     private router: Router,
@@ -61,6 +63,19 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     });
   }
 
+  // filterVisits() {
+  //   let name = this.currentUser.firstName + ' ' + this.currentUser.lastName;
+  //     for (let i = 0; i < this.allPatientsList.length; i++){
+  //       for (let j = 0; j < this.allPatientsList[i].visits.length; j++) {
+  //         if (this.allPatientsList[i].visits[j].userName === name) {
+  //           this.visits.push(this.allPatientsList[i].visits[j]);
+  //         }
+  //       }
+  //     }
+  //   }
+
+    // console.log(this.visits);
+
   readNotifications() {
     this.currentUser.visits.forEach(e => e.read = true);
     this.userService.update(this.currentUser).subscribe();
@@ -68,23 +83,19 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   confirm(visit) {
-    const foundIndex = this.currentUser.visits.indexOf(visit);
-    this.currentUser.visits[foundIndex].status = 'confirmed';
+    this.currentUser.visits.find(x => x.id === visit.id).status = 'confirmed';
     this.userService.update(this.currentUser).subscribe();
-    const patient = this.patientsList.find(x => x.id == this.currentUser.visits[foundIndex].userId);
-    patient.visits[foundIndex].status = 'confirmed';
-    patient.visits[foundIndex].read = false;
+    const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
+    patient.visits.find(x => x.id === visit.id).status = 'confirmed';
     this.userService.update(patient).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 
   decline(visit) {
-    const foundIndex = this.currentUser.visits.indexOf(visit);
-    this.currentUser.visits[foundIndex].status = 'declined';
+    this.currentUser.visits.find(x => x.id === visit.id).status = 'declined';
     this.userService.update(this.currentUser).subscribe();
-    const patient = this.patientsList.find(x => x.id == this.currentUser.visits[foundIndex].userId);
-    patient.visits[foundIndex].status = 'declined';
-    patient.visits[foundIndex].read = false;
+    const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
+    patient.visits.find(x => x.id === visit.id).status = 'declined';
     this.userService.update(patient).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }

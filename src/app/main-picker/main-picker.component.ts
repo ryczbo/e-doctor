@@ -21,6 +21,7 @@ import { UserService } from "../_services/user.service";
 import {NotLoggedComponent} from "../not-logged/not-logged.component";
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { MatDatepicker } from "@angular/material/datepicker";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-main-picker',
@@ -57,6 +58,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   datePicked = false;
   hourPicked = false;
   requestSent = false;
+  visitsCount;
   imgPath;
   doctorsList;
   avHours = ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
@@ -66,7 +68,8 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   @ViewChild('datePicker', {static: true}) datePicker: MatDatepicker<Date>;
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
-    this.date = event.value.toLocaleDateString();
+    this.date = moment((event.value.toLocaleDateString()),'DD.MM.YYYY').format('DD.MM.YYYY');
+    console.log(this.date);
     this.datePicked = true;
     this.calendarClicked = false;
   }
@@ -109,12 +112,21 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.fetchDoctors();
     // this.uniqueSpecialties();
     this.uniqueCities();
+    this.visitsCounter();
   }
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
     this.currentUserSubscription.unsubscribe();
   }
+
+  visitsCounter() {
+  this.userService.getAll().pipe(first()).subscribe(users => {
+    this.visitsCount = users.map(e => e.visits).reduce((a, b) => [...a, ...b]).length;
+    console.log(this.visitsCount);
+    }
+  )
+}
 
   calendarClick(i: number) {
     this.calendarClicked = false;
@@ -142,13 +154,15 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   }
 
   sendRequest() {
+    this.visitsCount++;
+    console.log(this.visitsCount);
     const foundIndex = this.doctorsList.findIndex(x => x.id === this.selectedDoctorDetails.id);
     const doctorName = this.doctorsList[foundIndex].firstName + ' ' + this.doctorsList[foundIndex].lastName;
     const patientName = this.currentUser.firstName + ' ' + this.currentUser.lastName;
     // console.log(doctor);
-    this.currentUser.visits.push({date: this.request.date, userId: this.request.doctorId, userName: doctorName,
+    this.currentUser.visits.push({date: this.request.date, id: this.visitsCount , doctorName: doctorName, patientName: patientName,
       hour: this.request.hour, status: this.request.status});
-    this.selectedDoctorDetails.visits.push({date: this.request.date, userId: this.currentUser.id, userName: patientName,
+    this.selectedDoctorDetails.visits.push({date: this.request.date, id: this.visitsCount, patientName: patientName, doctorName: doctorName,
       hour: this.request.hour, status: this.request.status, read: false});
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
     this.userService.update(this.currentUser).subscribe();
