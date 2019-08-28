@@ -82,11 +82,16 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 
+  patientNotifications () {
+    return this.currentUser.visits.filter(a => a.status !== 'pending');
+  }
+
   confirm(visit) {
     this.currentUser.visits.find(x => x.id === visit.id).status = 'confirmed';
     this.userService.update(this.currentUser).subscribe();
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'confirmed';
+    patient.visits.find(x => x.id === visit.id).read = false;
     this.userService.update(patient).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
@@ -96,6 +101,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.userService.update(this.currentUser).subscribe();
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'declined';
+    patient.visits.find(x => x.id === visit.id).read = false;
     this.userService.update(patient).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }

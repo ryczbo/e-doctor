@@ -71,18 +71,6 @@ h2 {
   width: 100%;
 }
 
-#rightSide {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  margin-left: 30px;
-}
-
-#rightHeaders {
-  display: flex;
-  margin-left: -30px;
-}
-
 .tableHeaders {
   display: flex;
 }
@@ -93,6 +81,7 @@ h2 {
 
 h3 {
   color: white;
+  margin-left: 20px;
 }
 
 .tableHeaders:hover {
@@ -147,7 +136,7 @@ h3 {
   height: 400px;
   width: 100%;
   border: 2px solid white;
-  margin-top: 1.5em;
+  margin-top: 0.5em;
 }
 
 button * {
@@ -157,9 +146,49 @@ button * {
 #rightSideContent {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  max-height: 400px;
+  height: 600px;
   width: 100%;
-  border: 2px solid white;
   margin-top: 0.3em;
-  padding-left: 20px;
+  padding: 10px;
 }
+
+table {
+  max-width: 700px;
+  width: 700px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+thead {
+  padding-bottom: 10px;
+}
+
+tr {
+  border-bottom: 1px solid white;
+}
+
+td {
+  text-align: center;
+}
+
+h4 {
+  margin-left: 20px;
+}
+
+tr:nth-child(even) {
+  background: rgb(0,200,255);
+}
+
+.tHead {
+  margin-bottom: 10px;
+}
+
+thead th { position: sticky; top: 0; }
+
+
+
+
+
+
