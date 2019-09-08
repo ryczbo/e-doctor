@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!pickedVisit">
 
   <div class="content">
 
@@ -38,7 +38,7 @@
               <td><h4>{{visit.hour}}</h4></td>
               <td><h4>{{visit.patientName}}</h4></td>
               <td><h4>{{visit.status}}</h4></td>
-              <td><h4><fa-icon icon="ellipsis-v"></fa-icon></h4></td>
+              <td><h4><fa-icon icon="comment-medical" (click)="conductVisit(visit)"></fa-icon></h4></td>
             </tr>
             </tbody>
 
@@ -50,3 +50,4 @@
     </div>
   </div>
 </div>
+<app-visit-conduct *ngIf="pickedVisit" [visit]="visit"></app-visit-conduct>

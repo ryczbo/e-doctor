@@ -12,13 +12,15 @@ export class AuthenticationService {
   public currentUser: Observable<User>;
   private userService: UserService;
   public user: User;
+  public userVisitId: number;
+  lastLogged;
+  visits;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
-  lastLogged;
-  visits;
+
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;

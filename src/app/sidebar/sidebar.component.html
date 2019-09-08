@@ -7,46 +7,79 @@
       </a>
     </div>
     <hr>
-    <div class="myVisits">
-      <h4>My Visits</h4>
-      <mat-form-field>
-        <mat-label>Sort by:</mat-label>
+
+    <div id="upcoming">
+      <div class="myVisits">
+        <h4>Upcoming visits</h4>
+        <mat-form-field>
+          <mat-label>Sort by:</mat-label>
           <mat-select [(ngModel)]="sortVal" (selectionChange)="sort(sortVal)">
             <mat-option [value]="sortVal" *ngFor="let sortVal of sortTypes">
-            {{sortVal}}
+              {{sortVal}}
             </mat-option>
           </mat-select>
-      </mat-form-field>
-    </div>
-    <div *ngIf="visitsArray.length === 0" id="noVisits">There are no visits!</div>
-    <ul class="visits" *ngFor="let visit of visitsArray; let show = false" (click)="show = !show"
-        [ngClass]="{ 'confirmed' : visit.status === 'confirmed', 'pending' : visit.status === 'pending', 'declined' : visit.status === 'declined' }">
-      <li>
-        <div class="visitHead">
-          <p class="visitDate">
-            <fa-icon icon="check-circle" class='check' *ngIf="visit.status === 'confirmed'"></fa-icon>
-            <fa-icon icon="hourglass-half" id="pendingIcon" *ngIf="visit.status === 'pending'"></fa-icon>
-            <fa-icon icon="times-circle" id="declinedIcon" *ngIf="visit.status === 'declined'"></fa-icon>
-            {{visit.date}}
-          </p>
-          <a class="detailsBtn">
-            <!--            <fa-icon icon="angle-double-down" *ngIf="!show"></fa-icon>-->
-          </a>
-        </div>
-        <div class="visitDetails" *ngIf="show">
-          <div class="visitDetailsLeft">
-            <h5 class="detLabel">Doctor</h5>
-            <p>{{visit.doctorName}}</p>
+        </mat-form-field>
+      </div>
+      <div *ngIf="visitsArray.length === 0" class="noVisits">There are no visits!</div>
+      <ul class="visits" *ngFor="let visit of visitsArray; let show = false" (click)="show = !show"
+          [ngClass]="{ 'confirmed' : visit.status === 'confirmed', 'pending' : visit.status === 'pending', 'declined' : visit.status === 'declined' }">
+        <li>
+          <div class="visitHead">
+            <p class="visitDate">
+              <fa-icon icon="check-circle" class='check' *ngIf="visit.status === 'confirmed'"></fa-icon>
+              <fa-icon icon="hourglass-half" id="pendingIcon" *ngIf="visit.status === 'pending'"></fa-icon>
+              <fa-icon icon="times-circle" id="declinedIcon" *ngIf="visit.status === 'declined'"></fa-icon>
+              {{visit.date}}
+            </p>
+            <a class="detailsBtn">
+              <!--            <fa-icon icon="angle-double-down" *ngIf="!show"></fa-icon>-->
+            </a>
           </div>
-          <div class="visitDetailsRight">
+          <div class="visitDetails" *ngIf="show">
+            <div class="visitDetailsLeft">
+              <h5 class="detLabel">Doctor</h5>
+              <p>{{visit.doctorName}}</p>
+            </div>
+            <div class="visitDetailsRight">
 
-            <h5 class="detRightLabel" *ngIf="visit.status === 'confirmed'">Confirmed</h5>
-            <h5 class="detRightLabel" *ngIf="visit.status === 'declined'">Declined</h5>
-            <h5 class="detRightLabel" *ngIf="visit.status === 'pending'">...pending</h5>
+              <h5 class="detRightLabel" *ngIf="visit.status === 'confirmed'">Confirmed</h5>
+              <h5 class="detRightLabel" *ngIf="visit.status === 'declined'">Declined</h5>
+              <h5 class="detRightLabel" *ngIf="visit.status === 'pending'">...pending</h5>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div id="history">
+      <div class="myVisits">
+        <h4>Visits history</h4>
+      </div>
+      <div *ngIf="visitsHistory.length === 0" class="noVisits">There are no visits!</div>
+      <ul class="visits completed" *ngFor="let visit of visitsHistory; let show = false; let det = false" (click)="show = !show">
+        <li>
+          <div class="visitHead">
+            <p class="visitDate">
+              {{visit.date}}
+            </p>
+            <a class="detailsBtn">
+              <!--            <fa-icon icon="angle-double-down" *ngIf="!show"></fa-icon>-->
+            </a>
+          </div>
+          <div class="visitDetails" *ngIf="show || det">
+            <div class="visitDetailsLeft">
+              <h5 class="detLabel">Doctor</h5>
+              <p>{{visit.doctorName}}</p>
+            </div>
+            <div class="visitDetailsRight">
+
+<h5 class="detRightLabel" matTooltip="See Details" (click)="openDialog(visit)"><fa-icon icon="eye"></fa-icon></h5>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </div>
 
@@ -58,7 +91,6 @@
     <fa-icon icon='angle-left'></fa-icon>
   </div>
 </div>
-
 
 
 

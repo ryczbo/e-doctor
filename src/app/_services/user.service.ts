@@ -44,6 +44,7 @@ export class UserService {
   register(user: User) {
     user.lastLogged = new Array<string>();
     user.visits = [];
+    user.rates = [];
     return this.http.post(`${environment.apiUrl}/users/register`, user);
   }
 

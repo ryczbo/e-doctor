@@ -1,0 +1,104 @@
+<div class="container">
+
+  <alert></alert>
+
+  <div class="wrapper">
+
+
+    <div class="threeColumns">
+
+      <div id="leftSide">
+        <h2>Patient Card</h2>
+        <div id="patientInfo">
+          <div class="title">
+            <img class=avatar *ngIf="patient?.profilePic" [src]="imgPath" alt="">
+            <img class=avatar *ngIf="!patient.profilePic"
+                 src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" alt="">
+            <h4>{{patient.firstName}} {{patient.lastName}}</h4>
+          </div>
+          <h4>Age:</h4>
+          <h4>Height:</h4>
+          <h4>Weight:</h4>
+        </div>
+      </div>
+
+      <div id="rightSide">
+        <h2>Exam</h2>
+        <form [formGroup]="conductVisitForm" (ngSubmit)="submit()">
+          <div class="formColumn">
+
+            <div id="basicNumbers">
+              <mat-form-field class="basicNumbers">
+                <label for="weight">Weight (kg)</label>
+                <input matInput type="number" formControlName="weight" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                </div>
+              </mat-form-field>
+
+              <mat-form-field class="basicNumbers">
+                <label for="heartRate">Heart Rate (bpm)</label>
+                <input matInput type="number" formControlName="heartRate" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+              </mat-form-field>
+
+            </div>
+
+            <mat-form-field>
+              <label for="bloodPressure">Blood pressure (mmHg)</label>
+              <input matInput type="number" formControlName="bloodPressure" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              </div>
+            </mat-form-field>
+
+            <mat-form-field>
+              <label for="medHistory">Medical history</label>
+              <textarea matInput formControlName="medHistory" id="medHistory" class="form-control" cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="6"
+                        cdkAutosizeMaxRows="6"
+                        rows="7" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></textarea>
+            </mat-form-field>
+          </div>
+
+
+          <div class="formColumn" id="secCol">
+
+            <mat-form-field>
+              <label for="diagnosis">Diagnosis (ICD-10)</label>
+              <input matInput type="text" formControlName="diagnosis" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              </div>
+            </mat-form-field>
+
+            <mat-form-field>
+              <label for="prescription">Prescription</label>
+              <textarea matInput formControlName="prescription" class="form-control" cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="3"
+                        cdkAutosizeMaxRows="3"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+              <label for="advices">Advices</label>
+              <textarea matInput formControlName="advices" class="form-control" cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="4"
+                        cdkAutosizeMaxRows="4"
+                        rows="5"></textarea>
+            </mat-form-field>
+
+            <div class="formButtonsWrapper">
+              <button class="actionBtn" type="submit">Save</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+

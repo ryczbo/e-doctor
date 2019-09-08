@@ -53,8 +53,6 @@
     <div class="notList" *ngIf="currentUser.userType === 'Patient'">
       <div *ngFor="let visit of patientNotifications().slice().reverse()" class="notCont">
 
-        <div *ngIf="visit.status === 'pending'" style="visibility: hidden"></div>
-
         <div *ngIf="visit.status === 'confirmed'">
           <fa-icon icon="check-circle" class="confirmIcon"></fa-icon>
           <span class="boldedInfo"> {{visit.doctorName}}</span>

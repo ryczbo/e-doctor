@@ -3,13 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="88059dbe-9a00-4357-9e7c-75b3f626cf97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_helpers/fake-backend.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_helpers/fake-backend.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_home/home.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_home/home.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_models/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_services/authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/authentication.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/footer/footer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/footer/footer.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/toolbar/toolbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/toolbar/toolbar.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/toolbar/toolbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/toolbar/toolbar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +120,18 @@
       <workItem from="1566490457967" duration="10612000" />
       <workItem from="1566839500570" duration="14936000" />
       <workItem from="1566919997334" duration="14372000" />
-      <workItem from="1567010146887" duration="10410000" />
+      <workItem from="1567010146887" duration="11667000" />
+      <workItem from="1567088272914" duration="748000" />
+      <workItem from="1567342036104" duration="20125000" />
+      <workItem from="1567439765039" duration="6374000" />
+      <workItem from="1567451566260" duration="2630000" />
+      <workItem from="1567533905184" duration="9173000" />
+      <workItem from="1567619678589" duration="8194000" />
+      <workItem from="1567670462536" duration="17211000" />
+      <workItem from="1567763374843" duration="1010000" />
+      <workItem from="1567777064892" duration="4567000" />
+      <workItem from="1567862987495" duration="12426000" />
+      <workItem from="1567946479787" duration="4435000" />
     </task>
     <servers />
   </component>

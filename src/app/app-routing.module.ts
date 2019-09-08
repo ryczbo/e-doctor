@@ -6,13 +6,17 @@ import {AuthGuard} from "./_guards/auth.guard";
 import {AppComponent} from "./app.component";
 import {HomeComponent} from "./_home/home.component";
 import {EditProfileComponent} from "./edit-profile/edit-profile.component";
+import {VisitConductComponent} from "./visit-conduct/visit-conduct.component";
+import {DetailsComponent} from "./details/details.component";
+import {LandingPageComponent} from "./landing-page/landing-page.component";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: LandingPageComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'edit', component: EditProfileComponent}
+  {path: 'edit', component: EditProfileComponent},
+  {path: 'visit', component: VisitConductComponent}
 ];
 
 

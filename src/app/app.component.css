@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
 }
 
 app-toolbar {
@@ -9,8 +9,27 @@ app-toolbar {
 }
 
 app-footer {
-  margin-bottom: 0;
-  margin-top: auto;
+  bottom: 0;
+  right: 5px;
+  display: inline-block;
+  position: fixed;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+router-outlet {
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 

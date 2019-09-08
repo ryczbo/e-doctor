@@ -69,7 +69,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         specialty: user.specialty,
         city: user.city,
         visits: user.visits,
-        profilePic: user.profilePic
+        profilePic: user.profilePic,
+        rates: user.rates,
+        rating: user.rating
       });
     }
 

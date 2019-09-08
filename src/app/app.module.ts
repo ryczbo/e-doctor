@@ -20,7 +20,7 @@ import {
   faCheck,
   faCheckCircle,
   faEllipsisV,
-  faEnvelope,
+  faEnvelope, faEye,
   faHome,
   faHourglassHalf, faTimes, faTimesCircle
 } from "@fortawesome/free-solid-svg-icons";
@@ -30,12 +30,13 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { faCommentMedical } from "@fortawesome/free-solid-svg-icons";
 import { MatSelectModule } from '@angular/material/select';
 import { AlertComponent } from "./_alert/alert.component";
 import { HomeComponent } from "./_home/home.component";
 import { LoginComponent } from "./_login/login.component";
 import { RegisterComponent } from "./_register/register.component";
-import {MatInputModule} from "@angular/material";
+import {MatInputModule, MatTooltipModule, MatDialogModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material";
 import { MatNativeDateModule } from "@angular/material";
 import { MatIconModule } from "@angular/material/icon";
@@ -47,6 +48,10 @@ import { CalendarComponent } from "./calendar/calendar.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { XunkCalendarModule } from "xunk-calendar";
+import { VisitConductComponent } from './visit-conduct/visit-conduct.component';
+import { TextFieldModule } from "@angular/cdk/text-field";
+import { DetailsComponent } from './details/details.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 @NgModule({
@@ -63,7 +68,10 @@ import { XunkCalendarModule } from "xunk-calendar";
     NotLoggedComponent,
     CalendarComponent,
     DashboardComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    VisitConductComponent,
+    DetailsComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -77,15 +85,18 @@ import { XunkCalendarModule } from "xunk-calendar";
     MatIconModule,
     MatButtonModule,
     MatDatepickerModule,
+    MatDialogModule,
     MatNativeDateModule,
     XunkCalendarModule,
+    TextFieldModule,
     MatInputModule,
     NgbModalModule,
     FontAwesomeModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+    MatTooltipModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -94,7 +105,8 @@ import { XunkCalendarModule } from "xunk-calendar";
     // provider used to create fake backend
     fakeBackendProvider
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DetailsComponent]
 })
 export class AppModule {
   constructor() {
@@ -112,5 +124,7 @@ export class AppModule {
     library.add(faHome);
     library.add(faTimes);
     library.add(faTimesCircle);
+    library.add(faCommentMedical);
+    library.add(faEye);
   }
 }

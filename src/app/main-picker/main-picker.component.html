@@ -1,5 +1,5 @@
 <div class="container" [ngClass]="{stepperUp : stepCounter == 3 || stepCounter == 4}">
-  <div class="jumbotron" @removeTrigger *ngIf="stepCounter !== 3 && stepCounter !== 4">
+  <div class="jumbotron" *ngIf="stepCounter !== 3 && stepCounter !== 4">
     <h1>Make a doctor's appointment in 4 simple steps</h1>
   </div>
   <div class="stepper">
@@ -68,7 +68,9 @@
                  alt="Avatar">
             <div class="cardName">
               <h3>{{doctor.firstName}} {{doctor.lastName}}</h3>
-              <h5>{{doctor.specialty}}</h5>
+              <h5><span class="rating">Rating:
+     <span class="stars-container stars-{{getRating(doctor)}}">★★★★★</span>
+</span> ({{doctor.rates.length}})</h5>
             </div>
           </div>
           <div class="cardBtn">

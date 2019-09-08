@@ -4,7 +4,7 @@ xunk-calendar [_ngcontent-smc-c7] {
 
 .container {
   display: flex;
-  margin-top: 20px;
+  margin-top: 10px;
   justify-content: center;
 }
 
@@ -125,7 +125,7 @@ h3 {
 #dashboard {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 350px;
   align-items: center;
 }
 
@@ -135,7 +135,8 @@ h3 {
   background-color: white;
   height: 400px;
   width: 100%;
-  border: 2px solid white;
+  border: 2px solid #2156f3;
+  border-radius: 10px;
   margin-top: 0.5em;
 }
 
@@ -148,7 +149,6 @@ button * {
   flex-direction: column;
   max-height: 400px;
   height: 600px;
-  width: 100%;
   margin-top: 0.3em;
   padding: 10px;
 }

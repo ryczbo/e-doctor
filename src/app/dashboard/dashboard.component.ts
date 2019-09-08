@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, Renderer2, ViewEncapsulation} from '@angular/core';
 import {AuthenticationService} from "../_services/authentication.service";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
@@ -6,6 +6,7 @@ import {UserService} from "../_services/user.service";
 import {first} from "rxjs/operators";
 import {XunkCalendarModule} from "xunk-calendar";
 import { ToolbarComponent } from "../toolbar/toolbar.component";
+import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from "moment";
 
 @Component({
@@ -24,11 +25,15 @@ export class DashboardComponent implements OnInit {
   public selDate = { date:1, month:1, year:1};
   heatmap = {};
   formattedDate;
+  visit;
+  pickedVisit = false;
 
   constructor(
     private authenticationService: AuthenticationService,
     private userService: UserService,
     private renderer: Renderer2,
+    private route: ActivatedRoute,
+    private router: Router,
     // public selDate = { date:1, month:1, year:1 }
   ) {
     this.renderer.removeClass(document.body, 'body');
@@ -38,8 +43,11 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-
-
+  conductVisit(visit) {
+    this.visit = visit;
+    this.pickedVisit = true;
+    // this.router.navigate(['/visit'])
+  }
 
   getPatients() {
     this.userService.getAll().pipe(first()).subscribe(patients => {
@@ -60,10 +68,11 @@ ngOnInit() {
 }
 
   genHeatmap(): any {
+    if(this.currentUser.visits.length > 0) {
     this.heatmap = this.currentUser.visits
       .map(visit => ({[moment(visit.date, 'DD.MM.YYYY').format('YYYYMMDD')]: 0.7}))
-      .reduce((a, b) => Object.assign(a, b));
-    console.log(this.heatmap);
+      .reduce((a, b) => Object.assign(a, b));}
+    else {return}
   }
 
   setVisitsToDisplay() {

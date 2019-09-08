@@ -1,0 +1,135 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  /*justify-content: space-around;*/
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border: 2px solid #2156f3;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+#patientInfo {
+  background-color: cyan;
+  border: 2px solid #2156f3;
+  border-radius: 10px;
+  padding-left: 15px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #2156f3;
+  margin-right: 10px;
+}
+
+.threeColumns {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.formButtonsWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+
+#rightSide {
+  display: flex;
+  flex-direction: column;
+}
+
+#leftSide {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+#basicNumbers {
+  display: flex;
+}
+
+#medHistory {
+  margin-top: 5px;
+}
+
+.basicNumbers {
+  width: 130px;
+  margin-right: 10px;
+}
+
+/*mat-form-field * {*/
+/*  color: white;*/
+/*}*/
+
+textarea {
+  border: 1px solid #3c4b56;
+  resize: none;
+  font-size: large;
+  padding: 5px;
+}
+
+textarea.mat-input-element {
+  margin-top: 2px;
+}
+
+.actionBtn {
+  border: 1px solid #2156f3;
+  color: #2156f3;
+  background: white;
+  font: 18px Raleway, sans-serif;
+  padding: 3px 8px;
+  width: 85px;
+  margin-bottom: 10px;
+}
+
+.actionBtn:hover {
+  cursor: pointer;
+  color: white;
+  background: #2156f3;
+  border: 1px solid white;
+}
+
+input {
+  font-size: large;
+  padding: 2px 0;
+}
+
+

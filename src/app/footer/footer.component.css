@@ -1,15 +1,16 @@
 .container {
   height: 30px;
   background-color: transparent;
-  bottom: 0;
-  position: absolute;
-  margin-top: auto;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
 }
 
 h5 {
   margin: 2px 5px 0 0;
-  color: white;
+  color: #2156f3;
+}
+
+h4 {
+  margin: 2px 5px 0 0;
+  color: #2156f3;
 }

@@ -1,7 +1,10 @@
 <div class="container">
   <app-toolbar></app-toolbar>
+
   <app-sidebar *ngIf="currentUser?.userType === 'Patient'"></app-sidebar>
 <!--  <alert></alert>-->
   <router-outlet></router-outlet>
+<!--  <app-visit-conduct></app-visit-conduct>-->
+  <app-footer></app-footer>
 </div>
 

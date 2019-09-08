@@ -26,17 +26,6 @@ import * as moment from "moment";
 @Component({
   selector: 'app-main-picker',
   templateUrl: './main-picker.component.html',
-  animations: [trigger('removeTrigger', [
-    transition(':leave', [
-      animate('500ms ease-in', style({transform: 'translateY(-100%)', opacity: 0}))
-    ])
-  ]),
-    trigger('cover', [
-        transition(':enter', [
-          style({ opacity: 0 }),
-          animate('0.9s', style({ opacity: 1 })),
-        ])]),
-],
   styleUrls: ['./main-picker.component.css']
 })
 export class MainPickerComponent implements OnInit, OnDestroy {
@@ -160,15 +149,21 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     const doctorName = this.doctorsList[foundIndex].firstName + ' ' + this.doctorsList[foundIndex].lastName;
     const patientName = this.currentUser.firstName + ' ' + this.currentUser.lastName;
     // console.log(doctor);
-    this.currentUser.visits.push({date: this.request.date, id: this.visitsCount , doctorName: doctorName, patientName: patientName,
-      hour: this.request.hour, status: this.request.status});
-    this.selectedDoctorDetails.visits.push({date: this.request.date, id: this.visitsCount, patientName: patientName, doctorName: doctorName,
-      hour: this.request.hour, status: this.request.status, read: false});
+    this.currentUser.visits.push({date: this.request.date, id: this.visitsCount , doctorName: doctorName, patientName: patientName, patientId: this.currentUser.id,
+      hour: this.request.hour, status: this.request.status, doctorId: this.selectedDoctorDetails.id});
+    this.selectedDoctorDetails.visits.push({date: this.request.date, id: this.visitsCount, patientName: patientName, patientId: this.currentUser.id, doctorName: doctorName,
+      hour: this.request.hour, status: this.request.status, doctorId: this.selectedDoctorDetails.id, read: false});
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
     this.userService.update(this.currentUser).subscribe();
     this.userService.update(this.selectedDoctorDetails).subscribe();
     this.alertService.success('Request has been sent!', true);
     this.requestSent = true;
+  }
+
+  getRating(doctor) {
+    console.log(doctor.rating);
+    return doctor.rating * 20;
+
   }
 
 

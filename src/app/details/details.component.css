@@ -1,0 +1,165 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #3c4b56;
+  padding: 10px;
+  border: 1px solid cyan;
+  width: 500px;
+  height: auto;
+}
+
+span {
+  font-style: normal;
+  color: white;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid cyan;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 8px;
+  margin-top: 5px;
+
+}
+
+h3 {
+  color: white;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+h4 {
+  color: cyan;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-style: italic;
+}
+
+.result {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+#rate {
+  display: flex;
+  align-items: center;
+  height: 22px;
+}
+
+.rating {
+  width: 108px;
+  height: 40px;
+  margin-left: 5px;
+  padding: 0;
+  background: transparent;
+}
+.rating label {
+  float: right;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  padding: 0;
+}
+.rating label:not(:first-of-type) {
+  /*padding-right: 1px;*/
+}
+.rating label:before {
+  content: "\2605";
+  font-size: 20px;
+  color: #CCCCCC;
+  line-height: 1;
+}
+.rating input {
+  display: none;
+}
+.rating input:checked ~ label:before, .rating:not(:checked) > label:hover:before, .rating:not(:checked) > label:hover ~ label:before {
+  color: #F9DF4A;
+}
+
+h5 {
+  color: white;
+  font-style: italic;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+a {
+  outline: none;
+}
+
+#doctor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stars-container {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  font-size: 20px;
+}
+
+.stars-container:before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color:lightgray;
+}
+.stars-container:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: gold;
+  overflow: hidden;
+}
+
+.stars-0:after { width: 0%; }
+.stars-10:after { width: 10%; }
+.stars-20:after { width: 20%; }
+.stars-30:after { width: 30%; }
+.stars-40:after { width: 40%; }
+.stars-50:after { width: 50%; }
+.stars-60:after { width: 60%; }
+.stars-70:after { width: 70%; }
+.stars-80:after { width: 80%; }
+.stars-90:after { width: 90%; }
+.stars-100:after { width: 100%;}
+
+.activeStars {
+
+}
+
+.mat-dialog-actions {
+  margin-top: 5px;
+  margin-bottom: 0;
+  padding: 0;
+  min-height: auto;
+}
+
+.actionBtn {
+  color: white;
+  background: none;
+  border: none;
+}
+
+.beforeRate {
+  visibility: hidden;
+}
+
+.afterRate {
+  visibility: visible;
+}
+
+.actionBtn:hover {
+  color: cyan;
+  cursor: pointer;
+}

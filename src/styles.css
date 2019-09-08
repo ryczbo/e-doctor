@@ -3,12 +3,17 @@ body { margin: 0; height: 100%; font-family: Raleway, sans-serif;}
 
 .altBody {
   background: rgb(0,212,255);
-  background: linear-gradient(0deg, rgba(0,212,255,1) 50%, rgba(0,160,215,1) 100%);
   background-repeat: no-repeat; background-attachment: fixed
 }
 
 .body {
-  background: rgb(2,0,36);
-  background: repeating-linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 150%);
-  background-repeat: no-repeat; background-attachment: fixed
+  background: #2156f3;
+  background-repeat: no-repeat; background-attachment: fixed;
+  background-image: url("https://i.ibb.co/RhhjYSd/wavy-alt-footer.png");
+  background-position: bottom;
+  background-size: 100% 20%;
+}
+
+.custom-modal .mat-dialog-container {
+  padding: 0;
 }

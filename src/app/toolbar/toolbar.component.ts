@@ -82,6 +82,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 
+
+  //function to prevent display of "pending" visits in notifications div
   patientNotifications () {
     return this.currentUser.visits.filter(a => a.status !== 'pending');
   }
