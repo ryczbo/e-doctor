@@ -147,7 +147,7 @@ button * {
 #rightSideContent {
   display: flex;
   flex-direction: column;
-  max-height: 400px;
+  /*max-height: 400px;*/
   height: 600px;
   margin-top: 0.3em;
   padding: 10px;
@@ -163,6 +163,19 @@ table {
 
 thead {
   padding-bottom: 10px;
+}
+
+.tableBodyScroll tbody {
+  display: block;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.tableBodyScroll thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }
 
 tr {
@@ -187,7 +200,30 @@ tr:nth-child(even) {
 
 thead th { position: sticky; top: 0; }
 
+#style-11::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
 
+#style-11::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+}
+
+#style-11::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(to right, #fff, #e4e4e4);
+  border: 1px solid #aaa;
+}
+
+#style-11::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+#style-11::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to right, #22ADD4, #1E98BA);
+}
 
 
 

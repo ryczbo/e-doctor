@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthenticationService} from "../_services/authentication.service";
+import {AuthenticationService} from "../shared/services/authentication.service";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
 import * as moment from "moment";
@@ -11,7 +11,7 @@ import {
   transition
 } from "@angular/animations";
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
-import {UserService} from "../_services/user.service";
+import {UserService} from "../shared/services/user.service";
 import {DetailsComponent} from "../details/details.component";
 import {first} from "rxjs/operators";
 
@@ -107,6 +107,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.visit = visit;
   }
 
+
   openDialog(visit) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
@@ -134,7 +135,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
         //calculating the average rating
         let sum = this.doctorsList[foundIndex].rates.reduce((a, b) => a + b);
         this.doctorsList[foundIndex].rating = Math.floor(sum / this.doctorsList[foundIndex].rates.length);
-        console.log(this.doctorsList[foundIndex].rating);
         this.userService.update(this.doctorsList[foundIndex]).subscribe();
       }
       else {

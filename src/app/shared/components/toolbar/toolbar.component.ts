@@ -1,9 +1,9 @@
 import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import { AuthenticationService } from "../_services/authentication.service";
+import { AuthenticationService } from "../../services/authentication.service";
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { User } from '../_models/user';
-import { UserService } from "../_services/user.service";
+import { User } from '../../../_models/user';
+import { UserService } from "../../services/user.service";
 import { Router } from "@angular/router";
 import { DomSanitizer } from "@angular/platform-browser";
 

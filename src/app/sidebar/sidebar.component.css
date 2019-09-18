@@ -7,6 +7,7 @@
   margin-left: -250px;
   background-color: #3c4b63;
   position: absolute;
+  overflow-y:auto;
 }
 
 .title {
@@ -198,4 +199,30 @@ mat-form-field * {
 
 #upcoming {
   margin-bottom: 30px;
+}
+
+
+#style-11::-webkit-scrollbar {
+  width: 10px;
+  background-color: gray;
+}
+
+#style-11::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+}
+
+#style-11::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(to right, #fff, #e4e4e4);
+  border: 1px solid #aaa;
+}
+
+#style-11::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+#style-11::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to right, #22ADD4, #1E98BA);
 }

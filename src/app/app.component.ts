@@ -1,8 +1,9 @@
 import { Component, HostBinding, Renderer2 } from '@angular/core';
 import 'hammerjs';
-import { AuthenticationService } from "./_services/authentication.service";
+import { AuthenticationService } from "./shared/services/authentication.service";
 import { Subscription } from "rxjs";
 import {User} from "./_models/user";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,10 @@ export class AppComponent {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private activatedRoute: ActivatedRoute
   ) {
-    this.renderer.addClass(document.body, 'body');
+    this.renderer.addClass(document.body, 'landing2');
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
     });

@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output, Renderer2, ViewEncapsulation} from '@angular/core';
-import {AuthenticationService} from "../_services/authentication.service";
+import {AuthenticationService} from "../shared/services/authentication.service";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
-import {UserService} from "../_services/user.service";
+import {UserService} from "../shared/services/user.service";
 import {first} from "rxjs/operators";
 import {XunkCalendarModule} from "xunk-calendar";
-import { ToolbarComponent } from "../toolbar/toolbar.component";
+import { ToolbarComponent } from "../shared/components/toolbar/toolbar.component";
 import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from "moment";
 
@@ -36,8 +36,9 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     // public selDate = { date:1, month:1, year:1 }
   ) {
-    this.renderer.removeClass(document.body, 'body');
-    this.renderer.addClass(document.body, 'altBody');
+    this.renderer.removeClass(document.body, 'landing2');
+    this.renderer.removeClass(document.body, 'landing1');
+    this.renderer.addClass(document.body, 'landing3');
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
     });

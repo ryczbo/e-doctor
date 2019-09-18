@@ -1,12 +1,5 @@
-<div class="container" *ngIf="currentUser" [@slideSdbr]=currentState>
+<div class="container" id="style-11" *ngIf="currentUser" [@slideSdbr]=currentState>
   <div *ngIf="currentState === 'final'">
-    <div class="title">
-      <h3>{{currentUser.firstName}} {{currentUser.lastName}}</h3>
-      <a routerLink="/edit" (click)="showSdbr()" id="editProfile">
-        <fa-icon icon="user-edit"></fa-icon>
-      </a>
-    </div>
-    <hr>
 
     <div id="upcoming">
       <div class="myVisits">

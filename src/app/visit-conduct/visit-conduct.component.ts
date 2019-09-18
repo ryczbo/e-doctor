@@ -2,9 +2,9 @@ import {Component, OnInit, ViewChild, NgZone, Input} from '@angular/core';
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import {first, take} from "rxjs/operators";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { UserService } from "../_services/user.service";
+import { UserService } from "../shared/services/user.service";
 import { DomSanitizer } from "@angular/platform-browser";
-import { AuthenticationService } from "../_services/authentication.service";
+import { AuthenticationService } from "../shared/services/authentication.service";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
 

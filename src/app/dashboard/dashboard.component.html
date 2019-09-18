@@ -21,7 +21,7 @@
         <div id="rightSideContent">
 
 
-          <table>
+          <table class="tableBodyScroll">
 
             <thead>
             <tr>
@@ -33,7 +33,7 @@
             </thead>
 
 
-            <tbody *ngIf="visitsToDisplay?.length >= 1">
+            <tbody *ngIf="visitsToDisplay?.length >= 1" id="style-11">
             <tr *ngFor="let visit of visitsToDisplay">
               <td><h4>{{visit.hour}}</h4></td>
               <td><h4>{{visit.patientName}}</h4></td>

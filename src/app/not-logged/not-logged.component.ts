@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {first} from "rxjs/operators";
 import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
-import {AuthenticationService} from "../_services/authentication.service";
+import {AuthenticationService} from "../shared/services/authentication.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";

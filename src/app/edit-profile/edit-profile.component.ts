@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../_services/user.service";
-import {AuthenticationService} from "../_services/authentication.service";
+import { UserService } from "../shared/services/user.service";
+import {AuthenticationService} from "../shared/services/authentication.service";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
 

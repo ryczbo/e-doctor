@@ -234,6 +234,7 @@ h3 {
 
 h5 {
   margin: 0;
+  margin-top: -5px;
   color: cyan;
   vertical-align: middle;
 }

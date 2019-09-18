@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import {first, map} from 'rxjs/operators';
 import { UserService } from './user.service';
-import { User } from '../_models/user';
+import { User } from '../../_models/user';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {

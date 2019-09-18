@@ -1,23 +1,17 @@
 import {Component, Input, OnDestroy, OnInit, HostListener } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 import { Doctor } from "../doctor";
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from "@angular/animations";
+import { Renderer2 } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import {AuthenticationService} from "../_services/authentication.service";
-import { AlertService } from "../_services/alert.service";
+import {AuthenticationService} from "../shared/services/authentication.service";
+import { AlertService } from "../shared/services/alert.service";
 import { ViewChild } from "@angular/core";
 import {User} from "../_models/user";
 import { Request } from "../_models/request";
 import {Subscription} from "rxjs";
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { UserService } from "../_services/user.service";
+import { UserService } from "../shared/services/user.service";
 import {NotLoggedComponent} from "../not-logged/not-logged.component";
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { MatDatepicker } from "@angular/material/datepicker";
@@ -86,8 +80,11 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     private authenticationService: AuthenticationService,
     private sanitizer: DomSanitizer,
     private userService: UserService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private renderer: Renderer2
   ) {
+    this.renderer.removeClass(document.body, 'landing2');
+    this.renderer.addClass(document.body, 'landing1');
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
       if (this.currentUser) {
@@ -98,6 +95,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
     this.fetchDoctors();
     // this.uniqueSpecialties();
     this.uniqueCities();
@@ -161,9 +159,12 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   }
 
   getRating(doctor) {
-    console.log(doctor.rating);
+    if(doctor.rating == undefined) {
+      return 0;
+    }
+    else {
     return doctor.rating * 20;
-
+    }
   }
 
 

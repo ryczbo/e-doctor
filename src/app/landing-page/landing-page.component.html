@@ -7,14 +7,14 @@
       <h2>For the patient</h2>
       <p>You can easily send a visit request directly to the doctor.
       Keep track of all your visits and rate your doctor to help out others in making their choice.</p>
-      <button class="actionBtn" routerLink="/home">Get started!</button>
+      <button class="actionBtn" routerLink="/home" (mouseenter)="landing1()" (mouseleave)="landing()">Get started!</button>
     </div>
     <div id="line"></div>
     <div id="doctor">
       <h2>For the doctor</h2>
       <p>Manage all your visits in one place. Your dashboard and personal calendar will keep you informed and up to date.
       Sign up and use our service anywhere, anytime you want.</p>
-      <button class="actionBtn" routerLink="/register">Sign up!</button>
+      <button class="actionBtn" routerLink="/register" (mouseenter)="landing3()" (mouseleave)="landing()">Sign up!</button>
     </div>
   </div>
 </div>
