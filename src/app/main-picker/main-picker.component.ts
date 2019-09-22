@@ -16,6 +16,7 @@ import {NotLoggedComponent} from "../not-logged/not-logged.component";
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { MatDatepicker } from "@angular/material/datepicker";
 import * as moment from "moment";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-main-picker',
@@ -81,7 +82,8 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     private sanitizer: DomSanitizer,
     private userService: UserService,
     private alertService: AlertService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private dialog: MatDialog
   ) {
     this.renderer.removeClass(document.body, 'landing2');
     this.renderer.addClass(document.body, 'landing1');
@@ -120,7 +122,6 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.selectedDoctor = i;
     setTimeout(() => this.calendarClicked = true, 100);
     this.datePicked = false;
-    console.log(this.selectedDoctorDetails);
   }
 
   fetchDoctors() {
@@ -141,21 +142,44 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   }
 
   sendRequest() {
-    this.visitsCount++;
-    console.log(this.visitsCount);
-    const foundIndex = this.doctorsList.findIndex(x => x.id === this.selectedDoctorDetails.id);
-    const doctorName = this.doctorsList[foundIndex].firstName + ' ' + this.doctorsList[foundIndex].lastName;
-    const patientName = this.currentUser.firstName + ' ' + this.currentUser.lastName;
-    // console.log(doctor);
-    this.currentUser.visits.push({date: this.request.date, id: this.visitsCount , doctorName: doctorName, patientName: patientName, patientId: this.currentUser.id,
-      hour: this.request.hour, status: this.request.status, doctorId: this.selectedDoctorDetails.id});
-    this.selectedDoctorDetails.visits.push({date: this.request.date, id: this.visitsCount, patientName: patientName, patientId: this.currentUser.id, doctorName: doctorName,
-      hour: this.request.hour, status: this.request.status, doctorId: this.selectedDoctorDetails.id, read: false});
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    this.userService.update(this.currentUser).subscribe();
-    this.userService.update(this.selectedDoctorDetails).subscribe();
-    this.alertService.success('Request has been sent!', true);
-    this.requestSent = true;
+    if(this.currentUser) {
+      this.visitsCount++;
+      console.log(this.visitsCount);
+      const foundIndex = this.doctorsList.findIndex(x => x.id === this.selectedDoctorDetails.id);
+      const doctorName = this.doctorsList[foundIndex].firstName + ' ' + this.doctorsList[foundIndex].lastName;
+      const patientName = this.currentUser.firstName + ' ' + this.currentUser.lastName;
+      // console.log(doctor);
+      this.currentUser.visits.push({
+        date: this.request.date,
+        id: this.visitsCount,
+        doctorName: doctorName,
+        patientName: patientName,
+        patientId: this.currentUser.id,
+        hour: this.request.hour,
+        status: this.request.status,
+        doctorId: this.selectedDoctorDetails.id
+      });
+      this.selectedDoctorDetails.visits.push({
+        date: this.request.date,
+        id: this.visitsCount,
+        patientName: patientName,
+        patientId: this.currentUser.id,
+        doctorName: doctorName,
+        hour: this.request.hour,
+        status: this.request.status,
+        doctorId: this.selectedDoctorDetails.id,
+        read: false
+      });
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.userService.update(this.currentUser).subscribe();
+      this.userService.update(this.selectedDoctorDetails).subscribe();
+      this.requestSent = true;
+      this.alertService.success('Request has been sent!', true);
+      setTimeout(() => window.location.replace('/home'), 1000);
+    }
+    else {
+      this.dialog.open(NotLoggedComponent);
+    }
   }
 
   getRating(doctor) {

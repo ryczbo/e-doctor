@@ -108,8 +108,8 @@
         </mat-select>
       </mat-form-field>
       <div class="formButtons" *ngIf="hourPicked">
-        <button class="actionBtn" (click)="stepCounter = 2; hourPicked = false">Back</button>
-        <button class="actionBtn" (click)="stepCounter = 4; hourPicked = false">Next</button>
+        <button class="actionBtn" (click)="stepCounter = 2">Back</button>
+        <button class="actionBtn" (click)="stepCounter = 4">Next</button>
       </div>
     </div>
   </div>
@@ -131,7 +131,7 @@
                  alt="Avatar">
             <div class="cardName">
               <h3>{{selectedDoctorDetails.firstName}} {{selectedDoctorDetails.lastName}}</h3>
-              <h5>{{selectedDoctorDetails.specialty}}</h5>
+              <h5 id="specialty">{{selectedDoctorDetails.specialty}}</h5>
             </div>
           </div>
           <div class="cardBtn">
@@ -139,13 +139,14 @@
           </div>
         </div>
       </div>
-      <div class="finalBtn">
+      <div class="finalBtn" *ngIf="!requestSent">
         <button id="confirmBtn" (click)="sendRequest()">Send a request</button>
         <button id="cancelBtn" (click)="stepCounter = 3">Cancel</button>
       </div>
-    </div>
+      <div class="final Btn" *ngIf="requestSent">
 
-    <app-not-logged @cover *ngIf="calendarClicked && !currentUser"></app-not-logged>
+      </div>
+    </div>
 
     <!--[ngClass]="{cardLeft : calendarClicked == true}"-->
   </div>

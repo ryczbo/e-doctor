@@ -34,11 +34,16 @@
 
 
             <tbody *ngIf="visitsToDisplay?.length >= 1" id="style-11">
-            <tr *ngFor="let visit of visitsToDisplay">
+            <tr *ngFor="let visit of visitsToDisplay" [ngClass]="{tableConfirmed : visit.status === 'confirmed',
+            tableDeclined : visit.status === 'declined'}">
               <td><h4>{{visit.hour}}</h4></td>
               <td><h4>{{visit.patientName}}</h4></td>
               <td><h4>{{visit.status}}</h4></td>
-              <td><h4><fa-icon icon="comment-medical" (click)="conductVisit(visit)"></fa-icon></h4></td>
+              <td><h4><fa-icon icon="comment-medical" (click)="conductVisit(visit)" id="conductBtn" matTooltip="Conduct a visit"
+                               *ngIf="visit.status === 'confirmed' || visit.status === 'completed'"></fa-icon>
+                                <span *ngIf="visit.status === 'declined'">-</span>
+              </h4></td>
+
             </tr>
             </tbody>
 

@@ -46,7 +46,7 @@
 
             <mat-form-field>
               <label for="bloodPressure">Blood pressure (mmHg)</label>
-              <input matInput type="number" formControlName="bloodPressure" class="form-control"
+              <input matInput type="number" formControlName="bloodPressure" class="form-control" id="bloodPressure"
                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
               <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
               </div>
@@ -91,7 +91,7 @@
             </mat-form-field>
 
             <div class="formButtonsWrapper">
-              <button class="actionBtn" type="submit">Save</button>
+              <button class="actionBtn" type="submit">Save and exit</button>
             </div>
           </div>
 

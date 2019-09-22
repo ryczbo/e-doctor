@@ -20,7 +20,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faCheck,
   faCheckCircle, faCommentMedical,
-  faEllipsisV, faBell,
+  faEllipsisV, faBell, faAngleDown,
   faEnvelope, faEye, faUserEdit,
   faHome, faAngleDoubleDown, faAngleRight, faAngleLeft,
   faHourglassHalf, faTimes, faTimesCircle, faCalendarAlt
@@ -79,13 +79,13 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     fakeBackendProvider
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DetailsComponent]
+  entryComponents: [DetailsComponent, NotLoggedComponent]
 })
 export class AppModule {
   constructor() {
     library.add(faEllipsisV, faCalendarAlt, faAngleDoubleDown, faAngleLeft, faAngleRight,
       faUserEdit, faBell, faEnvelope, faCheck, faCheckCircle, faHourglassHalf, faHome,
-      faTimes, faTimesCircle, faCommentMedical, faEye);
+      faTimes, faTimesCircle, faCommentMedical, faEye, faAngleDown);
 
   }
 }

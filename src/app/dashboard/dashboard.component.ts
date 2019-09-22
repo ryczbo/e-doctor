@@ -36,9 +36,6 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     // public selDate = { date:1, month:1, year:1 }
   ) {
-    this.renderer.removeClass(document.body, 'landing2');
-    this.renderer.removeClass(document.body, 'landing1');
-    this.renderer.addClass(document.body, 'landing3');
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
@@ -62,6 +59,9 @@ export class DashboardComponent implements OnInit {
   }
 
 ngOnInit() {
+  this.renderer.removeClass(document.body, 'landing2');
+  this.renderer.removeClass(document.body, 'landing1');
+  this.renderer.addClass(document.body, 'landing3');
     this.selDate = XunkCalendarModule.getToday();
     this.genHeatmap();
   // this.heatmap = this.genHeatmap();
@@ -71,6 +71,7 @@ ngOnInit() {
   genHeatmap(): any {
     if(this.currentUser.visits.length > 0) {
     this.heatmap = this.currentUser.visits
+      .filter(v => v.status !== 'pending')
       .map(visit => ({[moment(visit.date, 'DD.MM.YYYY').format('YYYYMMDD')]: 0.7}))
       .reduce((a, b) => Object.assign(a, b));}
     else {return}
@@ -78,9 +79,9 @@ ngOnInit() {
 
   setVisitsToDisplay() {
    this.formattedDate = moment(this.selDate).format('DD.MM.YYYY');
-    this.visitsToDisplay = this.currentUser.visits.filter(v => v.date == this.formattedDate);
-    this.visitsToDisplay.sort((a, b) => +a.hour.replace(':','') - +b.hour.replace(':',''));
-    console.log(this.visitsToDisplay);
+    const visits = this.currentUser.visits.filter(v => v.date == this.formattedDate);
+    visits.sort((a, b) => +a.hour.replace(':','') - +b.hour.replace(':',''));
+    this.visitsToDisplay = visits.filter(e => e.status !== 'pending');
   }
 
 }

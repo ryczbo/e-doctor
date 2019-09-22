@@ -7,12 +7,24 @@
   width: auto;
 }
 
+@media(max-width: 600px) {
+  .container {
+    margin-top: 2em;
+  }
+}
+
 .jumbotron {
   color: white;
   text-align: center;
   width: 70%;
   margin-bottom: 20px;
   max-height: 70px;
+}
+
+@media(max-width: 500px) {
+  .jumbotron {
+    font-size: smaller;
+  }
 }
 
 #confirmRequest {
@@ -25,6 +37,12 @@
   align-items: center;
   width: 80%;
   margin-top: 2em;
+}
+
+@media(max-width: 700px) {
+  .stepper {
+    margin-top: 4em;
+  }
 }
 
 .stepperUp {
@@ -83,6 +101,16 @@ li:hover .numberCircle {
 
 .label {
   font: 20px Raleway, sans-serif;
+}
+
+@media(max-width: 900px) {
+  .label {
+    display: none;
+  }
+
+  .subLabel {
+    display: none;
+  }
 }
 
 .stepperLabel {
@@ -174,6 +202,16 @@ mat-form-field * {
   color: #3c4b56;
 }
 
+@media(max-width: 480px) {
+  .card {
+    width: 200px;
+  }
+
+  .timePicker {
+    width: 200px;
+  }
+}
+
 .cardTitle {
   display: flex;
   justify-content: space-between;
@@ -232,6 +270,12 @@ h3 {
   color: white;
 }
 
+@media(max-width: 400px) {
+  h3 {
+    font-size: smaller;
+  }
+}
+
 h5 {
   margin: 0;
   margin-top: -5px;
@@ -274,6 +318,12 @@ form {
   flex-direction: column;
 }
 
+@media(max-width: 480px) {
+  .timePicker {
+    width: 200px;
+  }
+}
+
 .calendar {
   display: flex;
   justify-content: flex-start;
@@ -286,6 +336,14 @@ form {
   width: 1000px;
   justify-content: space-around;
   margin-top: 10px;
+}
+
+@media(max-width: 1000px) {
+  .chooseDoctor {
+    flex-direction: column-reverse;
+    width: 300px;
+    align-items: center;
+  }
 }
 
 #thirdForm {
@@ -387,6 +445,10 @@ h4 {
   animation: 0.7s ease-out 0s 1 fadeIn;
 }
 
+#specialty {
+  margin-top: 4px;
+}
+
 .stars-container {
   position: relative;
   display: inline-block;
@@ -450,4 +512,17 @@ h4 {
 }
 .rating input:checked ~ label:before, .rating:not(:checked) > label:hover:before, .rating:not(:checked) > label:hover ~ label:before {
   color: #F9DF4A;
+}
+
+@media(max-width: 480px) {
+  .stars-container {
+    font-size: 12px;
+  }
+  h5 {
+    display: flex;
+    margin-top: 0;
+  }
+  .cardBtn {
+    display: none;
+  }
 }

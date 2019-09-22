@@ -24,7 +24,7 @@
 
 h4 {
   margin-left: 7px;
-  margin-right: 15px;
+  margin-right: 7px;
 }
 
 .toolbarButtons {
@@ -92,6 +92,18 @@ ul {
   flex-direction: column;
 }
 
+.editDrop {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+  position: absolute;
+  z-index: 1;
+  top: 47px;
+  left: 180px;
+  border: 2px solid #3c4b63;
+}
+
 li {
   color: #3c4b63;
   width: 100%;
@@ -136,6 +148,27 @@ li:hover {
   cursor: pointer;
 }
 
+.profile {
+  display: flex;
+  align-items: center;
+  max-height: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.profile:hover {
+  cursor: pointer;
+  background: #3c3a44;
+  /*color: #3c4b63;*/
+}
+
+.altProfile:hover {
+  cursor: pointer;
+  background: #00AAFF;
+}
+
 .dropdownCnt {
   display: flex;
   flex-direction: column;
@@ -145,6 +178,8 @@ li:hover {
   z-index: 1;
   top: 47px;
   left: 305px;
+  max-height: 300px;
+  overflow-y: auto;
   border: 2px solid #3c4b63;
 }
 
@@ -215,7 +250,6 @@ li:hover {
   height: 30px;
   border-radius: 50%;
   border: 2px solid #2156f3;
-  margin-left: 20px;
 }
 
 .altAvatar {
@@ -232,6 +266,17 @@ li:hover {
 
 .notCont:hover {
   background-color: lightgray;
+  cursor: pointer;
+}
+
+#editProfileBtn {
+  margin: 0;
+  color: #3c4b56;
+  padding: 5px;
+}
+
+#editProfileBtn * {
+  color: #3c4b56;
 }
 
 .confirmation {

@@ -3,50 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="88059dbe-9a00-4357-9e7c-75b3f626cf97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_alert/alert.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_alert/alert.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_alert/alert.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_alert/alert.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_alert/alert.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_alert/alert.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_guards/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_guards/auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_helpers/error.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/error.interceptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_helpers/fake-backend.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/fake-backend.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_helpers/jwt.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/jwt.interceptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_register/register.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_services/alert.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/alert.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_services/authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/authentication.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/edit-profile/edit-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/edit-profile/edit-profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/footer/footer.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/footer/footer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/services/alert.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/alert.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/toolbar/toolbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/toolbar/toolbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/toolbar/toolbar.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/toolbar/toolbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -160,7 +135,12 @@
       <workItem from="1568038509209" duration="1407000" />
       <workItem from="1568665371651" duration="3363000" />
       <workItem from="1568733658617" duration="14261000" />
-      <workItem from="1568827239626" duration="6009000" />
+      <workItem from="1568827239626" duration="6384000" />
+      <workItem from="1568919281383" duration="5288000" />
+      <workItem from="1568991659619" duration="4129000" />
+      <workItem from="1569066548356" duration="5859000" />
+      <workItem from="1569150922562" duration="2599000" />
+      <workItem from="1569170691132" duration="6638000" />
     </task>
     <servers />
   </component>

@@ -5,6 +5,8 @@ import {AuthenticationService} from "../shared/services/authentication.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
+import {MatDialogRef} from "@angular/material/dialog";
+import {AlertService} from "../shared/services";
 
 @Component({
   selector: 'app-not-logged',
@@ -14,10 +16,12 @@ import {Subscription} from "rxjs";
 export class NotLoggedComponent implements OnInit {
 
   constructor(
+    private alertService: AlertService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
+    private dialogRef: MatDialogRef<NotLoggedComponent>
   ) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
       this.currentUser = user;
@@ -33,17 +37,18 @@ export class NotLoggedComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  hideTitle = false;
 
   get f() {
     return this.loginForm.controls;
   }
 
   onSubmit() {
+    this.hideTitle = true;
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
-      console.log('nie');
       return;
     }
 
@@ -52,12 +57,14 @@ export class NotLoggedComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(['/home']);
           console.log(this.authenticationService.currentUser);
           this.logged.emit(true);
+          this.dialogRef.close();
+          this.alertService.clearAlert();
         },
         error => {
           this.loading = false;
+          this.alertService.error(error);
         });
   }
 

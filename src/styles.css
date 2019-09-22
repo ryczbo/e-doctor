@@ -119,6 +119,10 @@ body { margin: 0; height: 100%; font-family: Raleway, sans-serif; background-siz
   padding: 0;
 }
 
+/*.userTypeSelect {*/
+/*  margin-top: 20px;*/
+/*}*/
+
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 0.2; }

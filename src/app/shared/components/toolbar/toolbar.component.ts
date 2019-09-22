@@ -17,6 +17,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   currentUserSubscription: Subscription;
   users: User[] = [];
   drop = false;
+  editDrop = false;
   imgPath;
   notifications;
   patientsList;
@@ -85,7 +86,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   //function to prevent display of "pending" visits in notifications div
   patientNotifications () {
-    return this.currentUser.visits.filter(a => a.status !== 'pending');
+    return this.currentUser.visits.filter(a => a.status !== 'pending' && a.status !== 'completed');
   }
 
   confirm(visit) {

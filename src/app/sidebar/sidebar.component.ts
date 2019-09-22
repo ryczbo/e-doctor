@@ -76,7 +76,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   sort(sortVal) {
-    this.visitsArray = this.currentUser.visits;
+    this.visitsArray = this.currentUser.visits.filter(v => v.status !== 'completed');
     for (let i = 0; i < this.visitsArray.length; i++) {
       this.visitsArray[i].dateEdit = moment(this.visitsArray[i].date, 'DD.MM.YYYY');
     }

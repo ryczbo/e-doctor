@@ -19,7 +19,7 @@ h2 {
 }
 
 label {
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 form {
@@ -28,9 +28,14 @@ form {
   justify-content: space-between;
   flex-wrap: wrap;
   border: 2px solid #2156f3;
-  background-color: #f9f9f9;
+  /*background-color: #f9f9f9;*/
   padding: 10px;
   border-radius: 10px;
+}
+
+form:after {
+  background-color: #f9f9f9;
+  opacity: 0.3;
 }
 
 .title {
@@ -62,7 +67,7 @@ form {
 
 .formButtonsWrapper {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .formColumn {
@@ -74,6 +79,7 @@ form {
 #rightSide {
   display: flex;
   flex-direction: column;
+  width: auto;
 }
 
 #leftSide {
@@ -95,6 +101,10 @@ form {
   margin-right: 10px;
 }
 
+#bloodPressure {
+  width: 130px;
+}
+
 /*mat-form-field * {*/
 /*  color: white;*/
 /*}*/
@@ -111,20 +121,20 @@ textarea.mat-input-element {
 }
 
 .actionBtn {
-  border: 1px solid #2156f3;
-  color: #2156f3;
-  background: white;
+  border: 1px solid white;
+  color: white;
+  background: #2156f3;
   font: 18px Raleway, sans-serif;
   padding: 3px 8px;
-  width: 85px;
+  width: 130px;
   margin-bottom: 10px;
 }
 
 .actionBtn:hover {
   cursor: pointer;
-  color: white;
-  background: #2156f3;
-  border: 1px solid white;
+  color: #2156f3;
+  background: white;
+  border: 1px solid #2156f3;
 }
 
 input {

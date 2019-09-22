@@ -15,6 +15,10 @@ app-footer {
   position: fixed;
 }
 
+app-sidebar {
+  z-index: 100;
+}
+
 @keyframes slideInFromLeft {
   0% {
     opacity: 0;

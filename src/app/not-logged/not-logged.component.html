@@ -1,8 +1,8 @@
 <div class="container">
-  <img id="cover" src="https://i.imgur.com/ehx8EL3.jpg" alt="">
 
   <div class="accessDenied">
-    <h2>Too see a doctor's calendar you need to log in</h2>
+    <h2 *ngIf="!hideTitle">Too see a doctor's calendar you need to log in</h2>
+    <alert></alert>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <label for="username">Username</label>

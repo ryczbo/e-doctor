@@ -190,8 +190,13 @@ h4 {
   margin-left: 20px;
 }
 
-tr:nth-child(even) {
-  background: rgb(0,200,255);
+.tableConfirmed {
+  background: rgb(50,250,255);
+}
+
+.tableDeclined {
+  background: lightpink;
+  opacity: 0.5;
 }
 
 .tHead {
@@ -199,6 +204,10 @@ tr:nth-child(even) {
 }
 
 thead th { position: sticky; top: 0; }
+
+#conductBtn:hover {
+  cursor: pointer;
+}
 
 #style-11::-webkit-scrollbar {
   width: 10px;

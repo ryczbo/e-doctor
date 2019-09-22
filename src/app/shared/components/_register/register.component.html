@@ -50,7 +50,7 @@
 
           <mat-form-field>
             <label for="userType">You are a:</label>
-            <mat-select name="userType" formControlName="userType" #user class="form-control" (selectionChange)="pickUserType(user.value)">
+            <mat-select name="userType" formControlName="userType" #user class="form-control, userTypeSelect" disableOptionCentering (selectionChange)="pickUserType(user.value)">
               <mat-option *ngFor="let users of userType; let i = index" [value]="userType[i].val">
                 {{userType[i].val}}
               </mat-option>
@@ -71,7 +71,7 @@
           <div id="secColDet">
           <mat-form-field *ngIf="pickedUserType === 'Doctor'">
             <label for="specialty">What's your specialty?</label>
-            <mat-select formControlName="specialty">
+            <mat-select formControlName="specialty" disableOptionCentering>
               <mat-option *ngFor="let specialty of specialties" [value]="specialty">
                 {{specialty}}
               </mat-option>
