@@ -1,4 +1,5 @@
 .container {
+  direction: rtl;
   width: 250px;
   height: 92vh;
   display: flex;
@@ -8,6 +9,11 @@
   background-color: #3c4b63;
   position: absolute;
   overflow-y:auto;
+  overflow-x: hidden;
+}
+
+.flip {
+  direction: ltr;
 }
 
 .title {
@@ -191,10 +197,6 @@ mat-form-field {
 mat-form-field * {
   color: white;
   font: 11px Raleway;
-}
-
-::ng-deep .mat-select-value {
-  color: white;
 }
 
 #upcoming {

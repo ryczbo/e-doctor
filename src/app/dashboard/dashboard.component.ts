@@ -59,8 +59,9 @@ export class DashboardComponent implements OnInit {
   }
 
 ngOnInit() {
-  this.renderer.removeClass(document.body, 'landing2');
   this.renderer.removeClass(document.body, 'landing1');
+  this.renderer.removeClass(document.body, 'landing2');
+
   this.renderer.addClass(document.body, 'landing3');
     this.selDate = XunkCalendarModule.getToday();
     this.genHeatmap();

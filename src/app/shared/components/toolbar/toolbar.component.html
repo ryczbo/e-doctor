@@ -1,6 +1,6 @@
 <div class="toolbar" [ngClass]="{altToolbar : currentUser?.userType === 'Doctor'}">
   <div class="title" [ngClass]="{altTitle : currentUser?.userType === 'Doctor'}">
-    <a class='homeBtn' routerLink="/home" (click)="reload()"><h3>ePatient</h3></a>
+    <a class='homeBtn' routerLink="/home" (click)="reload()"><h3 [ngClass]="{homeIcon : !currentUser || currentUser?.userType === 'Patient', altHomeIcon : currentUser?.userType === 'Doctor'}">ePatient</h3></a>
     <div class="profile" [ngClass]="{altProfile : currentUser?.userType === 'Patient'}" (click)="editDrop = !editDrop">
     <img class=avatar *ngIf="currentUser?.profilePic" [src]="imgPath" alt=""
          [ngClass]="{altAvatar : currentUser?.userType === 'Doctor'}">
@@ -81,22 +81,13 @@
   </div>
   </div>
 
-  <div class="logOutBtn" [ngClass]="{altToolbarButtons : currentUser?.userType === 'Doctor'}" (click)="logout()">
-    <a *ngIf="currentUser" [ngClass]="{'logOut' : currentUser?.userType === 'Doctor'}">Log Out</a>
+  <div class="logOutBtn" *ngIf="currentUser" [ngClass]="{altToolbarButtons : currentUser?.userType === 'Doctor'}" (click)="logout()">
+    <a [ngClass]="{'logOut' : currentUser?.userType === 'Doctor'}">Log Out</a>
   </div>
   <div class="toolbarButtons" *ngIf="!currentUser">
-    <ul>
-      <li routerLink="/register">Sign Up</li>
-      <li routerLink="/login">Log In</li>
-      <li class="dropdown">
-        <a href="javascript:void(0)" class="dropdownBtn" (click)="drop = !drop">
-          <fa-icon icon="ellipsis-v"></fa-icon>
-        </a>
-        <div class="dropdownContent" *ngIf="drop">
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </div>
-      </li>
+    <ul class="buttonsList">
+      <li routerLink="/register" class="btnListElement">Sign Up</li>
+      <li routerLink="/login" class="btnListElement">Log In</li>
     </ul>
   </div>
 </div>

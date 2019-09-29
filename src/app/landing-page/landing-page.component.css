@@ -12,7 +12,15 @@
   margin-left: 10%;
   width: 70%;
   margin-bottom: 20px;
-  max-height: 70px;
+}
+
+@media(max-width: 550px) {
+  .container {
+    margin-top: 0;
+  }
+  .jumbotron {
+    margin-bottom: 0;
+  }
 }
 
 .content {

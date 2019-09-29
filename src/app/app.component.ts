@@ -1,9 +1,9 @@
-import { Component, HostBinding, Renderer2 } from '@angular/core';
+import {Component, Renderer2} from '@angular/core';
 import 'hammerjs';
-import { AuthenticationService } from "./shared/services/authentication.service";
-import { Subscription } from "rxjs";
+import {AuthenticationService} from "./shared/services/authentication.service";
+import {Subscription} from "rxjs";
 import {User} from "./_models/user";
-import { Router, ActivatedRoute } from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-root',

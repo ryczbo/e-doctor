@@ -61,7 +61,9 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home']).then(() => {
+            window.location.reload();
+          });
           this.lastLogged = new Date().toLocaleString('pl-PL');
           this.authenticationService.user.lastLogged.push(this.lastLogged);
           this.userService.update(this.authenticationService.user).subscribe();

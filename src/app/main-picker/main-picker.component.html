@@ -1,4 +1,4 @@
-<div class="container" [ngClass]="{stepperUp : stepCounter == 3 || stepCounter == 4}">
+<div class="pickerContainer" [ngClass]="{stepperUp : stepCounter == 3 || stepCounter == 4}">
   <div class="jumbotron" *ngIf="stepCounter !== 3 && stepCounter !== 4">
     <h1>Make a doctor's appointment in 4 simple steps</h1>
   </div>
@@ -29,7 +29,7 @@
   <div class="form" *ngIf="stepCounter == 1">
     <mat-form-field>
       <mat-label>Specialty</mat-label>
-      <mat-select name="specialty" [(ngModel)]="specialty" (selectionChange)="pickSpecialty(specialty)">
+      <mat-select name="specialty" [(ngModel)]="specialty" (selectionChange)="pickSpecialty(specialty)" panelClass="matSelectStyle">
         <mat-option *ngFor="let specialty of uniqueCities()" [value]="specialty">
           {{specialty}}
         </mat-option>
@@ -68,9 +68,10 @@
                  alt="Avatar">
             <div class="cardName">
               <h3>{{doctor.firstName}} {{doctor.lastName}}</h3>
-              <h5><span class="rating">Rating:
-     <span class="stars-container stars-{{getRating(doctor)}}">★★★★★</span>
-</span> ({{doctor.rates.length}})</h5>
+              <h5>
+                <span class="rating">Rating:
+                   <span class="stars-container stars-{{getRating(doctor)}}">★★★★★</span>
+              </span> ({{doctor.rates.length}})</h5>
             </div>
           </div>
           <div class="cardBtn">
@@ -117,17 +118,18 @@
   <div class="wrapper">
     <div class="jumbotron" *ngIf="stepCounter === 4">
       <h1 *ngIf="!requestSent" id="confirmRequest">Do you want to send a request?</h1>
-      <alert></alert>
     </div>
+
+    <alert></alert>
 
     <div *ngIf="stepCounter === 4 && selectedDoctor !== undefined" class="confirm">
       <div class="card">
         <div class="cardTitle">
           <div class="cardBasic">
-            <img class="avatar" [src]="imgPath" *ngIf="currentUser?.profilePic"
+            <img class="avatar" [src]="imgPath" *ngIf="selectedDoctorDetails.profilePic"
                  alt="Avatar">
             <img class="avatar" src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg"
-                 *ngIf="currentUser && !currentUser.profilePic"
+                 *ngIf="!selectedDoctorDetails.profilePic"
                  alt="Avatar">
             <div class="cardName">
               <h3>{{selectedDoctorDetails.firstName}} {{selectedDoctorDetails.lastName}}</h3>

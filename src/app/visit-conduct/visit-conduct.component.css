@@ -92,17 +92,18 @@ form:after {
   display: flex;
 }
 
-#medHistory {
-  margin-top: 5px;
-}
-
 .basicNumbers {
   width: 130px;
   margin-right: 10px;
 }
 
+mat-label {
+  color: black;
+  font-size: 20px;
+}
+
 #bloodPressure {
-  width: 130px;
+  margin-top: 24px;
 }
 
 /*mat-form-field * {*/

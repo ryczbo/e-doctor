@@ -1,16 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthenticationService} from "../shared/services/authentication.service";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
 import * as moment from "moment";
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from "@angular/animations";
-import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
+import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MatDialog, MatDialogConfig} from "@angular/material";
 import {UserService} from "../shared/services/user.service";
 import {DetailsComponent} from "../details/details.component";
 import {first} from "rxjs/operators";
@@ -39,7 +33,7 @@ import {first} from "rxjs/operators";
       transition('initial=>final', animate('250ms')),
       transition('final=>initial', animate('250ms'))
     ])],
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   currentUser: User;

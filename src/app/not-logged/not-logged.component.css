@@ -1,12 +1,3 @@
-#cover {
-  filter:blur(5px);
-  height: 100%;
-  width: 100%;
-  position: relative;
-  top: 0;
-  z-index: 50;
-}
-
 .container {
   display: flex;
   justify-content: center;
@@ -32,6 +23,18 @@ form {
   flex-direction: column;
   margin-top: 0;
   padding-top: 0;
+}
+
+@media(max-width: 580px) {
+  .container {
+    width: 250px;
+  }
+  .accessDenied {
+    width: 250px;
+  }
+  form {
+    width: 150px;
+  }
 }
 
 .formButtons {

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";

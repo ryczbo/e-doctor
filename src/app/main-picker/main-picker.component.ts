@@ -1,27 +1,24 @@
-import {Component, Input, OnDestroy, OnInit, HostListener } from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
-import { Doctor } from "../doctor";
-import { Renderer2 } from "@angular/core";
-import { DomSanitizer } from "@angular/platform-browser";
+import {Component, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
+import {FormBuilder} from "@angular/forms";
+import {Doctor} from "../doctor";
+import {DomSanitizer} from "@angular/platform-browser";
 import {AuthenticationService} from "../shared/services/authentication.service";
-import { AlertService } from "../shared/services/alert.service";
-import { ViewChild } from "@angular/core";
+import {AlertService} from "../shared/services/alert.service";
 import {User} from "../_models/user";
-import { Request } from "../_models/request";
 import {Subscription} from "rxjs";
-import { Router, ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { UserService } from "../shared/services/user.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {first} from 'rxjs/operators';
+import {UserService} from "../shared/services/user.service";
 import {NotLoggedComponent} from "../not-logged/not-logged.component";
-import {MatDatepickerInputEvent} from '@angular/material/datepicker';
-import { MatDatepicker } from "@angular/material/datepicker";
+import {MatDatepicker, MatDatepickerInputEvent} from '@angular/material/datepicker';
 import * as moment from "moment";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-main-picker',
   templateUrl: './main-picker.component.html',
-  styleUrls: ['./main-picker.component.css']
+  styleUrls: ['./main-picker.component.css'],
+
 })
 export class MainPickerComponent implements OnInit, OnDestroy {
   specialty;
@@ -170,12 +167,11 @@ export class MainPickerComponent implements OnInit, OnDestroy {
         doctorId: this.selectedDoctorDetails.id,
         read: false
       });
-      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
       this.userService.update(this.currentUser).subscribe();
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
       this.userService.update(this.selectedDoctorDetails).subscribe();
       this.requestSent = true;
-      this.alertService.success('Request has been sent!', true);
-      setTimeout(() => window.location.replace('/home'), 1000);
+      this.alertService.success('Request has been sent! Waiting for confirmation.', false);
     }
     else {
       this.dialog.open(NotLoggedComponent);
