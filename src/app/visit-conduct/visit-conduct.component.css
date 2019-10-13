@@ -33,14 +33,14 @@ form {
   border-radius: 10px;
 }
 
-form:after {
-  background-color: #f9f9f9;
-  opacity: 0.3;
-}
-
 .title {
   display: flex;
   align-items: center;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
 }
 
 #patientInfo {
@@ -48,6 +48,8 @@ form:after {
   border: 2px solid #2156f3;
   border-radius: 10px;
   padding-left: 15px;
+  padding-right: 15px;
+  height: 423px;
 }
 
 .avatar {
@@ -56,6 +58,56 @@ form:after {
   border-radius: 50%;
   border: 2px solid #2156f3;
   margin-right: 10px;
+}
+
+.previousVisits {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 280px;
+}
+
+.visitHead {
+  display: flex;
+  justify-content: space-between;
+}
+
+.visitDate {
+  font-weight: 800;
+}
+
+p {
+  margin: 0;
+  font-weight: bold;
+}
+
+li {
+  border: 1px solid #3c4b56;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+li:hover {
+  background: #1E98BA;
+}
+
+li:hover .visitDate {
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h5 {
+  font-style: italic;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+.details {
+  margin: 0;
 }
 
 .threeColumns {
@@ -68,6 +120,7 @@ form:after {
 .formButtonsWrapper {
   display: flex;
   justify-content: flex-end;
+  min-height: 39px;
 }
 
 .formColumn {
@@ -80,6 +133,7 @@ form:after {
   display: flex;
   flex-direction: column;
   width: auto;
+  /*position: fixed;*/
 }
 
 #leftSide {
@@ -104,6 +158,10 @@ mat-label {
 
 #bloodPressure {
   margin-top: 24px;
+}
+
+#age {
+  margin-top: 0;
 }
 
 /*mat-form-field * {*/
@@ -141,6 +199,31 @@ textarea.mat-input-element {
 input {
   font-size: large;
   padding: 2px 0;
+}
+
+#style-11::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+#style-11::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+}
+
+#style-11::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(to right, #fff, #e4e4e4);
+  border: 1px solid #aaa;
+}
+
+#style-11::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+#style-11::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to right, #22ADD4, #1E98BA);
 }
 
 

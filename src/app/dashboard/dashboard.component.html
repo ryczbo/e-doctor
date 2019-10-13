@@ -38,7 +38,9 @@
             tableDeclined : visit.status === 'declined'}">
               <td><h4>{{visit.hour}}</h4></td>
               <td><h4>{{visit.patientName}}</h4></td>
-              <td><h4>{{visit.status}}</h4></td>
+              <td><h4 [matTooltip]="visit.status === 'declined' ? 'You declined a visit request, therefore you cannot make any changes' :
+                                    visit.status === 'confirmed' ? 'You can conduct a confirmed visit' :
+                                    visit.status === 'completed' ? 'This visit has been completed, but you still can make changes if necessary' : ''">{{visit.status}}</h4></td>
               <td><h4><fa-icon icon="comment-medical" (click)="conductVisit(visit)" id="conductBtn" matTooltip="Conduct a visit"
                                *ngIf="visit.status === 'confirmed' || visit.status === 'completed'"></fa-icon>
                                 <span *ngIf="visit.status === 'declined'">-</span>

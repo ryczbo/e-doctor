@@ -1,19 +1,29 @@
 <div class="toolbar" [ngClass]="{altToolbar : currentUser?.userType === 'Doctor'}">
   <div class="title" [ngClass]="{altTitle : currentUser?.userType === 'Doctor'}">
-    <a class='homeBtn' routerLink="/home" (click)="reload()"><h3 [ngClass]="{homeIcon : !currentUser || currentUser?.userType === 'Patient', altHomeIcon : currentUser?.userType === 'Doctor'}">ePatient</h3></a>
+    <a class='homeBtn' routerLink="/home" (click)="reload()"><h3
+      [ngClass]="{homeIcon : !currentUser || currentUser?.userType === 'Patient', altHomeIcon : currentUser?.userType === 'Doctor'}">
+      ePatient</h3></a>
     <div class="profile" [ngClass]="{altProfile : currentUser?.userType === 'Patient'}" (click)="editDrop = !editDrop">
-    <img class=avatar *ngIf="currentUser?.profilePic" [src]="imgPath" alt=""
-         [ngClass]="{altAvatar : currentUser?.userType === 'Doctor'}">
-    <img class=avatar *ngIf="currentUser && !currentUser.profilePic"
-         src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" alt=""
-         [ngClass]="{altAvatar : currentUser?.userType === 'Doctor'}">
-    <h4 *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
+      <img class=avatar *ngIf="currentUser?.profilePic" [src]="imgPath" alt=""
+           [ngClass]="{altAvatar : currentUser?.userType === 'Doctor'}">
+      <img class=avatar *ngIf="currentUser && !currentUser.profilePic"
+           src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" alt=""
+           [ngClass]="{altAvatar : currentUser?.userType === 'Doctor'}">
+      <h4 *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
       <fa-icon icon="angle-down" *ngIf="currentUser"></fa-icon>
     </div>
 
     <div class="editDrop" *ngIf="editDrop" (clickOutside)="editDrop = !editDrop" [exclude]="'.profile'">
       <div class="notCont" routerLink="/edit" (click)="editDrop = !editDrop">
-        <h4 id="editProfileBtn"><fa-icon icon="user-edit"></fa-icon> Edit Profile</h4>
+        <h4 id="editProfileBtn">
+          <fa-icon icon="user-edit"></fa-icon>
+          Edit Profile
+        </h4>
+      </div>
+      <div class="notCont" *ngIf="isMobile" (click)="logout()">
+        <h4 id="editLogoutBtn"><fa-icon icon="sign-out-alt"></fa-icon>
+          Logout
+        </h4>
       </div>
     </div>
 
@@ -36,25 +46,31 @@
     </div>
   </div>
 
-  <div class="dropdownCnt" *ngIf="drop" (clickOutside)="drop = !drop" [exclude]="'.indicator'" [delayClickOutsideInit]="true">
+  <div class="dropdownCnt" *ngIf="drop" (clickOutside)="drop = !drop" [exclude]="'.indicator'"
+       [delayClickOutsideInit]="true">
 
     <div class="notList" *ngIf="currentUser.userType === 'Doctor'">
-      <div *ngFor="let visit of currentUser.visits.slice().reverse(); let declined = false; let confirmed = false" class="notCont">
-        <div *ngIf="visit.status === 'pending'"><span class="boldedInfo">{{visit.patientName}}</span> sent you a visit request on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
+      <div *ngFor="let visit of currentUser.visits.slice().reverse(); let declined = false; let confirmed = false"
+           class="notCont">
+        <div *ngIf="visit.status === 'pending'"><span class="boldedInfo">{{visit.patientName}}</span> sent you a visit
+          request on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
         </div>
         <div class="confirmation" *ngIf="visit.status === 'pending'">
           <span>Do you confirm?</span>
-            <div class="notBtns">
-              <fa-icon icon="check" class="confirmIcon" (click)="confirm(visit); confirmed = !confirmed;">
-              </fa-icon>
-              <fa-icon icon="times" class="declineIcon" (click)="decline(visit); declined = !declined"></fa-icon>
-            </div>
-
+          <div class="notBtns">
+            <fa-icon icon="check" class="confirmIcon" (click)="confirm(visit); confirmed = !confirmed;">
+            </fa-icon>
+            <fa-icon icon="times" class="declineIcon" (click)="decline(visit); declined = !declined"></fa-icon>
+          </div>
         </div>
-                <div class="solved" *ngIf="visit.status !== 'pending'">
-                    <div *ngIf="visit.status === 'confirmed'"><fa-icon icon="check-circle" class="confirmIcon"></fa-icon> You confirmed a visit for {{visit.patientName}} on {{visit.date}} {{visit.hour}}</div>
-                    <div *ngIf="visit.status === 'declined'"><fa-icon icon="times-circle" class="declineIcon"></fa-icon> You declined a visit for {{visit.patientName}} on {{visit.date}} {{visit.hour}}</div>
-                </div>
+        <div class="solved" *ngIf="visit.status !== 'pending'">
+          <div *ngIf="visit.status === 'confirmed'">
+            <fa-icon icon="check-circle" class="confirmIcon"></fa-icon>
+            You confirmed a visit for {{visit.patientName}} on {{visit.date}} {{visit.hour}}</div>
+          <div *ngIf="visit.status === 'declined'">
+            <fa-icon icon="times-circle" class="declineIcon"></fa-icon>
+            You declined a visit for {{visit.patientName}} on {{visit.date}} {{visit.hour}}</div>
+        </div>
       </div>
     </div>
 
@@ -78,10 +94,11 @@
         </div>
 
       </div>
-  </div>
+    </div>
   </div>
 
-  <div class="logOutBtn" *ngIf="currentUser" [ngClass]="{altToolbarButtons : currentUser?.userType === 'Doctor'}" (click)="logout()">
+  <div class="logOutBtn" *ngIf="currentUser && !isMobile" [ngClass]="{altToolbarButtons : currentUser?.userType === 'Doctor'}"
+       (click)="logout()">
     <a [ngClass]="{'logOut' : currentUser?.userType === 'Doctor'}">Log Out</a>
   </div>
   <div class="toolbarButtons" *ngIf="!currentUser">

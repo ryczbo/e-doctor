@@ -66,7 +66,9 @@ export class LoginComponent implements OnInit {
           });
           this.lastLogged = new Date().toLocaleString('pl-PL');
           this.authenticationService.user.lastLogged.push(this.lastLogged);
+          localStorage.setItem('currentUser', JSON.stringify(this.authenticationService.user));
           this.userService.update(this.authenticationService.user).subscribe();
+
         },
         error => {
           this.alertService.error(error);

@@ -108,12 +108,13 @@ a:active {
   position: absolute;
   z-index: 1;
   top: 47px;
-  left: 180px;
+  left: 95px;
   border: 2px solid #3c4b63;
 }
 
 .btnListElement {
   color: #3c4b63;
+  font-weight: bold;
   width: 100%;
   display: flex;
   text-align: center;
@@ -196,6 +197,7 @@ p {
 .logOut {
   display: flex;
   color: white;
+  font-weight: bold;
 }
 
 .altToolbarButtons {
@@ -229,7 +231,7 @@ p {
 
 .altToolbarButtons:hover {
   cursor: pointer;
-  background-color: #1a44c2;
+  background: #3c3a44;
 }
 
 .logOut:hover {
@@ -267,6 +269,16 @@ p {
 }
 
 #editProfileBtn * {
+  color: #3c4b56;
+}
+
+#editLogoutBtn {
+  margin: 0;
+  color: #3c4b56;
+  padding: 5px;
+}
+
+#editLogoutBtn * {
   color: #3c4b56;
 }
 

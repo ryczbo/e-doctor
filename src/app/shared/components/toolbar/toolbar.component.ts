@@ -24,6 +24,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   doctorsPatientsList;
   inbox = 0;
   visits = [];
+  isMobile = false;
 
   constructor(
     private router: Router,
@@ -51,6 +52,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.fetchPatients();
+    if (window.screen.width < 450) {
+      this.isMobile = true;
+    }
   }
 
   ngOnDestroy() {

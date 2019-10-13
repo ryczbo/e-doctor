@@ -70,9 +70,11 @@ li {
 }
 
 .numberCircle {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
   padding: 8px;
   background: #2156f3;
   border: 2px solid white;
@@ -133,6 +135,11 @@ li:hover .numberCircle {
   justify-content: center;
   margin-top: 3em;
   flex-direction: column;
+}
+
+.invalid-feedback * {
+  margin-top: -26px;
+  color: #f44336
 }
 
 mat-form-field * {

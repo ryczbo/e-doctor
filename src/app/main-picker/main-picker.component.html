@@ -4,19 +4,19 @@
   </div>
   <div class="stepper">
     <ul>
-      <li (click)="stepCounter = 1"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==1}">1</span>
+      <li (click)="stepCounter = 1; clearAlert()"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==1}">1</span>
         <div class="stepperLabel">
           <span class="label" [ngClass]="{currentStepLabel : stepCounter==1}">Pick a Specialty</span>
           <span class="subLabel" *ngIf="stepCounter !== 1">{{specialty}}</span>
         </div>
       </li>
-      <li (click)="stepCounter = 2"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==2}">2</span>
+      <li (click)="stepCounter = 2; clearAlert()"><span class="numberCircle" [ngClass]="{currentStep : stepCounter==2}">2</span>
         <div class="stepperLabel">
           <span class="label" [ngClass]="{currentStepLabel : stepCounter==2}">Pick a City</span>
           <span class="subLabel" *ngIf="stepCounter !== 2 && stepCounter !== 1">{{city}}</span>
         </div>
       </li>
-      <li (click)="stepCounter = 3"><span class="numberCircle"
+      <li (click)="stepCounter = 3; clearAlert()"><span class="numberCircle"
                                           [ngClass]="{currentStep : stepCounter==3}">3</span><span
         class="label" [ngClass]="{currentStepLabel : stepCounter==3}">Choose a Doctor</span></li>
       <li (click)="stepCounter = 4"><span class="numberCircle"
@@ -26,19 +26,25 @@
     </ul>
   </div>
 
-  <div class="form" *ngIf="stepCounter == 1">
+  <div class="form" *ngIf="stepCounter == 1" >
+    <form [formGroup]="specialtyForm" (ngSubmit)="submitSpecialty()">
     <mat-form-field>
-      <mat-label>Specialty</mat-label>
-      <mat-select name="specialty" [(ngModel)]="specialty" (selectionChange)="pickSpecialty(specialty)" panelClass="matSelectStyle">
+      <mat-label *ngIf="!specialtySubmitted || !f.specialty.errors">Specialty</mat-label>
+      <mat-select name="specialty" panelClass="matSelectStyle" #specialty formControlName="specialty" (selectionChange)="pickSpecialty(specialty.value)">
         <mat-option *ngFor="let specialty of uniqueCities()" [value]="specialty">
           {{specialty}}
         </mat-option>
       </mat-select>
+      <div *ngIf="f.specialty.errors && specialtySubmitted" class="invalid-feedback">
+        <div *ngIf="f.specialty.errors.required">Pick a specialty</div>
+      </div>
     </mat-form-field>
     <div class="formButtons">
-      <button class="actionBtn" (click)="stepCounter = 2">Next</button>
+      <button class="actionBtn" type="submit">Next</button>
     </div>
+    </form>
   </div>
+
 
   <div class="form" *ngIf="stepCounter == 2">
     <mat-form-field>
@@ -145,9 +151,9 @@
         <button id="confirmBtn" (click)="sendRequest()">Send a request</button>
         <button id="cancelBtn" (click)="stepCounter = 3">Cancel</button>
       </div>
-      <div class="final Btn" *ngIf="requestSent">
-
-      </div>
+<!--      <div class="final Btn" *ngIf="requestSent">-->
+<!--      -->
+<!--      </div>-->
     </div>
 
     <!--[ngClass]="{cardLeft : calendarClicked == true}"-->

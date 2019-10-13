@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Doctor} from "../doctor";
 import {DomSanitizer} from "@angular/platform-browser";
 import {AuthenticationService} from "../shared/services/authentication.service";
@@ -21,11 +21,12 @@ import {MatDialog} from "@angular/material/dialog";
 
 })
 export class MainPickerComponent implements OnInit, OnDestroy {
+  specialtyForm: FormGroup;
   specialty;
   city;
   cities;
   doctors;
-  specialtyPicked = 0;
+  specialtySubmitted = false;
   stepCounter = 1;
   calendarClicked = false;
   currentState = 'initial';
@@ -47,29 +48,6 @@ export class MainPickerComponent implements OnInit, OnDestroy {
 
 
   @ViewChild('datePicker', {static: true}) datePicker: MatDatepicker<Date>;
-
-  addEvent(event: MatDatepickerInputEvent<Date>) {
-    this.date = moment((event.value.toLocaleDateString()),'DD.MM.YYYY').format('DD.MM.YYYY');
-    console.log(this.date);
-    this.datePicked = true;
-    this.calendarClicked = false;
-  }
-
-  uniqueCities() {
-    const unique = this.doctorsList.map(s => s.specialty).filter((e, i, a) => a.indexOf(e) === i);
-    return unique;
-  }
-
-  pickSpecialty(specialty) {
-    this.cities = this.doctorsList.filter(e => e.specialty == specialty).map(d => d.city).filter((e, i, a) => a.indexOf(e) === i);
-    this.specialty = specialty;
-    this.specialtyPicked = 1;
-  }
-
-  pickCity(specialty, city) {
-    this.doctors = this.doctorsList.filter(e => e.specialty == specialty && e.city == city);
-    // console.log(this.doctors);
-  }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -93,17 +71,57 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     });
   }
 
+  addEvent(event: MatDatepickerInputEvent<Date>) {
+    this.date = moment((event.value.toLocaleDateString()),'DD.MM.YYYY').format('DD.MM.YYYY');
+    console.log(this.date);
+    this.datePicked = true;
+    this.calendarClicked = false;
+  }
+
+  uniqueCities() {
+    const unique = this.doctorsList.map(s => s.specialty).filter((e, i, a) => a.indexOf(e) === i);
+    return unique;
+  }
+
+  pickSpecialty(specialty) {
+    this.cities = this.doctorsList.filter(e => e.specialty == specialty).map(d => d.city).filter((e, i, a) => a.indexOf(e) === i);
+    this.specialty = specialty;
+    console.log(specialty);
+  }
+
+  submitSpecialty() {
+    this.specialtySubmitted = true;
+    if (this.specialtyForm.invalid) {
+      return;
+    }
+    else {
+      this.stepCounter = 2
+    }
+  }
+
+  pickCity(specialty, city) {
+    this.doctors = this.doctorsList.filter(e => e.specialty == specialty && e.city == city);
+    // console.log(this.doctors);
+  }
+
   ngOnInit() {
 
     this.fetchDoctors();
     // this.uniqueSpecialties();
     this.uniqueCities();
     this.visitsCounter();
+    this.specialtyForm = this.formBuilder.group({
+      specialty: ['', Validators.required]
+    })
   }
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
     this.currentUserSubscription.unsubscribe();
+  }
+
+  get f() {
+    return this.specialtyForm.controls;
   }
 
   visitsCounter() {
@@ -136,6 +154,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.request.status = 'pending';
     // console.log(this.request);
     this.hourPicked = true;
+    this.requestSent = false;
   }
 
   sendRequest() {
@@ -185,6 +204,10 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     else {
     return doctor.rating * 20;
     }
+  }
+
+  clearAlert() {
+    this.alertService.clearAlert();
   }
 
 

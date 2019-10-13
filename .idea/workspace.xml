@@ -3,28 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="88059dbe-9a00-4357-9e7c-75b3f626cf97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/details/details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/details/details.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/landing-page/landing-page.component.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-logged/not-logged.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sidebar/sidebar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +139,18 @@
       <workItem from="1569345419682" duration="7208000" />
       <workItem from="1569421986570" duration="1119000" />
       <workItem from="1569604164828" duration="797000" />
-      <workItem from="1569780280465" duration="7291000" />
+      <workItem from="1569780280465" duration="7357000" />
+      <workItem from="1569862420494" duration="3086000" />
+      <workItem from="1569865744129" duration="63000" />
+      <workItem from="1569942334081" duration="1686000" />
+      <workItem from="1570023484587" duration="10711000" />
+      <workItem from="1570049916999" duration="531000" />
+      <workItem from="1570097927756" duration="1923000" />
+      <workItem from="1570107625749" duration="735000" />
+      <workItem from="1570283990364" duration="104000" />
+      <workItem from="1570615979573" duration="4222000" />
+      <workItem from="1570629293525" duration="19000" />
+      <workItem from="1570982209857" duration="4349000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,7 @@
 <div class="container">
-  <h5 *ngIf="currentUser">Last logged: <span *ngIf="currentUser.lastLogged[0] == undefined">First Login</span>{{currentUser.lastLogged[currentUser.lastLogged.length - 2]}}</h5>
-  <h4 *ngIf="!currentUser">(c) 2019</h4>
+  <h5 *ngIf="currentUser">
+    <span *ngIf="currentUser.userType === 'Doctor'">Logged as a Doctor -</span>
+    <span *ngIf="currentUser.userType === 'Patient'">Logged as a Patient -</span>
+    Last logged: <span *ngIf="currentUser.lastLogged[0] == undefined">First Login</span>{{currentUser.lastLogged[currentUser.lastLogged.length - 2]}}</h5>
+  <h4 *ngIf="!currentUser">Not logged</h4>
 </div>

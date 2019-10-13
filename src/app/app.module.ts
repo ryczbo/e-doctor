@@ -23,7 +23,7 @@ import {
   faEllipsisV, faBell, faAngleDown,
   faEnvelope, faEye, faUserEdit,
   faHome, faAngleDoubleDown, faAngleRight, faAngleLeft,
-  faHourglassHalf, faTimes, faTimesCircle, faCalendarAlt
+  faHourglassHalf, faTimes, faTimesCircle, faCalendarAlt, faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { HomeComponent } from "./_home/home.component";
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -85,7 +85,7 @@ export class AppModule {
   constructor() {
     library.add(faEllipsisV, faCalendarAlt, faAngleDoubleDown, faAngleLeft, faAngleRight,
       faUserEdit, faBell, faEnvelope, faCheck, faCheckCircle, faHourglassHalf, faHome,
-      faTimes, faTimesCircle, faCommentMedical, faEye, faAngleDown);
+      faTimes, faTimesCircle, faCommentMedical, faEye, faAngleDown, faSignOutAlt);
 
   }
 }

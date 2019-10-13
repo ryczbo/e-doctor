@@ -19,6 +19,8 @@ export class VisitConductComponent implements OnInit {
   imgPath;
   currentUser: User;
   currentUserSubscription: Subscription;
+  previousVisits;
+  visitSaved: boolean;
 
   constructor(
     private _ngZone: NgZone,
@@ -51,8 +53,10 @@ export class VisitConductComponent implements OnInit {
       prescription: '',
       advices: ''
     });
+    this.previousVisits = this.patient.visits.filter(e => e.status === 'completed');
+    this.visitSaved = false;
 
-    console.log(this.patient);
+    console.log(this.previousVisits);
   }
 
   submit() {
@@ -65,6 +69,7 @@ export class VisitConductComponent implements OnInit {
     this.patient.visits[foundIndexPat].exam = this.conductVisitForm.value;
     this.patient.visits[foundIndexPat].status = 'completed';
     this.userService.update(this.patient).subscribe();
+    this.visitSaved = true;
   }
 
 }
