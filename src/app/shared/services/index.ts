@@ -4,6 +4,7 @@ import { AlertService } from "./alert.service";
 import { ErrorInterceptor } from "./error.interceptor";
 import { FakeBackendInterceptor } from "./fake-backend";
 import { JwtInterceptor } from "./jwt.interceptor";
+import { RegisterService } from "./register.service";
 
 export const SharedServices = [
   UserService,
@@ -11,7 +12,8 @@ export const SharedServices = [
   AlertService,
   ErrorInterceptor,
   FakeBackendInterceptor,
-  JwtInterceptor
+  JwtInterceptor,
+  RegisterService
 ];
 
 export {
@@ -20,5 +22,6 @@ export {
   AlertService,
   ErrorInterceptor,
   FakeBackendInterceptor,
-  JwtInterceptor
+  JwtInterceptor,
+  RegisterService
 };

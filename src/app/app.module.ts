@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from "./shared/shared.module";
-import { MaterialModule } from "./_material/material.module";
+import { SharedModule } from './shared/shared.module';
+import { MaterialModule } from './_material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { fakeBackendProvider } from "./shared/services/fake-backend";
 import { JwtInterceptor } from "./shared/services";
@@ -25,10 +25,10 @@ import {
   faHome, faAngleDoubleDown, faAngleRight, faAngleLeft,
   faHourglassHalf, faTimes, faTimesCircle, faCalendarAlt, faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
-import { HomeComponent } from "./_home/home.component";
+import { HomeComponent } from './_home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NotLoggedComponent } from './not-logged/not-logged.component';
-import { CalendarComponent } from "./calendar/calendar.component";
+import { CalendarComponent } from './calendar/calendar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { XunkCalendarModule } from "xunk-calendar";

@@ -1,7 +1,6 @@
 .alert-danger {
-  background-color: #ff0000;
-  border-radius: 10px;
-  color: white;
+  color: #f3213d;
+  font-weight: bold;
   padding: 20px;
   width: 320px;
   text-align: center;
@@ -15,9 +14,8 @@
 }
 
 .alert-success {
-  background-color: #00aa30;
-  border-radius: 10px;
-  color: white;
+  color: #21f3bf;
+  font-weight: bold;
   width: 250px;
   padding: 20px;
   text-align: center;

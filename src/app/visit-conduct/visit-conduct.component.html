@@ -124,13 +124,11 @@
                         cdkAutosizeMaxRows="4"
                         rows="5"></textarea>
             </mat-form-field>
-
-            <div class="formButtonsWrapper">
-              <button class="actionBtn" type="submit" *ngIf="!visitSaved">Save and exit</button>
-              <p *ngIf="visitSaved">Changes saved!</p>
-            </div>
           </div>
-
+          <div class="formButtonsWrapper">
+            <button class="actionBtn" type="submit" *ngIf="!visitSaved">Save and exit</button>
+            <p *ngIf="visitSaved">Changes saved!</p>
+          </div>
         </form>
       </div>
     </div>

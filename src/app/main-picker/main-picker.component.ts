@@ -22,11 +22,13 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class MainPickerComponent implements OnInit, OnDestroy {
   specialtyForm: FormGroup;
+  cityForm: FormGroup;
   specialty;
   city;
   cities;
   doctors;
   specialtySubmitted = false;
+  citySubmitted = false;
   stepCounter = 1;
   calendarClicked = false;
   currentState = 'initial';
@@ -101,7 +103,18 @@ export class MainPickerComponent implements OnInit, OnDestroy {
 
   pickCity(specialty, city) {
     this.doctors = this.doctorsList.filter(e => e.specialty == specialty && e.city == city);
-    // console.log(this.doctors);
+    this.city = city;
+    console.log(this.doctors);
+  }
+
+  submitCity() {
+    this.citySubmitted = true;
+    if (this.cityForm.invalid) {
+      return;
+    }
+    else {
+      this.stepCounter = 3;
+    }
   }
 
   ngOnInit() {
@@ -112,6 +125,9 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.visitsCounter();
     this.specialtyForm = this.formBuilder.group({
       specialty: ['', Validators.required]
+    });
+    this.cityForm = this.formBuilder.group({
+      city: ['', Validators.required]
     })
   }
 
@@ -124,10 +140,17 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     return this.specialtyForm.controls;
   }
 
+  get g() {
+    return this.cityForm.controls;
+  }
+
   visitsCounter() {
   this.userService.getAll().pipe(first()).subscribe(users => {
-    this.visitsCount = users.map(e => e.visits).reduce((a, b) => [...a, ...b]).length;
-    console.log(this.visitsCount);
+    if (users.map(e => e.visits).reduce((a,b) => [...a, ...b]).length > 0) {
+      this.visitsCount = users.map(e => e.visits).reduce((a, b) => [...a, ...b]).length;
+      console.log(this.visitsCount);
+    }
+    else {this.visitsCount = 1}
     }
   )
 }

@@ -71,6 +71,7 @@ ngOnInit() {
 
   genHeatmap(): any {
     if(this.currentUser.visits.length > 0) {
+
     this.heatmap = this.currentUser.visits
       .filter(v => v.status !== 'pending')
       .map(visit => ({[moment(visit.date, 'DD.MM.YYYY').format('YYYYMMDD')]: 0.7}))
@@ -79,7 +80,7 @@ ngOnInit() {
   }
 
   setVisitsToDisplay() {
-   this.formattedDate = moment(this.selDate).format('DD.MM.YYYY');
+    this.formattedDate = moment(this.selDate).format('DD.MM.YYYY');
     const visits = this.currentUser.visits.filter(v => v.date == this.formattedDate);
     visits.sort((a, b) => +a.hour.replace(':','') - +b.hour.replace(':',''));
     this.visitsToDisplay = visits.filter(e => e.status !== 'pending');

@@ -2,7 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
-import {AlertService, AuthenticationService, UserService} from "../../services";
+import {AlertService, AuthenticationService, UserService, RegisterService } from '../../services';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   loading = false;
   submitted = false;
   logged = false;
+  showAlert = false;
   userType = [{val: 'Doctor'}, {val: 'Patient'}];
   pickedUserType: string;
   specialties = [
@@ -30,7 +31,8 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private userService: UserService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private registerService: RegisterService
   ) {
     // redirect to home if already logged in
     // if (this.authenticationService.currentUserValue) {
@@ -78,14 +80,16 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.userService.register(this.registerForm.value)
+    this.registerService.register(this.registerForm.value)
       .pipe(first())
       .subscribe(
         data => {
+          this.showAlert = true;
           this.alertService.success('Registration successful', true);
-          setTimeout(() => this.router.navigate(['/login']), 1000);
+          setTimeout(() => this.router.navigate(['/login']), 2000);
         },
         error => {
+          this.showAlert = true;
           this.alertService.error(error);
           this.loading = false;
         });

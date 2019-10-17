@@ -16,6 +16,7 @@
 
 h2 {
   text-align: center;
+  color: white;
 }
 
 label {
@@ -24,13 +25,17 @@ label {
 
 form {
   display: flex;
-  width: 100%;
+  /*width: 100%;*/
   justify-content: space-between;
   flex-wrap: wrap;
   border: 2px solid #2156f3;
   /*background-color: #f9f9f9;*/
   padding: 10px;
-  border-radius: 10px;
+}
+
+form:after {
+  background-color: white;
+  opacity: 0.3;
 }
 
 .title {
@@ -44,12 +49,11 @@ form {
 }
 
 #patientInfo {
-  background-color: cyan;
+  background-color: white;
   border: 2px solid #2156f3;
-  border-radius: 10px;
   padding-left: 15px;
   padding-right: 15px;
-  height: 423px;
+  height: 419px;
 }
 
 .avatar {
@@ -119,7 +123,8 @@ h5 {
 
 .formButtonsWrapper {
   display: flex;
-  justify-content: flex-end;
+  width: 100%;
+  justify-content: center;
   min-height: 39px;
 }
 
@@ -132,7 +137,7 @@ h5 {
 #rightSide {
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 600px;
   /*position: fixed;*/
 }
 

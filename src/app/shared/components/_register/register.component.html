@@ -1,6 +1,8 @@
 <div class="container">
-  <h2 *ngIf="!submitted || loading">Register</h2>
+  <div class="title">
+  <h2 *ngIf="!showAlert">Register</h2>
   <alert></alert>
+  </div>
   <div class="wrapper">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 

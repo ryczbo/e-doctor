@@ -1,6 +1,8 @@
 <div class="container">
+  <div class="title">
   <h2 *ngIf="!hide">Log In</h2>
   <alert></alert>
+  </div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <label for="username">Username</label>
