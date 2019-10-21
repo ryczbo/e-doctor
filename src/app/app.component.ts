@@ -4,6 +4,7 @@ import {AuthenticationService} from "./shared/services/authentication.service";
 import {Subscription} from "rxjs";
 import {User} from "./_models/user";
 import {ActivatedRoute} from "@angular/router";
+import {RegisterService} from "./shared/services";
 
 @Component({
   selector: 'app-root',
@@ -18,12 +19,12 @@ export class AppComponent {
   users: User[] = [];
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private registerService: RegisterService,
     private renderer: Renderer2,
     private activatedRoute: ActivatedRoute
   ) {
     this.renderer.addClass(document.body, 'landing2');
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../shared/services/user.service";
+// import { UserService } from "../shared/services/user.service";
 import {AuthenticationService} from "../shared/services/authentication.service";
+import { RegisterService } from "../shared/services";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
 
@@ -17,10 +18,11 @@ export class EditProfileComponent implements OnInit {
   profilePicB64;
 
   constructor(
-    private userService: UserService,
+    // private userService: UserService,
     private authenticationService: AuthenticationService,
+    private registerService: RegisterService
 ) {
-  this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+  this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
     this.currentUser = user;
   });
 }
@@ -49,7 +51,7 @@ export class EditProfileComponent implements OnInit {
 
   update() {
     this.currentUser.profilePic = this.profilePicB64;
-    this.userService.update(this.currentUser).subscribe();
+    this.registerService.update(this.currentUser).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 }

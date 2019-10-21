@@ -47,6 +47,9 @@
                     <h4 class="details">{{visit.exam.prescription}}</h4>
                   </div>
                 </li>
+                <p *ngIf="previousVisits.length === 0" id="noPreviousVisits">
+                  No previous visits!
+                </p>
               </ul>
             </div>
           </div>

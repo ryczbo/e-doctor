@@ -1,4 +1,4 @@
-import { UserService } from "./user.service";
+// import { UserService } from "./user.service";
 import { AuthenticationService } from "./authentication.service";
 import { AlertService } from "./alert.service";
 import { ErrorInterceptor } from "./error.interceptor";
@@ -7,7 +7,7 @@ import { JwtInterceptor } from "./jwt.interceptor";
 import { RegisterService } from "./register.service";
 
 export const SharedServices = [
-  UserService,
+  // UserService,
   AuthenticationService,
   AlertService,
   ErrorInterceptor,
@@ -17,7 +17,7 @@ export const SharedServices = [
 ];
 
 export {
-  UserService,
+  // UserService,
   AuthenticationService,
   AlertService,
   ErrorInterceptor,

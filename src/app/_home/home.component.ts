@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { User } from '../_models/user';
-import { UserService } from "../shared/services/user.service";
+// import { UserService } from "../shared/services/user.service";
 import { AuthenticationService } from "../shared/services/authentication.service";
+import { RegisterService } from "../shared/services";
 
 
 @Component({
@@ -17,9 +18,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private userService: UserService
+    // private userService: UserService,
+    private registerService: RegisterService
   ) {
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
   }
@@ -32,15 +34,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.currentUserSubscription.unsubscribe();
   }
 
-  deleteUser(id: number) {
-    this.userService.delete(id).pipe(first()).subscribe(() => {
-      this.loadAllUsers()
-    });
-  }
+  // deleteUser(id: number) {
+  //   this.userService.delete(id).pipe(first()).subscribe(() => {
+  //     this.loadAllUsers()
+  //   });
+  // }
 
-  private loadAllUsers() {
-    this.userService.getAll().pipe(first()).subscribe(users => {
-      this.users = users;
-    });
-  }
+  // private loadAllUsers() {
+  //   this.registerService.getAll().pipe(first()).subscribe(users => {
+  //     this.users = users;
+  //   });
+  // }
 }

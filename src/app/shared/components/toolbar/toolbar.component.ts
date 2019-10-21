@@ -3,9 +3,10 @@ import { AuthenticationService } from "../../services/authentication.service";
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { User } from '../../../_models/user';
-import { UserService } from "../../services/user.service";
+// import { UserService } from "../../services/user.service";
 import { Router } from "@angular/router";
 import { DomSanitizer } from "@angular/platform-browser";
+import { RegisterService } from "../../services";
 
 @Component({
   selector: 'app-toolbar',
@@ -30,9 +31,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     private router: Router,
     private sanitizer: DomSanitizer,
     private authenticationService: AuthenticationService,
-    private userService: UserService
+    // private userService: UserService,
+    private registerService: RegisterService
   ) {
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
       this.currentUser = user;
       if (this.currentUser) {
         this.imgPath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
@@ -42,7 +44,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.authenticationService.logout();
+    this.registerService.logout();
     this.reload();
   }
 
@@ -63,7 +65,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   fetchPatients() {
-    this.userService.getAll().pipe(first()).subscribe(patients => {
+    this.registerService.getAll().pipe(first()).subscribe(patients => {
       this.patientsList = patients.filter(e => e.userType === 'Patient');
     });
   }
@@ -83,33 +85,33 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   readNotifications() {
     this.currentUser.visits.forEach(e => e.read = true);
-    this.userService.update(this.currentUser).subscribe();
+    this.registerService.update(this.currentUser).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 
 
-  //function to prevent display of "pending" visits in notifications div
-  patientNotifications () {
+  // function to prevent display of "pending" visits in notifications div
+  patientNotifications() {
     return this.currentUser.visits.filter(a => a.status !== 'pending' && a.status !== 'completed');
   }
 
   confirm(visit) {
     this.currentUser.visits.find(x => x.id === visit.id).status = 'confirmed';
-    this.userService.update(this.currentUser).subscribe();
+    this.registerService.update(this.currentUser).subscribe();
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'confirmed';
     patient.visits.find(x => x.id === visit.id).read = false;
-    this.userService.update(patient).subscribe();
+    this.registerService.update(patient).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 
   decline(visit) {
     this.currentUser.visits.find(x => x.id === visit.id).status = 'declined';
-    this.userService.update(this.currentUser).subscribe();
+    this.registerService.update(this.currentUser).subscribe();
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'declined';
     patient.visits.find(x => x.id === visit.id).read = false;
-    this.userService.update(patient).subscribe();
+    this.registerService.update(patient).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 

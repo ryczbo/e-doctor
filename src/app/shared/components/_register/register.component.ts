@@ -2,7 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
-import {AlertService, AuthenticationService, UserService, RegisterService } from '../../services';
+import {AlertService, AuthenticationService, RegisterService } from '../../services';
 
 @Component({
   selector: 'app-register',
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private userService: UserService,
+    // private userService: UserService,
     private alertService: AlertService,
     private registerService: RegisterService
   ) {
@@ -90,7 +90,7 @@ export class RegisterComponent implements OnInit {
         },
         error => {
           this.showAlert = true;
-          this.alertService.error(error);
+          this.alertService.error(error.error);
           this.loading = false;
         });
   }

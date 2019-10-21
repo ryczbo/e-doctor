@@ -1,5 +1,5 @@
 <div class="pickerContainer" [ngClass]="{stepperUp : stepCounter == 3 || stepCounter == 4}">
-  <div class="jumbotron" *ngIf="stepCounter !== 3 && stepCounter !== 4">
+  <div class="jumbotron" *ngIf="stepCounter !== 3 && stepCounter !== 4" (click)="fetchDoctors()">
     <h1>Make a doctor's appointment in 4 simple steps</h1>
   </div>
   <div class="stepper">

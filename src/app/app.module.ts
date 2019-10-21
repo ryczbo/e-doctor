@@ -72,11 +72,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     }),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-    // provider used to create fake backend
-    fakeBackendProvider
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    //
+    // // provider used to create fake backend
+    // fakeBackendProvider
   ],
   bootstrap: [AppComponent],
   entryComponents: [DetailsComponent, NotLoggedComponent]

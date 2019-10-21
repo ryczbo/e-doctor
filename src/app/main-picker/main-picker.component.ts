@@ -8,11 +8,12 @@ import {User} from "../_models/user";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from '@angular/router';
 import {first} from 'rxjs/operators';
-import {UserService} from "../shared/services/user.service";
+// import {UserService} from "../shared/services/user.service";
 import {NotLoggedComponent} from "../not-logged/not-logged.component";
 import {MatDatepicker, MatDatepickerInputEvent} from '@angular/material/datepicker';
 import * as moment from "moment";
 import {MatDialog} from "@angular/material/dialog";
+import { RegisterService } from "../shared/services";
 
 @Component({
   selector: 'app-main-picker',
@@ -57,20 +58,39 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     private router: Router,
     private authenticationService: AuthenticationService,
     private sanitizer: DomSanitizer,
-    private userService: UserService,
+    // private userService: UserService,
     private alertService: AlertService,
     private renderer: Renderer2,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private registerService: RegisterService
   ) {
     this.renderer.removeClass(document.body, 'landing2');
     this.renderer.addClass(document.body, 'landing1');
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
       this.currentUser = user;
       if (this.currentUser) {
         this.imgPath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
           + this.currentUser.profilePic);
       }
     });
+  }
+
+  ngOnInit() {
+    this.fetchDoctors();
+    // this.uniqueSpecialties();
+    this.uniqueCities();
+    this.visitsCounter();
+    this.specialtyForm = this.formBuilder.group({
+      specialty: ['', Validators.required]
+    });
+    this.cityForm = this.formBuilder.group({
+      city: ['', Validators.required]
+    });
+  }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.currentUserSubscription.unsubscribe();
   }
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
@@ -80,9 +100,14 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.calendarClicked = false;
   }
 
+  // shows specialties based on original cities
   uniqueCities() {
-    const unique = this.doctorsList.map(s => s.specialty).filter((e, i, a) => a.indexOf(e) === i);
-    return unique;
+    if (this.doctorsList && this.doctorsList.length > 0) {
+      const unique = this.doctorsList.map(s => s.specialty).filter((e, i, a) => a.indexOf(e) === i);
+      return unique;
+    } else {
+      return ['Not Found!'];
+    }
   }
 
   pickSpecialty(specialty) {
@@ -95,9 +120,8 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.specialtySubmitted = true;
     if (this.specialtyForm.invalid) {
       return;
-    }
-    else {
-      this.stepCounter = 2
+    } else {
+      this.stepCounter = 2;
     }
   }
 
@@ -111,30 +135,11 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.citySubmitted = true;
     if (this.cityForm.invalid) {
       return;
-    }
-    else {
+    } else {
       this.stepCounter = 3;
     }
   }
 
-  ngOnInit() {
-
-    this.fetchDoctors();
-    // this.uniqueSpecialties();
-    this.uniqueCities();
-    this.visitsCounter();
-    this.specialtyForm = this.formBuilder.group({
-      specialty: ['', Validators.required]
-    });
-    this.cityForm = this.formBuilder.group({
-      city: ['', Validators.required]
-    })
-  }
-
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.currentUserSubscription.unsubscribe();
-  }
 
   get f() {
     return this.specialtyForm.controls;
@@ -145,14 +150,13 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   }
 
   visitsCounter() {
-  this.userService.getAll().pipe(first()).subscribe(users => {
-    if (users.map(e => e.visits).reduce((a,b) => [...a, ...b]).length > 0) {
+  this.registerService.getAll().pipe(first()).subscribe(users => {
+    if (users.map(e => e.visits).length > 0) {
       this.visitsCount = users.map(e => e.visits).reduce((a, b) => [...a, ...b]).length;
-      console.log(this.visitsCount);
+    } else {
+      this.visitsCount = 1; }
     }
-    else {this.visitsCount = 1}
-    }
-  )
+  );
 }
 
   calendarClick(i: number) {
@@ -163,16 +167,17 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   }
 
   fetchDoctors() {
-    this.userService.getAll().pipe(first()).subscribe(doctors => {
+    this.registerService.getAll().subscribe(doctors => {
       this.doctorsList = doctors.filter(e => e.userType === 'Doctor');
+      console.log(this.doctorsList);
     });
-    // console.log(this.doctorsList);
+
   }
 
   pickHour(hour) {
     this.hour = hour;
     this.request.date = this.date;
-    this.request.doctorId = this.selectedDoctorDetails.id;
+    this.request.doctorId = this.selectedDoctorDetails._id;
     this.request.hour = this.hour;
     this.request.status = 'pending';
     // console.log(this.request);
@@ -184,7 +189,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     if(this.currentUser) {
       this.visitsCount++;
       console.log(this.visitsCount);
-      const foundIndex = this.doctorsList.findIndex(x => x.id === this.selectedDoctorDetails.id);
+      const foundIndex = this.doctorsList.findIndex(x => x._id === this.selectedDoctorDetails._id);
       const doctorName = this.doctorsList[foundIndex].firstName + ' ' + this.doctorsList[foundIndex].lastName;
       const patientName = this.currentUser.firstName + ' ' + this.currentUser.lastName;
       // console.log(doctor);
@@ -193,38 +198,36 @@ export class MainPickerComponent implements OnInit, OnDestroy {
         id: this.visitsCount,
         doctorName: doctorName,
         patientName: patientName,
-        patientId: this.currentUser.id,
+        patientId: this.currentUser._id,
         hour: this.request.hour,
         status: this.request.status,
-        doctorId: this.selectedDoctorDetails.id
+        doctorId: this.selectedDoctorDetails._id
       });
       this.selectedDoctorDetails.visits.push({
         date: this.request.date,
         id: this.visitsCount,
         patientName: patientName,
-        patientId: this.currentUser.id,
+        patientId: this.currentUser._id,
         doctorName: doctorName,
         hour: this.request.hour,
         status: this.request.status,
-        doctorId: this.selectedDoctorDetails.id,
+        doctorId: this.selectedDoctorDetails._id,
         read: false
       });
-      this.userService.update(this.currentUser).subscribe();
+      this.registerService.update(this.currentUser).subscribe();
       localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-      this.userService.update(this.selectedDoctorDetails).subscribe();
+      this.registerService.update(this.selectedDoctorDetails).subscribe();
       this.requestSent = true;
       this.alertService.success('Request has been sent! Waiting for confirmation.', false);
-    }
-    else {
+    } else {
       this.dialog.open(NotLoggedComponent);
     }
   }
 
   getRating(doctor) {
-    if(doctor.rating == undefined) {
+    if (doctor.rating === undefined) {
       return 0;
-    }
-    else {
+    } else {
     return doctor.rating * 20;
     }
   }

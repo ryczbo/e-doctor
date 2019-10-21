@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { environment } from '../../../environments/environment';
 import {first, map} from 'rxjs/operators';
-import { UserService } from './user.service';
+// import { UserService } from './user.service';
 import { User } from '../../_models/user';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-  private userService: UserService;
+  // private userService: UserService;
   public user: User;
   public userVisitId: number;
   lastLogged;

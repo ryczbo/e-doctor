@@ -5,9 +5,10 @@ import {Subscription} from "rxjs";
 import * as moment from "moment";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MatDialog, MatDialogConfig} from "@angular/material";
-import {UserService} from "../shared/services/user.service";
+// import {UserService} from "../shared/services/user.service";
 import {DetailsComponent} from "../details/details.component";
 import {first} from "rxjs/operators";
+import { RegisterService } from "../shared/services";
 
 
 @Component({
@@ -53,11 +54,12 @@ export class SidebarComponent implements OnInit, OnDestroy {
   pickedVisit = false;
 
   constructor(
-    private userService: UserService,
+    // private userService: UserService,
     private authenticationService: AuthenticationService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private registerService: RegisterService
   ) {
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
       this.currentUser = user;
       this.visitsArray = this.currentUser.visits.filter(e => e.status !== 'completed');
       this.visitsHistory = this.currentUser.visits.filter(e => e.status === 'completed');
@@ -88,12 +90,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   fetchDoctors() {
-    this.userService.getAll().pipe(first()).subscribe(doctors => {
+    this.registerService.getAll().pipe(first()).subscribe(doctors => {
       this.doctorsList = doctors.filter(e => e.userType === 'Doctor');
       if (this.currentUser.rates.length > 0) {
         this.ratedDoctorsList = Object.keys(this.currentUser.rates.reduce((o, c) => Object.assign(o, c)))
       }});
-    console.log(this.ratedDoctorsList);
   }
 
   visitDetails(visit) {
@@ -111,7 +112,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
       exam: visit.exam,
       id: visit.doctorId,
       foundRated: this.ratedDoctorsList.findIndex(e => e == visit.doctorId),
-      rate: this.doctorsList.find(e => e.id === visit.doctorId).rating
+      rate: this.doctorsList.find(e => e._id === visit.doctorId).rating
     };
     dialogConfig.panelClass = ['custom-modal'];
 
@@ -123,21 +124,20 @@ export class SidebarComponent implements OnInit, OnDestroy {
       if (result) {
         this.currentUser.rates.push(this.rating);
         localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-        this.userService.update(this.currentUser).subscribe();
-        const foundIndex = this.doctorsList.findIndex(x => x.id === visit.doctorId);
+        this.registerService.update(this.currentUser).subscribe();
+        const foundIndex = this.doctorsList.findIndex(x => x._id === visit.doctorId);
         this.doctorsList[foundIndex].rates.push(result);
-        //calculating the average rating
+        // calculating the average rating
         let sum = this.doctorsList[foundIndex].rates.reduce((a, b) => a + b);
         this.doctorsList[foundIndex].rating = Math.floor(sum / this.doctorsList[foundIndex].rates.length);
-        this.userService.update(this.doctorsList[foundIndex]).subscribe();
-      }
-      else {
-        console.log('cant rate')
+        this.registerService.update(this.doctorsList[foundIndex]).subscribe();
+      } else {
+        console.log('cant rate');
       }
       if (this.currentUser.rates.length > 0) {
         this.ratedDoctorsList = Object.keys(this.currentUser.rates.reduce((o, c) => Object.assign(o, c)));
         console.log(this.ratedDoctorsList);
-      };
+      }
     });
   }
 

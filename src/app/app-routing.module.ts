@@ -9,6 +9,7 @@ import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 import {VisitConductComponent} from "./visit-conduct/visit-conduct.component";
 import {DetailsComponent} from "./details/details.component";
 import {LandingPageComponent} from "./landing-page/landing-page.component";
+import {RegisterService} from "./shared/services";
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},

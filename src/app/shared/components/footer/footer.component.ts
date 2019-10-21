@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from "../../services/authentication.service";
-import {UserService} from "../../services/user.service";
+// import {UserService} from "../../services/user.service";
 import {User} from '../../../_models/user';
 import {Subscription} from 'rxjs';
+import {RegisterService} from "../../services";
 
 @Component({
   selector: 'app-footer',
@@ -15,9 +16,10 @@ export class FooterComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private userService: UserService
+    private registerService: RegisterService
+    // private userService: UserService
   ) {
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
   }

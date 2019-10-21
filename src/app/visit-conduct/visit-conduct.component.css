@@ -85,6 +85,10 @@ p {
   font-weight: bold;
 }
 
+#noPreviousVisits {
+  color: #1a44c2;
+}
+
 li {
   border: 1px solid #3c4b56;
   padding: 5px;

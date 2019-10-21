@@ -2,12 +2,13 @@ import {Component, EventEmitter, Input, OnInit, Output, Renderer2, ViewEncapsula
 import {AuthenticationService} from "../shared/services/authentication.service";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
-import {UserService} from "../shared/services/user.service";
+// import {UserService} from "../shared/services/user.service";
 import {first} from "rxjs/operators";
 import {XunkCalendarModule} from "xunk-calendar";
 import { ToolbarComponent } from "../shared/components/toolbar/toolbar.component";
 import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from "moment";
+import {RegisterService} from "../shared/services";
 
 @Component({
   selector: 'app-dashboard',
@@ -30,13 +31,14 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private userService: UserService,
+    // private userService: UserService,
     private renderer: Renderer2,
     private route: ActivatedRoute,
     private router: Router,
+    private registerService: RegisterService
     // public selDate = { date:1, month:1, year:1 }
   ) {
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
   }
@@ -48,14 +50,14 @@ export class DashboardComponent implements OnInit {
   }
 
   getPatients() {
-    this.userService.getAll().pipe(first()).subscribe(patients => {
+    this.registerService.getAll().pipe(first()).subscribe(patients => {
       this.patients = patients.filter(e => e.userType === 'Patient');
     });
     this.getPatientsCheck = true;
   }
 
   updateUser(user) {
-    this.userService.update(user).subscribe();
+    this.registerService.update(user).subscribe();
   }
 
 ngOnInit() {
@@ -63,15 +65,14 @@ ngOnInit() {
   this.renderer.removeClass(document.body, 'landing2');
 
   this.renderer.addClass(document.body, 'landing3');
-    this.selDate = XunkCalendarModule.getToday();
-    this.genHeatmap();
+  this.selDate = XunkCalendarModule.getToday();
+  this.genHeatmap();
   // this.heatmap = this.genHeatmap();
-  // this.getPatients();
+  this.getPatients();
 }
 
   genHeatmap(): any {
-    if(this.currentUser.visits.length > 0) {
-
+    if(this.currentUser.visits.filter(e => e.status !== 'pending').length > 0) {
     this.heatmap = this.currentUser.visits
       .filter(v => v.status !== 'pending')
       .map(visit => ({[moment(visit.date, 'DD.MM.YYYY').format('YYYYMMDD')]: 0.7}))
