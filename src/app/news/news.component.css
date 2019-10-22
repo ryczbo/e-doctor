@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  margin-top: 2em;
+  width: auto;
+  max-height: 500px;
+  margin-left: 10%;
+  margin-right: 10%;
+  justify-content: center;
+}
+
+.jumbotron {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider {
+  margin-top: 30px;
+}
+
+fa-icon:hover {
+  color: cyan;
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: cyan;
+}
+
+.image {
+  margin-left: 150px;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  padding-bottom: 50px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  max-height: 320px;
+}
+
+p {
+  color: white;
+  max-width: 500px;
+  min-width: 250px;
+  /*min-height: 300px;*/
+  font-size: 1.3vw;
+}
+
+.content {
+  opacity: 1;
+  animation: fade 1s linear;
+}
+
+@keyframes fade {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+.actionBtn {
+  border: 1px solid white;
+  background: #2156f3;
+  color: white;
+  font: 18px Raleway, sans-serif;
+  padding: 3px 8px;
+  width: 70px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.actionBtn:hover {
+  cursor: pointer;
+  color: #2156f3;
+  background: white;
+  border: 1px solid white;
+}

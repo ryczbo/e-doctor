@@ -23,7 +23,7 @@ import {
   faEllipsisV, faBell, faAngleDown,
   faEnvelope, faEye, faUserEdit,
   faHome, faAngleDoubleDown, faAngleRight, faAngleLeft,
-  faHourglassHalf, faTimes, faTimesCircle, faCalendarAlt, faSignOutAlt
+  faHourglassHalf, faTimes, faTimesCircle, faCalendarAlt, faSignOutAlt, faChevronLeft, faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 import { HomeComponent } from './_home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -36,6 +36,7 @@ import { VisitConductComponent } from './visit-conduct/visit-conduct.component';
 import { TextFieldModule } from "@angular/cdk/text-field";
 import { DetailsComponent } from './details/details.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { NewsComponent } from './news/news.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     EditProfileComponent,
     VisitConductComponent,
     DetailsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,7 @@ export class AppModule {
   constructor() {
     library.add(faEllipsisV, faCalendarAlt, faAngleDoubleDown, faAngleLeft, faAngleRight,
       faUserEdit, faBell, faEnvelope, faCheck, faCheckCircle, faHourglassHalf, faHome,
-      faTimes, faTimesCircle, faCommentMedical, faEye, faAngleDown, faSignOutAlt);
+      faTimes, faTimesCircle, faCommentMedical, faEye, faAngleDown, faSignOutAlt, faChevronLeft, faChevronRight);
 
   }
 }

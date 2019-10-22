@@ -5,6 +5,7 @@ import { User } from '../_models/user';
 // import { UserService } from "../shared/services/user.service";
 import { AuthenticationService } from "../shared/services/authentication.service";
 import { RegisterService } from "../shared/services";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -15,10 +16,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentUser: User;
   currentUserSubscription: Subscription;
   users: User[] = [];
+  showNews = true;
 
   constructor(
     private authenticationService: AuthenticationService,
-    // private userService: UserService,
+    private router: Router,
     private registerService: RegisterService
   ) {
     this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
@@ -27,6 +29,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    if (!this.currentUser) {
+      this.router.navigate(['']);
+    }
   }
 
   ngOnDestroy() {

@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../_models/user";
 import {Subscription} from "rxjs";
 import {MatDialogRef} from "@angular/material/dialog";
-import {AlertService} from "../shared/services";
+import {AlertService, RegisterService} from "../shared/services";
 
 @Component({
   selector: 'app-not-logged',
@@ -21,9 +21,10 @@ export class NotLoggedComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private dialogRef: MatDialogRef<NotLoggedComponent>
+    private dialogRef: MatDialogRef<NotLoggedComponent>,
+    private registerService: RegisterService
   ) {
-    this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
   }
@@ -53,7 +54,7 @@ export class NotLoggedComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    this.registerService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {
