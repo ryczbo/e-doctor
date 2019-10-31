@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SharedComponents } from './components';
-import { SharedServices } from './services';
+import { ViewsComponents } from './components';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ClickOutsideModule } from 'ng-click-outside';
 import { MaterialModule } from '../_material/material.module';
+import { XunkCalendarModule } from 'xunk-calendar';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -16,16 +17,18 @@ import { MaterialModule } from '../_material/material.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    ClickOutsideModule
+    XunkCalendarModule,
+    TextFieldModule,
+    SharedModule,
   ],
   exports: [
-    ...SharedComponents,
+    ...ViewsComponents
   ],
   declarations: [
-    ...SharedComponents
+    ...ViewsComponents
   ],
   providers: [
-    ...SharedServices
+
   ]
 })
-export class SharedModule { }
+export class ViewsModule { }

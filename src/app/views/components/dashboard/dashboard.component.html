@@ -1,0 +1,56 @@
+<div class="container" *ngIf="!pickedVisit">
+  <div class="content">
+    <div class="table">
+
+      <!--      left-->
+
+      <div id="dashboard">
+        <div>
+          <h1>My Visits</h1>
+        </div>
+        <div id="dashboardContent">
+          <xunk-calendar [heatmap]="heatmap" [selectedDate]="selDate" (click)="setVisitsToDisplay()"
+                         primaryColor="#1a44c2" heatMapColor="cyan" primaryForeground="white"></xunk-calendar>
+        </div>
+      </div>
+
+      <!--      right-->
+
+        <div id="rightSideContent">
+
+
+          <table class="tableBodyScroll">
+
+            <thead>
+            <tr>
+              <th><h3 class="tHead">Hour</h3></th>
+              <th><h3 class="tHead">Patient Name</h3></th>
+              <th><h3 class="tHead">Status</h3></th>
+              <th><h3 class="tHead">Action</h3></th>
+            </tr>
+            </thead>
+
+
+            <tbody *ngIf="visitsToDisplay?.length >= 1" id="style-11">
+            <tr *ngFor="let visit of visitsToDisplay" [ngClass]="{tableConfirmed : visit.status === 'confirmed',
+            tableDeclined : visit.status === 'declined'}">
+              <td><h4>{{visit.hour}}</h4></td>
+              <td><h4>{{visit.patientName}}</h4></td>
+              <td><h4 [matTooltip]="visit.status === 'declined' ? 'You declined a visit request, therefore you cannot make any changes' :
+                                    visit.status === 'confirmed' ? 'You can conduct a confirmed visit' :
+                                    visit.status === 'completed' ? 'This visit has been completed, but you still can make changes if necessary' : ''">{{visit.status}}</h4></td>
+              <td><h4><fa-icon icon="comment-medical" (click)="conductVisit(visit)" id="conductBtn" matTooltip="Conduct a visit"
+                               *ngIf="visit.status === 'confirmed' || visit.status === 'completed'"></fa-icon>
+                                <span *ngIf="visit.status === 'declined'">-</span></h4></td>
+            </tr>
+            </tbody>
+
+          </table>
+          <h3 *ngIf="visitsToDisplay?.length < 1" id="noVisits">There are no visits on this date!</h3>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+<app-visit-conduct *ngIf="pickedVisit" [visit]="visit"></app-visit-conduct>

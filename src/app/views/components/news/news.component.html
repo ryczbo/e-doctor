@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="column">
+    <div class="jumbotron">
+      <h1>What's new?</h1>
+      <div class="slider">
+        <fa-icon icon="chevron-left" (click)="previous()"></fa-icon>
+        {{imgCounter}}/3
+        <fa-icon icon="chevron-right" (click)="next()"></fa-icon>
+      </div>
+    </div>
+
+    <div class="content" *ngIf="imgCounter === 1">
+      <h2>It's flu season!</h2>
+      <div class="row">
+        <p>
+          If you've ever had the flu, you know just how bad the symptoms can be.
+          From a sore throat, cough, aches, chills and a high fever - it's not fun and can lead to more serious issues.
+          Getting a flu shot is one way to protect yourself, and you can also prevent exposure by avoiding areas
+          with outbreaks by keeping track of flu activity in areas that you live or will visit.
+          There are several reasons you may want to keep track of flu activity, primarily that you'll know when it's
+          active in your area.
+          If this is the case, you'll want to be sure you're vaccinated to prevent the chance of getting sick.
+        </p>
+        <div class="image">
+          <img
+            src="https://img.pngio.com/huntsville-achievement-school-tips-for-cold-and-flu-season-cold-flu-png-2480_2480.png"
+            alt="Huntsville Achievement School Tips for cold and flu season ...">
+        </div>
+      </div>
+    </div>
+
+    <div class="content" *ngIf="imgCounter === 2">
+      <h2>A new era for migraine treatment</h2>
+      <div class="row">
+        <p>
+          Migraine is a common medical condition, it is considered a systemic illness, not just a headache.
+          Researchers have been working for decades to develop a “targeted” preventive therapy
+          specifically for migraine, and now we are finally close to having an exciting new treatment.
+          Calcitonin gene-related peptide (CGRP) is a molecule that is synthesized in neurons.
+          It has been implicated in different pain processes, including migraine. These new migraine medications
+          are injected under the skin monthly, and have thus far demonstrated a statistically significant decrease in days of migraine.
+        </p>
+        <div class="image">
+          <img src="https://img.pngio.com/medicine-pills-background-png-image-png-all-png-of-medicine-2000_2000.png"
+               alt="Medicine Pills Background PNG Image | PNG All">
+        </div>
+      </div>
+    </div>
+
+    <div class="content" *ngIf="imgCounter === 3">
+      <h2>Health cover for temporary stays in another countries</h2>
+      <div class="row">
+        <p>
+          As an EU citizen, if you unexpectedly fall ill during a temporary stay in another EU
+          country(In this case, the 28 EU member states + Iceland, Liechtenstein, Norway and Switzerland) -
+          whether on holiday, a business trip or studying abroad - you are entitled to any medical treatment
+          that can't wait until you get home. You have the same rights to health care as people insured in the country you are in.
+          You should always take your European Health Insurance Card (EHIC) with you on all trips abroad.
+          This card is the proof that you are insured in an EU country.
+        </p>
+        <div class="image">
+          <img src="https://www.pinclipart.com/picdir/big/17-171149_travel-insurance-clipart-health-service-traveler-cartoon-png.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="actionBtn" routerLink="/request">Skip</div>
+
+
+  </div>
+</div>

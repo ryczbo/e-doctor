@@ -2,14 +2,14 @@
   <div class="title" [ngClass]="{altTitle : currentUser?.userType === 'Doctor'}">
     <a class='homeBtn' routerLink="/home" (click)="reload()"><h3
       [ngClass]="{homeIcon : !currentUser || currentUser?.userType === 'Patient', altHomeIcon : currentUser?.userType === 'Doctor'}">
-      ePatient</h3></a>
+      eDoctor</h3></a>
     <div class="profile" [ngClass]="{altProfile : currentUser?.userType === 'Patient'}" (click)="editDrop = !editDrop">
       <img class=avatar *ngIf="currentUser?.profilePic" [src]="imgPath" alt=""
            [ngClass]="{altAvatar : currentUser?.userType === 'Doctor'}">
       <img class=avatar *ngIf="currentUser && !currentUser.profilePic"
-           src="https://forums.roku.com/styles/canvas/theme/images/no_avatar.jpg" alt=""
+           src="http://fit.ie/fitnew/wp-content/uploads/2014/11/no-profile-image.jpg" alt=""
            [ngClass]="{altAvatar : currentUser?.userType === 'Doctor'}">
-      <h4 *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</h4>
+      <h4 *ngIf="currentUser">{{currentUser.firstName}}</h4>
       <fa-icon icon="angle-down" *ngIf="currentUser"></fa-icon>
     </div>
 

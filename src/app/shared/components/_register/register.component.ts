@@ -1,19 +1,19 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {first} from 'rxjs/operators';
-import {AlertService, AuthenticationService, RegisterService } from '../../services';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { AlertService, UserService } from '../../services';
+import { AppRouterLinks } from '../../../app-routing.config';
 
 @Component({
   selector: 'app-register',
   templateUrl: 'register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
-  logged = false;
   showAlert = false;
   userType = [{val: 'Doctor'}, {val: 'Patient'}];
   pickedUserType: string;
@@ -24,20 +24,14 @@ export class RegisterComponent implements OnInit {
     'Psychiatrist',
     'Neurologist',
     'Dermatologist'
-  ]
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService,
-    // private userService: UserService,
     private alertService: AlertService,
-    private registerService: RegisterService
+    private userService: UserService
   ) {
-    // redirect to home if already logged in
-    // if (this.authenticationService.currentUserValue) {
-    //   this.router.navigate(['/']);
-    // }
   }
 
   ngOnInit() {
@@ -80,13 +74,13 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.registerService.register(this.registerForm.value)
+    this.userService.register(this.registerForm.value)
       .pipe(first())
       .subscribe(
         data => {
           this.showAlert = true;
           this.alertService.success('Registration successful', true);
-          setTimeout(() => this.router.navigate(['/login']), 2000);
+          setTimeout(() => this.router.navigate([`${AppRouterLinks.LOGIN}`]), 2000);
         },
         error => {
           this.showAlert = true;

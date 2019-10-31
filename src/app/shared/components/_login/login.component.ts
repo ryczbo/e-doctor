@@ -1,21 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Renderer2 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AlertService } from "../../services";
-import { AuthenticationService } from "../../services";
-import { RegisterService } from "../../services";
+import { AlertService, UserService } from '../../services';
+import { AppRouterLinks } from '../../../app-routing.config';
 
 @Component({
   selector: 'app-login',
   templateUrl: 'login.component.html',
-  styleUrls: ['./login.component.css']})
+  styleUrls: ['./login.component.scss']
+})
+
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
-  returnUrl: string;
   lastLogged;
   hide = false;
 
@@ -23,16 +22,10 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService,
     private alertService: AlertService,
-    // private userService: UserService,
     private renderer: Renderer2,
-    private registerService: RegisterService
+    private userService: UserService
   ) {
-    // redirect to home if already logged in
-    // if (this.authenticationService.currentUserValue) {
-    //   this.router.navigate(['/']);
-    // }
   }
 
   ngOnInit() {
@@ -40,44 +33,38 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-    // get return url from route parameters or default to '/'
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
     this.loading = true;
-    this.registerService.login(this.f.username.value, this.f.password.value)
+    this.userService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
-        data => { { if (data.userType === 'Patient') {
-          this.router.navigate(['/news']);
-        } else {
-        this.router.navigate(['/home']);
-        }
-        }
-          // this.lastLogged = new Date().toLocaleString('pl-PL');
-          // this.authenticationService.user.lastLogged.push(this.lastLogged);
-          // localStorage.setItem('currentUser', JSON.stringify(this.authenticationService.user));
-          // this.userService.update(this.authenticationService.user).subscribe();
-
+        data => {
+          {
+            if (data.userType === 'Patient') {
+              this.router.navigate([`${AppRouterLinks.NEWS}`]);
+            } else {
+              this.router.navigate([`${AppRouterLinks.HOME}`]);
+            }
+          }
         },
         error => {
           this.alertService.error(error.error);
           this.hide = true;
           this.loading = false;
         });
-
   }
 }
 

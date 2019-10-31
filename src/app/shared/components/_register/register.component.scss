@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.title {
+  height: 50px;
+  margin-bottom: 25px;
+}
+
+.formBothColumns {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+h2 {
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  align-content: space-around;
+}
+
+mat-form-field {
+  color: cyan;
+
+}
+
+mat-form-field * {
+  color: white;
+}
+
+mat-select {
+  padding: 2px 0;
+  font-size: x-large;
+}
+
+input {
+  font-size: x-large;
+  padding: 2px 0;
+}
+
+.formButtonsWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.formButtons {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+}
+
+.actionBtn {
+  border: 1px solid white;
+  background: #2156f3;
+  color: white;
+  font: 18px Raleway, sans-serif;
+  padding: 5px 10px;
+}
+
+.actionBtn:hover {
+  cursor: pointer;
+  color: #2156f3;
+  background: white;
+}
+
+.underForm {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  margin-right: 0;
+}
+
+h4 {
+  margin: 0;
+  color: white;
+  font-weight: lighter;
+}
+
+a {
+  color: #2156f3;
+}
+
+.invalid-feedback {
+  margin-top: -18px;
+}
+
+#secCol {
+  margin-top: -2px;
+}
+
+#secColDet {
+  margin-top: -1px;
+}
+
+#secColDet * {
+  width: 300px;
+}

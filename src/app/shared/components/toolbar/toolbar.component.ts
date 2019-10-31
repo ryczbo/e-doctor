@@ -1,17 +1,16 @@
-import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import { AuthenticationService } from "../../services/authentication.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { User } from '../../../_models/user';
-// import { UserService } from "../../services/user.service";
-import { Router } from "@angular/router";
-import { DomSanitizer } from "@angular/platform-browser";
-import { RegisterService } from "../../services";
+import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from '../../services';
+import { AppRouterUrls } from '../../../app-routing.config';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
   currentUser: User;
@@ -22,7 +21,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   imgPath;
   notifications;
   patientsList;
-  doctorsPatientsList;
   inbox = 0;
   visits = [];
   isMobile = false;
@@ -30,11 +28,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,
-    private authenticationService: AuthenticationService,
-    // private userService: UserService,
-    private registerService: RegisterService
+    private userService: UserService
   ) {
-    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
       this.currentUser = user;
       if (this.currentUser) {
         this.imgPath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
@@ -43,17 +39,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       }});
   }
 
-  logout() {
-    this.registerService.logout();
-    this.reload();
-  }
-
-  reload() {
-    window.location.replace('/home');
-  }
-
   ngOnInit() {
     this.fetchPatients();
+    // if mobile, set the variable to hide the logout button in the dropdown
     if (window.screen.width < 450) {
       this.isMobile = true;
     }
@@ -64,31 +52,26 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.currentUserSubscription.unsubscribe();
   }
 
+  logout() {
+    this.userService.logout();
+    this.reload();
+  }
+
+  reload() {
+    window.location.replace(AppRouterUrls.HOME);
+  }
+
   fetchPatients() {
-    this.registerService.getAll().pipe(first()).subscribe(patients => {
+    this.userService.getAll().pipe(first()).subscribe(patients => {
       this.patientsList = patients.filter(e => e.userType === 'Patient');
     });
   }
 
-  // filterVisits() {
-  //   let name = this.currentUser.firstName + ' ' + this.currentUser.lastName;
-  //     for (let i = 0; i < this.allPatientsList.length; i++){
-  //       for (let j = 0; j < this.allPatientsList[i].visits.length; j++) {
-  //         if (this.allPatientsList[i].visits[j].userName === name) {
-  //           this.visits.push(this.allPatientsList[i].visits[j]);
-  //         }
-  //       }
-  //     }
-  //   }
-
-    // console.log(this.visits);
-
   readNotifications() {
     this.currentUser.visits.forEach(e => e.read = true);
-    this.registerService.update(this.currentUser).subscribe();
+    this.userService.update(this.currentUser).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
-
 
   // function to prevent display of "pending" visits in notifications div
   patientNotifications() {
@@ -97,23 +80,22 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   confirm(visit) {
     this.currentUser.visits.find(x => x.id === visit.id).status = 'confirmed';
-    this.registerService.update(this.currentUser).subscribe();
+    this.userService.update(this.currentUser).subscribe();
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'confirmed';
     patient.visits.find(x => x.id === visit.id).read = false;
-    this.registerService.update(patient).subscribe();
+    this.userService.update(patient).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 
   decline(visit) {
     this.currentUser.visits.find(x => x.id === visit.id).status = 'declined';
-    this.registerService.update(this.currentUser).subscribe();
+    this.userService.update(this.currentUser).subscribe();
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'declined';
     patient.visits.find(x => x.id === visit.id).read = false;
-    this.registerService.update(patient).subscribe();
+    this.userService.update(patient).subscribe();
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
-
 }
 

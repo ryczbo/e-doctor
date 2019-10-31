@@ -1,31 +1,29 @@
-import {Component, Renderer2} from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import 'hammerjs';
-import {AuthenticationService} from "./shared/services/authentication.service";
-import {Subscription} from "rxjs";
-import {User} from "./_models/user";
-import {ActivatedRoute} from "@angular/router";
-import {RegisterService} from "./shared/services";
+import { Subscription } from 'rxjs';
+import { User } from './_models/user';
+import { UserService } from './shared/services';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'e-doctor';
-
   currentUser: User;
   currentUserSubscription: Subscription;
   users: User[] = [];
 
   constructor(
-    private registerService: RegisterService,
-    private renderer: Renderer2,
-    private activatedRoute: ActivatedRoute
+    private userService: UserService,
+    private renderer: Renderer2
   ) {
     this.renderer.addClass(document.body, 'landing2');
-    this.currentUserSubscription = this.registerService.currentUser.subscribe(user => {
+    this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
   }
+
+
 }

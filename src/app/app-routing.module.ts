@@ -1,28 +1,21 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {LoginComponent} from "./shared/components/_login/login.component";
-import {RegisterComponent} from "./shared/components/_register/register.component";
-import {AuthGuard} from "./_guards/auth.guard";
-import {AppComponent} from "./app.component";
-import {HomeComponent} from "./_home/home.component";
-import {EditProfileComponent} from "./edit-profile/edit-profile.component";
-import {VisitConductComponent} from "./visit-conduct/visit-conduct.component";
-import {DetailsComponent} from "./details/details.component";
-import {LandingPageComponent} from "./landing-page/landing-page.component";
-import {RegisterService} from "./shared/services";
-import {MainPickerComponent} from "./main-picker/main-picker.component";
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import {NewsComponent} from "./news/news.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AppRoutes } from './app-routing.config';
+import { LoginComponent, RegisterComponent } from './shared/components';
+import { HomeComponent } from './views/components';
+import { EditProfileComponent } from './views/components';
+import { LandingPageComponent } from './views/components';
+import { MainPickerComponent } from './views/components';
+import { NewsComponent } from './views/components';
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'news', component: NewsComponent},
-  {path: 'request', component: MainPickerComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'edit', component: EditProfileComponent},
-  {path: 'visit', component: VisitConductComponent}
+  {path: AppRoutes.DEFAULT, component: LandingPageComponent},
+  {path: AppRoutes.HOME, component: HomeComponent},
+  {path: AppRoutes.NEWS, component: NewsComponent},
+  {path: AppRoutes.REQUEST, component: MainPickerComponent},
+  {path: AppRoutes.LOGIN, component: LoginComponent},
+  {path: AppRoutes.REGISTER, component: RegisterComponent},
+  {path: AppRoutes.EDIT, component: EditProfileComponent}
 ];
 
 

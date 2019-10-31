@@ -1,0 +1,141 @@
+<div class="container">
+
+  <alert></alert>
+
+  <div class="wrapper">
+
+
+    <div class="threeColumns">
+
+      <div id="leftSide">
+        <h2>Patient Card</h2>
+        <div class="patientCard">
+          <div id="patientInfo">
+            <div class="head">
+              <div class="title">
+                <img class=avatar *ngIf="!patient?.profilePic"
+                     src="http://fit.ie/fitnew/wp-content/uploads/2014/11/no-profile-image.jpg" alt="">
+                <img class=avatar *ngIf="patient?.profilePic" [src]="imgPath" alt="">
+                <h4>{{patient?.firstName}} {{patient?.lastName}}</h4>
+              </div>
+              <h4>Age: 32</h4>
+            </div>
+
+            <div class="history">
+              <h4>Medical history:</h4>
+              <ul class="previousVisits" id="style-11" *ngIf="previousVisits">
+                <li *ngFor="let visit of previousVisits; let show = false" (click)="show = !show">
+                  <div class="visitHead">
+                    <p class="visitDate">
+                      {{visit.date}}
+                    </p>
+                    <a class="detailsBtn">
+                      <fa-icon icon="angle-double-down" *ngIf="!show"></fa-icon>
+                    </a>
+                  </div>
+                  <div class="visitDetails" *ngIf="show">
+                    <h5>Basic parameters: </h5>
+                    <h4 class="details">
+                      Weight: {{visit.exam.weight}}
+                    </h4>
+                    <h4 class="details">
+                      Blood pressure: {{visit.exam.bloodPressure}}
+                    </h4>
+                    <h5>Diagnosis: </h5>
+                    <h4 class="details">{{visit.exam.diagnosis}}</h4>
+                    <h5>Prescription: </h5>
+                    <h4 class="details">{{visit.exam.prescription}}</h4>
+                  </div>
+                </li>
+              </ul>
+              <p *ngIf="!previousVisits" id="noPreviousVisits">
+                No previous visits!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="rightSide">
+        <h2>Exam</h2>
+        <form [formGroup]="conductVisitForm" (ngSubmit)="submit()">
+          <div class="formColumn">
+
+            <div id="basicNumbers">
+              <mat-form-field class="basicNumbers" appearance="legacy" floatLabel="always">
+                <mat-label>Weight (kg)</mat-label>
+                <input matInput type="number" formControlName="weight" class="form-control"
+                       placeholder="{{visit.exam?.weight}}"
+                       [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                </div>
+              </mat-form-field>
+
+              <mat-form-field class="basicNumbers" floatLabel="always">
+                <mat-label>Heart Rate (bpm)</mat-label>
+                <input matInput type="number" formControlName="heartRate" class="form-control"
+                       placeholder="{{visit.exam?.heartRate}}"
+                       [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+              </mat-form-field>
+
+            </div>
+
+            <mat-form-field floatLabel="always" id="bloodPressure">
+              <mat-label>Blood pressure (mmHg)</mat-label>
+              <input matInput type="number" formControlName="bloodPressure" class="form-control"
+                     placeholder="{{visit.exam?.bloodPressure}}"/>
+            </mat-form-field>
+
+            <mat-form-field appearance="none">
+              <label for="medHistory">Interview</label>
+              <textarea matInput formControlName="medHistory" id="medHistory" class="form-control" cdkTextareaAutosize
+                        placeholder="{{visit.exam?.medHistory}}"
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="6"
+                        cdkAutosizeMaxRows="6"
+                        rows="7"></textarea>
+            </mat-form-field>
+          </div>
+
+
+          <div class="formColumn" id="secCol">
+
+            <mat-form-field floatLabel="always">
+              <mat-label>Diagnosis (ICD-10)</mat-label>
+              <input matInput type="text" formControlName="diagnosis" class="form-control"
+                     placeholder="{{visit.exam?.diagnosis}}"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="none">
+              <label for="prescription">Prescription</label>
+              <textarea matInput formControlName="prescription" class="form-control" cdkTextareaAutosize
+                        placeholder="{{visit.exam?.prescription}}"
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="3"
+                        cdkAutosizeMaxRows="3"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="none">
+              <label for="advices">Advices</label>
+              <textarea matInput formControlName="advices" class="form-control" cdkTextareaAutosize
+                        placeholder="{{visit.exam?.advices}}"
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="4"
+                        cdkAutosizeMaxRows="4"
+                        rows="5"></textarea>
+            </mat-form-field>
+          </div>
+
+          <div class="formButtonsWrapper">
+            <button class="actionBtn" type="submit" *ngIf="!visitSaved">Save and exit</button>
+            <p *ngIf="visitSaved">Changes saved!</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

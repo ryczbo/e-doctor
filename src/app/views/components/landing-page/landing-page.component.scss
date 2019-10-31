@@ -1,0 +1,79 @@
+@import './src/styles/_variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  /*align-items: center;*/
+  /*align-content: center;*/
+  margin-top: 2em;
+  width: auto;
+}
+
+.jumbotron {
+  color: white;
+  margin-left: 10%;
+  width: 70%;
+  margin-bottom: 20px;
+  text-shadow: $shadow;
+}
+
+@media(max-width: 550px) {
+  .container {
+    margin-top: 0;
+  }
+  .jumbotron {
+    margin-bottom: 0;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-between;*/
+  width: 70%;
+  /*height: 200px;*/
+  margin-left: 10%;
+  /*margin-top: 2%;*/
+  /*margin-bottom: 10%;*/
+  flex-wrap: wrap;
+}
+
+.content * {
+  color: white;
+}
+
+.actionBtn {
+  border: 1px solid white;
+  background: #2156f3;
+  color: white;
+  font: 18px Raleway, sans-serif;
+  padding: 3px 8px;
+  width: 130px;
+  margin-bottom: 10px;
+}
+
+.actionBtn:hover {
+  cursor: pointer;
+  color: #2156f3;
+  background: white;
+  border: 1px solid white;
+}
+
+#patient {
+  max-width: 350px;
+  min-height: 100%;
+}
+
+#doctor {
+  max-width: 350px;
+  min-height: 100%;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+#line {
+  border-left: 1px solid white;
+  margin-top: 19.92px;
+}
