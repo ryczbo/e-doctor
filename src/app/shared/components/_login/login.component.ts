@@ -53,9 +53,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           {
-            if (data.userType === 'Patient') {
-              this.router.navigate([`${AppRouterLinks.NEWS}`]);
-            } else {
+            if (data) {
               this.router.navigate([`${AppRouterLinks.HOME}`]);
             }
           }

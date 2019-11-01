@@ -11,6 +11,7 @@ import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepi
 import * as moment from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../../shared/services';
+import {AppRouterLinks} from "../../../app-routing.config";
 
 @Component({
   selector: 'app-main-picker',
@@ -62,9 +63,11 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.renderer.addClass(document.body, 'landing1');
     this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
       this.currentUser = user;
-      if (this.currentUser) {
+      if (this.currentUser && this.currentUser.userType === 'Patient') {
         this.imgPath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
           + this.currentUser.profilePic);
+      } else if (this.currentUser && this.currentUser.userType === 'Doctor') {
+        this.router.navigate([`${AppRouterLinks.HOME}`]);
       }
     });
   }

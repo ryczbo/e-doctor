@@ -1,4 +1,9 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { UserService } from '../../../shared/services';
+import {User} from "../../../_models/user";
+import {Subscription} from "rxjs";
+import { Router } from '@angular/router';
+import {AppRouterLinks} from "../../../app-routing.config";
 
 @Component({
   selector: 'app-landing-page',
@@ -8,10 +13,20 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 export class LandingPageComponent implements OnInit {
 
   landingType = 'landing2';
+  currentUser: User;
+  currentUserSubscription: Subscription;
 
   constructor(
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private userService: UserService,
+    private router: Router
   ) {
+    this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
+    if (this.currentUser) {
+      this.router.navigate(AppRouterLinks.HOME);
+    }
   }
 
   ngOnInit() {

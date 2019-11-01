@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../shared/services';
 import { User } from '../../../_models/user';
 import { Subscription } from 'rxjs';
+import { Router } from "@angular/router";
+import {AppRouterLinks} from "../../../app-routing.config";
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,10 +18,14 @@ export class EditProfileComponent implements OnInit {
   profilePicB64;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
   this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
     this.currentUser = user;
+    if (!this.currentUser) {
+      this.router.navigate([`${AppRouterLinks.DEFAULT}`]);
+    }
     });
   }
 

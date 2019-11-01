@@ -185,7 +185,8 @@ textarea {
   border: 1px solid #3c4b56;
   resize: none;
   font-size: large;
-  padding: 5px;
+  //padding: 5px;
+  max-width: 278px;
 }
 
 textarea.mat-input-element {

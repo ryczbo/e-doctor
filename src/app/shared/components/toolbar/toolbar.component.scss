@@ -166,7 +166,7 @@ p {
 
 .altProfile:hover {
   cursor: pointer;
-  background: #00AAFF;
+  background: $secondary-color;
 }
 
 .dropdownCnt {
@@ -197,7 +197,7 @@ p {
 }
 
 .dropdownContent a:hover {
-  background-color: #00CCFF;
+  background-color: $secondary-color;
 }
 
 .homeBtn {
@@ -244,7 +244,7 @@ p {
 
 .logOutBtn:hover {
   cursor: pointer;
-  background-color: #00AAFF;
+  background-color: $secondary-color;
 }
 
 .altToolbarButtons:hover {

@@ -6,6 +6,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MainPickerComponent } from './main-picker/main-picker.component';
 import { NewsComponent } from './news/news.component';
 import { VisitConductComponent } from './visit-conduct/visit-conduct.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const ViewsComponents = [
   HomeComponent,
@@ -15,7 +16,8 @@ export const ViewsComponents = [
   LandingPageComponent,
   MainPickerComponent,
   NewsComponent,
-  VisitConductComponent
+  VisitConductComponent,
+  NotFoundComponent
 ];
 
 export {
@@ -26,5 +28,6 @@ export {
   LandingPageComponent,
   MainPickerComponent,
   NewsComponent,
-  VisitConductComponent
+  VisitConductComponent,
+  NotFoundComponent
 };

@@ -3,9 +3,9 @@ export const AppRoutes = {
   HOME: 'home',
   REGISTER: 'register',
   LOGIN: 'login',
-  NEWS: 'news',
   REQUEST: 'request',
-  EDIT: 'edit'
+  EDIT: 'edit',
+  404: '**'
 };
 
 export const AppRouterLinks = {
@@ -13,9 +13,9 @@ export const AppRouterLinks = {
   HOME: [AppRoutes.HOME],
   REGISTER: [AppRoutes.REGISTER],
   LOGIN: [AppRoutes.LOGIN],
-  NEWS: [AppRoutes.NEWS],
   REQUEST: [AppRoutes.REQUEST],
-  EDIT: [AppRoutes.EDIT]
+  EDIT: [AppRoutes.EDIT],
+  404: [AppRoutes['404']]
 };
 
 export const AppRouterUrls = {
@@ -23,7 +23,7 @@ export const AppRouterUrls = {
   HOME: `/${AppRoutes.HOME}`,
   REGISTER: `/${AppRoutes.REGISTER}`,
   LOGIN: `/${AppRoutes.LOGIN}`,
-  NEWS: `/${AppRoutes.NEWS}`,
   REQUEST: `/${AppRoutes.REQUEST}`,
-  EDIT: `/${AppRoutes.EDIT}`
+  EDIT: `/${AppRoutes.EDIT}`,
+  404: `/${AppRoutes['404']}`
 };

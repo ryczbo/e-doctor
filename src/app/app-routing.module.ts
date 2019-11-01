@@ -6,16 +6,16 @@ import { HomeComponent } from './views/components';
 import { EditProfileComponent } from './views/components';
 import { LandingPageComponent } from './views/components';
 import { MainPickerComponent } from './views/components';
-import { NewsComponent } from './views/components';
+import { NotFoundComponent } from './views/components';
 
 const routes: Routes = [
   {path: AppRoutes.DEFAULT, component: LandingPageComponent},
   {path: AppRoutes.HOME, component: HomeComponent},
-  {path: AppRoutes.NEWS, component: NewsComponent},
   {path: AppRoutes.REQUEST, component: MainPickerComponent},
   {path: AppRoutes.LOGIN, component: LoginComponent},
   {path: AppRoutes.REGISTER, component: RegisterComponent},
-  {path: AppRoutes.EDIT, component: EditProfileComponent}
+  {path: AppRoutes.EDIT, component: EditProfileComponent},
+  {path: AppRoutes['404'], component: NotFoundComponent}
 ];
 
 
