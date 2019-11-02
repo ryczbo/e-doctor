@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, UserService } from '../../services';
 import { AppRouterLinks } from '../../../app-routing.config';
+import {User} from "../../../_models/user";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
-  lastLogged;
+  currentUser: User;
+  currentUserSubscription: Subscription;
   hide = false;
 
   constructor(
@@ -26,6 +29,12 @@ export class LoginComponent implements OnInit {
     private renderer: Renderer2,
     private userService: UserService
   ) {
+    this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      if (this.currentUser) {
+        this.router.navigate([`${AppRouterLinks.HOME}`]);
+      }
+    });
   }
 
   ngOnInit() {

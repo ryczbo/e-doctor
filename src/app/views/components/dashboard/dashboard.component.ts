@@ -48,6 +48,7 @@ export class DashboardComponent implements OnInit {
 
   conductVisit(visit) {
     this.visit = visit;
+    console.log(this.visit);
     this.pickedVisit = true;
   }
 

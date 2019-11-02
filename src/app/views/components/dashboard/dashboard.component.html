@@ -1,6 +1,6 @@
 <div class="container" *ngIf="!pickedVisit">
   <div class="content">
-    <div class="table">
+    <div class="twoColumns">
 
       <!--      left-->
 
@@ -16,40 +16,38 @@
 
       <!--      right-->
 
-        <div id="rightSideContent">
-
-
-          <table class="tableBodyScroll">
-
-            <thead>
-            <tr>
-              <th><h3 class="tHead">Hour</h3></th>
-              <th><h3 class="tHead">Patient Name</h3></th>
-              <th><h3 class="tHead">Status</h3></th>
-              <th><h3 class="tHead">Action</h3></th>
-            </tr>
-            </thead>
-
-
-            <tbody *ngIf="visitsToDisplay?.length >= 1" id="style-11">
-            <tr *ngFor="let visit of visitsToDisplay" [ngClass]="{tableConfirmed : visit.status === 'confirmed',
-            tableDeclined : visit.status === 'declined'}">
-              <td><h4>{{visit.hour}}</h4></td>
-              <td><h4>{{visit.patientName}}</h4></td>
-              <td><h4 [matTooltip]="visit.status === 'declined' ? 'You declined a visit request, therefore you cannot make any changes' :
-                                    visit.status === 'confirmed' ? 'You can conduct a confirmed visit' :
-                                    visit.status === 'completed' ? 'This visit has been completed, but you still can make changes if necessary' : ''">{{visit.status}}</h4></td>
-              <td><h4><fa-icon icon="comment-medical" (click)="conductVisit(visit)" id="conductBtn" matTooltip="Conduct a visit"
-                               *ngIf="visit.status === 'confirmed' || visit.status === 'completed'"></fa-icon>
-                                <span *ngIf="visit.status === 'declined'">-</span></h4></td>
-            </tr>
-            </tbody>
-
-          </table>
+      <div id="rightSideContent">
+        <div class="table tableDiv">
+          <div class="flex-table header tableDiv" role="rowgroup">
+            <div class="flex-row first tableDiv" role="columnheader"><h3 class="tHead">Hour</h3></div>
+            <div class="flex-row tableDiv" role="columnheader"><h3 class="tHead">Patient Name</h3></div>
+            <div class="flex-row tableDiv" role="columnheader"><h3 class="tHead">Status</h3></div>
+            <div class="flex-row tableDiv" role="columnheader"><h3 class="tHead">Action</h3></div>
+          </div>
+          <div class="tBody" id="style-11">
+            <div class="flex-table row tableDiv" *ngFor="let visit of visitsToDisplay"
+                 [ngClass]="{tableConfirmed : visit.status === 'confirmed', tableDeclined : visit.status === 'declined'}">
+              <div class="flex-row first tableDiv"><h4>{{visit.hour}}</h4></div>
+              <div class="flex-row tableDiv"><h4>{{visit.patientName}}</h4></div>
+              <div class="flex-row tableDiv">
+                <h4 [matTooltip]="visit.status === 'declined' ? 'You declined a visit request, therefore you cannot make any changes' :
+                                visit.status === 'confirmed' ? 'You can conduct a confirmed visit' :
+                                visit.status === 'completed' ? 'This visit has been completed, but you still can make changes if necessary' : ''">{{visit.status}}</h4>
+              </div>
+              <div class="flex-row tableDiv">
+                <h4>
+                  <fa-icon icon="comment-medical" (click)="conductVisit(visit)" id="conductBtn"
+                           matTooltip="Conduct a visit"
+                           *ngIf="visit.status === 'confirmed' || visit.status === 'completed'"></fa-icon>
+                  <span *ngIf="visit.status === 'declined'">-</span>
+                </h4>
+              </div>
+            </div>
+          </div>
           <h3 *ngIf="visitsToDisplay?.length < 1" id="noVisits">There are no visits on this date!</h3>
         </div>
 
-
+      </div>
     </div>
   </div>
 </div>
