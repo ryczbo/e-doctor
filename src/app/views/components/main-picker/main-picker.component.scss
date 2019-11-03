@@ -81,7 +81,7 @@ li {
   min-width: 36px;
   min-height: 36px;
   padding: 8px;
-  background: #2156f3;
+  background: $primary-color;
   border: 2px solid white;
   color: white;
   text-align: center;
@@ -91,8 +91,8 @@ li {
 
 .currentStep {
   background: white;
-  color: #2156f3;
-  border: 2px solid #2156f3;
+  color: $primary-color;
+  border: 2px solid $primary-color;
 }
 
 .currentStepLabel {
@@ -149,7 +149,7 @@ mat-form-field * {
 
 .actionBtn {
   border: 1px solid white;
-  background: #2156f3;
+  background: $primary-color;
   color: white;
   font: 18px Raleway, sans-serif;
   padding: 3px 8px;
@@ -159,7 +159,7 @@ mat-form-field * {
 
 .actionBtn:hover {
   cursor: pointer;
-  color: #2156f3;
+  color: $primary-color;
   background: white;
   border: 1px solid white;
 }
@@ -187,12 +187,12 @@ mat-form-field * {
 
 .card:focus {
   background-color: cyan;
-  color: #2156f3;
+  color: $primary-color;
   cursor: pointer;
 }
 
 .card:focus h3 {
-  color: #2156f3;
+  color: $primary-color;
 }
 
 .card:focus h5 {

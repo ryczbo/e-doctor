@@ -1,5 +1,4 @@
-<!--<div class="wrapper">-->
-  <div class="container" id="style-11" *ngIf="currentUser" [@slideSdbr]=currentState>
+ <div class="container" id="style-11" *ngIf="currentUser" [@slideSdbr]=currentState>
     <div class="flip">
     <div *ngIf="currentState === 'final'">
 
@@ -26,9 +25,6 @@
                 <fa-icon icon="times-circle" id="declinedIcon" *ngIf="visit.status === 'declined'"></fa-icon>
                 {{visit.date}}
               </p>
-              <a class="detailsBtn">
-                <!--            <fa-icon icon="angle-double-down" *ngIf="!show"></fa-icon>-->
-              </a>
             </div>
             <div class="visitDetails" *ngIf="show">
               <div class="visitDetailsLeft">
@@ -36,7 +32,6 @@
                 <p>{{visit.doctorName}}</p>
               </div>
               <div class="visitDetailsRight">
-
                 <h5 class="detRightLabel" *ngIf="visit.status === 'confirmed'">Confirmed</h5>
                 <h5 class="detRightLabel" *ngIf="visit.status === 'declined'">Declined</h5>
                 <h5 class="detRightLabel" *ngIf="visit.status === 'pending'">...pending</h5>
@@ -58,9 +53,6 @@
               <p class="visitDate">
                 {{visit.date}}
               </p>
-              <a class="detailsBtn">
-                <!--            <fa-icon icon="angle-double-down" *ngIf="!show"></fa-icon>-->
-              </a>
             </div>
             <div class="visitDetails" *ngIf="show || det">
               <div class="visitDetailsLeft">
@@ -79,7 +71,6 @@
     </div>
   </div>
   </div>
-<!--</div>-->
 
   <div class="showSdbr" *ngIf="currentUser" [@slideArrow]=currentState (click)="showSdbr()">
     <div class="arrow" *ngIf="currentState == 'initial'">

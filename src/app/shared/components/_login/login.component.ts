@@ -1,11 +1,11 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, UserService } from '../../services';
 import { AppRouterLinks } from '../../../app-routing.config';
-import {User} from "../../../_models/user";
-import {Subscription} from "rxjs";
+import { User } from '../../../_models/user';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
     private alertService: AlertService,
     private renderer: Renderer2,

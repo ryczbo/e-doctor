@@ -11,7 +11,7 @@ import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepi
 import * as moment from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../../shared/services';
-import {AppRouterLinks} from "../../../app-routing.config";
+import { AppRouterLinks } from '../../../app-routing.config';
 
 @Component({
   selector: 'app-main-picker',

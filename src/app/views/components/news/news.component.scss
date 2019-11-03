@@ -76,7 +76,7 @@ p {
 
 .actionBtn {
   border: 1px solid white;
-  background: #2156f3;
+  background: $primary-color;
   color: white;
   font: 18px Raleway, sans-serif;
   padding: 3px 8px;
@@ -87,7 +87,7 @@ p {
 
 .actionBtn:hover {
   cursor: pointer;
-  color: #2156f3;
+  color: $primary-color;
   background: white;
   border: 1px solid white;
 }

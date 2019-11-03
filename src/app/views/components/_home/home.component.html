@@ -1,4 +1,3 @@
-<!--<app-main-picker *ngIf="!currentUser || currentUser.userType === 'Patient' && !showNews"></app-main-picker>-->
 <app-dashboard *ngIf="currentUser?.userType === 'Doctor'"></app-dashboard>
 <app-news *ngIf="currentUser?.userType === 'Patient'"></app-news>
 

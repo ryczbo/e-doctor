@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../shared/services';
 import { User } from '../../../_models/user';
 import { Subscription } from 'rxjs';
-import { Router } from "@angular/router";
-import {AppRouterLinks} from "../../../app-routing.config";
+import { Router } from '@angular/router';
+import { AppRouterLinks } from '../../../app-routing.config';
 
 @Component({
   selector: 'app-edit-profile',

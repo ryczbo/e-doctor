@@ -1,3 +1,5 @@
+@import './src/styles/_variables';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -8,14 +10,13 @@
 
 .wrapper {
   display: flex;
-  width: 100%;
   justify-content: space-around;
+  margin-bottom: 20px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  width: 70%;
   align-content: space-around;
 }
 
@@ -25,8 +26,29 @@ h2 {
 
 input {
   color: white;
+  margin-left: 50px;
 }
 
 label {
   color: white;
+  font-size: large;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+button {
+  border: 1px solid white;
+  background: $primary-color;
+  color: white;
+  font: 18px Raleway, sans-serif;
+  padding: 3px 8px;
+  width: 130px;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  color: $primary-color;
+  background: white;
+  border: 1px solid white;
 }

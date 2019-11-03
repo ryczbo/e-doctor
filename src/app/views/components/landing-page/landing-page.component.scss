@@ -3,8 +3,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  /*align-items: center;*/
-  /*align-content: center;*/
   margin-top: 2em;
   width: auto;
 }
@@ -29,12 +27,8 @@
 .content {
   display: flex;
   flex-direction: column;
-  /*justify-content: space-between;*/
   width: 70%;
-  /*height: 200px;*/
   margin-left: 10%;
-  /*margin-top: 2%;*/
-  /*margin-bottom: 10%;*/
   flex-wrap: wrap;
 }
 
@@ -44,7 +38,7 @@
 
 .actionBtn {
   border: 1px solid white;
-  background: #2156f3;
+  background: $primary-color;
   color: white;
   font: 18px Raleway, sans-serif;
   padding: 3px 8px;
@@ -54,7 +48,7 @@
 
 .actionBtn:hover {
   cursor: pointer;
-  color: #2156f3;
+  color: $primary-color;
   background: white;
   border: 1px solid white;
 }
@@ -67,6 +61,7 @@
 #doctor {
   max-width: 350px;
   min-height: 100%;
+  margin-top: 30px;
 }
 
 h2 {

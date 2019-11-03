@@ -1,3 +1,5 @@
+@import './src/styles/_variables';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -17,7 +19,7 @@
 h2 {
   text-align: center;
   color: white;
-  text-shadow: 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: $shadow;
 }
 
 label {
@@ -29,7 +31,7 @@ form {
   /*width: 100%;*/
   justify-content: space-between;
   flex-wrap: wrap;
-  border: 2px solid #2156f3;
+  border: 2px solid $primary-color;
   /*background-color: #f9f9f9;*/
   padding: 10px;
 }
@@ -51,7 +53,7 @@ form:after {
 
 #patientInfo {
   background-color: white;
-  border: 2px solid #2156f3;
+  border: 2px solid $shadow;
   padding-left: 15px;
   padding-right: 15px;
   height: 419px;
@@ -61,7 +63,7 @@ form:after {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 2px solid #2156f3;
+  border: 2px solid $primary-color;
   margin-right: 10px;
 }
 
@@ -89,11 +91,11 @@ p {
 }
 
 #noPreviousVisits {
-  color: #1a44c2;
+  color: $primary-color;
 }
 
 li {
-  border: 1px solid #3c4b56;
+  border: 1px solid $alt-color;
   padding: 5px;
   margin-bottom: 5px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
@@ -182,7 +184,7 @@ mat-label {
 /*}*/
 
 textarea {
-  border: 1px solid #3c4b56;
+  border: 1px solid $alt-color;
   resize: none;
   font-size: large;
   //padding: 5px;
@@ -196,7 +198,7 @@ textarea.mat-input-element {
 .actionBtn {
   border: 1px solid white;
   color: white;
-  background: #2156f3;
+  background: $primary-color;
   font: 18px Raleway, sans-serif;
   padding: 3px 8px;
   width: 130px;
@@ -205,9 +207,9 @@ textarea.mat-input-element {
 
 .actionBtn:hover {
   cursor: pointer;
-  color: #2156f3;
+  color: $primary-color;
   background: white;
-  border: 1px solid #2156f3;
+  border: 1px solid $primary-color;
 }
 
 input {
