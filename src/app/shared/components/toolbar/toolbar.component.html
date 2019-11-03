@@ -46,13 +46,12 @@
     </div>
   </div>
 
-  <div class="dropdownCnt" *ngIf="drop" (clickOutside)="drop = !drop" [exclude]="'.indicator'"
-       [delayClickOutsideInit]="true">
+  <div class="dropdownCnt" *ngIf="drop">
 
     <div class="notList" *ngIf="currentUser.userType === 'Doctor'">
-      <div *ngFor="let visit of currentUser.visits.slice().reverse(); let declined = false; let confirmed = false"
+      <div *ngFor="let visit of doctorNotifications().slice().reverse(); let declined = false; let confirmed = false"
            class="notCont">
-        <div *ngIf="visit.status === 'pending'"><span class="boldedInfo">{{visit.patientName}}</span> sent you a visit
+        <div><span class="boldedInfo">{{visit.patientName}}</span> sent you a visit
           request on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
         </div>
         <div class="confirmation" *ngIf="visit.status === 'pending'">
@@ -72,6 +71,9 @@
             You declined a visit for {{visit.patientName}} on {{visit.date}} {{visit.hour}}</div>
         </div>
       </div>
+      <div *ngIf="doctorNotifications().length === 0" class="notCont">
+        You don't have any pending requests!
+      </div>
     </div>
 
     <div class="notList" *ngIf="currentUser.userType === 'Patient'">
@@ -88,12 +90,12 @@
           <span class="boldedInfo"> {{visit.doctorName}}</span>
           declined your visit request on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
         </div>
-
-        <div *ngIf="patientNotifications().length == 0">
-          You don't have any notifications!
-        </div>
-
       </div>
+
+      <div *ngIf="patientNotifications().length === 0" class="notCont">
+        You don't have any notifications!
+      </div>
+
     </div>
   </div>
 

@@ -3,7 +3,7 @@ import { User } from '../../../_models/user';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatTooltip } from '@angular/material';
 import { DetailsComponent } from '../../../popups';
 import { first } from 'rxjs/operators';
 import { UserService } from '../../services';

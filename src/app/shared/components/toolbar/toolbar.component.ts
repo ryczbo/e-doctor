@@ -36,6 +36,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         this.imgPath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
           + this.currentUser.profilePic);
         this.notifications = this.currentUser.visits.filter(s => s.read === false).length;
+      };
+      if (this.currentUser && this.currentUser.userType === 'Patient') {
+        this.patientNotifications();
+      } else if (this.currentUser && this.currentUser.userType === 'Doctor') {
+        this.doctorNotifications();
       }});
   }
 
@@ -68,9 +73,14 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   readNotifications() {
-    this.currentUser.visits.forEach(e => e.read = true);
-    this.userService.update(this.currentUser).subscribe();
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    if (this.currentUser.userType === 'Patient') {
+      this.currentUser.visits.forEach(e => e.read = true);
+      this.userService.update(this.currentUser).subscribe();
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.notifications = this.currentUser.visits.filter(s => s.read === false).length;
+    } else {
+      return;
+    }
   }
 
   // function to prevent display of "pending" visits in notifications div
@@ -78,19 +88,27 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     return this.currentUser.visits.filter(a => a.status !== 'pending' && a.status !== 'completed');
   }
 
+  doctorNotifications() {
+    return this.currentUser.visits.filter(a => a.status === 'pending');
+  }
+
   confirm(visit) {
     this.currentUser.visits.find(x => x.id === visit.id).status = 'confirmed';
+    this.currentUser.visits.find(x => x.id === visit.id).read = true;
     this.userService.update(this.currentUser).subscribe();
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    this.notifications = this.currentUser.visits.filter(s => s.read === false).length;
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'confirmed';
     patient.visits.find(x => x.id === visit.id).read = false;
     this.userService.update(patient).subscribe();
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 
   decline(visit) {
     this.currentUser.visits.find(x => x.id === visit.id).status = 'declined';
+    this.currentUser.visits.find(x => x.id === visit.id).read = true;
     this.userService.update(this.currentUser).subscribe();
+    this.notifications = this.currentUser.visits.filter(s => s.read === false).length;
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'declined';
     patient.visits.find(x => x.id === visit.id).read = false;

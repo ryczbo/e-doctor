@@ -4,7 +4,7 @@
   display: flex;
   margin-top: 2em;
   width: auto;
-  max-height: 500px;
+  max-height: 100%;
   margin-left: 10%;
   margin-right: 10%;
   justify-content: center;
@@ -41,7 +41,6 @@ h2 {
 img {
   width: 300px;
   height: 300px;
-  padding-bottom: 50px;
 }
 
 .column {
@@ -53,7 +52,8 @@ img {
 .row {
   display: flex;
   justify-content: space-around;
-  max-height: 320px;
+  //max-height: 320px;
+  flex-wrap: wrap;
 }
 
 p {
@@ -61,7 +61,7 @@ p {
   max-width: 500px;
   min-width: 250px;
   /*min-height: 300px;*/
-  font-size: 1.3vw;
+  font-size: 18px;
 }
 
 .content {
@@ -90,4 +90,14 @@ p {
   color: #2156f3;
   background: white;
   border: 1px solid white;
+}
+
+@media(max-width: 1190px) {
+  .row {
+    justify-content: left;
+  }
+  img {
+    display: none;
+  }
+
 }

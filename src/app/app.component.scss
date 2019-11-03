@@ -1,14 +1,15 @@
 .container {
   display: flex;
   flex-direction: column;
-  flex: 1 0 auto;
-  min-height: 100%;
+  height: 100%;
   position: relative;
 }
 
 app-toolbar {
   top: 0;
   min-width: 100%;
+  position: sticky;
+  z-index: 1;
 }
 
 app-footer {
@@ -34,6 +35,7 @@ app-sidebar {
 }
 
 router-outlet {
+  max-height: 100%;
   animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
