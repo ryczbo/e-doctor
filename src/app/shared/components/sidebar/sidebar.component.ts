@@ -106,34 +106,34 @@ export class SidebarComponent implements OnInit, OnDestroy {
       hour: visit.hour,
       exam: visit.exam,
       id: visit.doctorId,
-      foundRated: this.ratedDoctorsList.findIndex(e => e === visit.doctorId),
-      rate: this.doctorsList.find(e => e._id === visit.doctorId).rating
+      rate: this.doctorsList.find(e => e._id === visit.doctorId).rating,
+      doctorsList: this.doctorsList
     };
     dialogConfig.panelClass = ['custom-modal'];
 
-    const dialogRef = this.dialog.open(DetailsComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(result => {
-      const obj = {};
-      obj[visit.doctorId] = result;
-      this.rating = obj;
-      if (result) {
-        // rate a doctor
-        this.currentUser.rates.push(this.rating);
-        localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-        this.userService.update(this.currentUser).subscribe();
-        const foundIndex = this.doctorsList.findIndex(x => x._id === visit.doctorId);
-        this.doctorsList[foundIndex].rates.push(result);
-        // calculating the average rating
-        const sum = this.doctorsList[foundIndex].rates.reduce((a, b) => a + b);
-        this.doctorsList[foundIndex].rating = Math.floor(sum / this.doctorsList[foundIndex].rates.length);
-        this.userService.update(this.doctorsList[foundIndex]).subscribe();
-      } else {
-        console.log('cant rate');
-      }
-      if (this.currentUser.rates.length > 0) {
-        this.ratedDoctorsList = Object.keys(this.currentUser.rates.reduce((o, c) => Object.assign(o, c)));
-        console.log(this.ratedDoctorsList);
-      }
-    });
+    this.dialog.open(DetailsComponent, dialogConfig);
+    // dialogRef.afterClosed().subscribe(result => {
+    //   const obj = {};
+    //   obj[visit.doctorId] = result;
+    //   this.rating = obj;
+    //   if (result) {
+    //     // rate a doctor
+    //     this.currentUser.rates.push(this.rating);
+    //     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    //     this.userService.update(this.currentUser).subscribe();
+    //     const foundIndex = this.doctorsList.findIndex(x => x._id === visit.doctorId);
+    //     this.doctorsList[foundIndex].rates.push(result);
+    //     // calculating the average rating
+    //     const sum = this.doctorsList[foundIndex].rates.reduce((a, b) => a + b);
+    //     this.doctorsList[foundIndex].rating = Math.floor(sum / this.doctorsList[foundIndex].rates.length);
+    //     this.userService.update(this.doctorsList[foundIndex]).subscribe();
+    //   } else {
+    //     console.log('cant rate');
+    //   }
+    //   if (this.currentUser.rates.length > 0) {
+    //     this.ratedDoctorsList = Object.keys(this.currentUser.rates.reduce((o, c) => Object.assign(o, c)));
+    //     console.log(this.ratedDoctorsList);
+    //   }
+    // });
   }
 }

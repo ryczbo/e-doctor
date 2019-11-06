@@ -51,8 +51,8 @@
     <div class="notList" *ngIf="currentUser.userType === 'Doctor'">
       <div *ngFor="let visit of doctorNotifications().slice().reverse(); let declined = false; let confirmed = false"
            class="notCont">
-        <div><span class="boldedInfo">{{visit.patientName}}</span> sent you a visit
-          request on <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span>
+        <div *ngIf="visit.status === 'pending'"><span class="boldedInfo">{{visit.patientName}} </span><span> sent you a visit
+          request on </span> <span class="boldedInfo"> {{visit.date}} {{visit.hour}}</span>
         </div>
         <div class="confirmation" *ngIf="visit.status === 'pending'">
           <span>Do you confirm?</span>
@@ -65,10 +65,12 @@
         <div class="solved" *ngIf="visit.status !== 'pending'">
           <div *ngIf="visit.status === 'confirmed'">
             <fa-icon icon="check-circle" class="confirmIcon"></fa-icon>
-            You confirmed a visit for {{visit.patientName}} on {{visit.date}} {{visit.hour}}</div>
+            You confirmed a visit for <span class="boldedInfo">{{visit.patientName}}</span> on
+            <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span></div>
           <div *ngIf="visit.status === 'declined'">
             <fa-icon icon="times-circle" class="declineIcon"></fa-icon>
-            You declined a visit for {{visit.patientName}} on {{visit.date}} {{visit.hour}}</div>
+            You declined a visit for <span class="boldedInfo">{{visit.patientName}}</span> on
+            <span class="boldedInfo">{{visit.date}} {{visit.hour}}</span></div>
         </div>
       </div>
       <div *ngIf="doctorNotifications().length === 0" class="notCont">

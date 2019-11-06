@@ -13,21 +13,22 @@
     <h4>Doctor: <span>{{visit.doctor}}</span></h4>
     <div id="rate">
       <h4>Rate:
-      <span class="rating" *ngIf="visit.foundRated === -1">
+      <span class="rating" *ngIf="foundRated === -1 && !rated">
         <input type="radio" id="star5" name="rating" [value]="5" [(ngModel)]="rating"/><label for="star5"></label>
         <input type="radio" id="star4" name="rating" [value]="4" [(ngModel)]="rating"/><label for="star4"></label>
         <input type="radio" id="star3" name="rating" [value]="3" [(ngModel)]="rating"/><label for="star3"></label>
         <input type="radio" id="star2" name="rating" [value]="2" [(ngModel)]="rating"/><label for="star2"></label>
         <input type="radio" id="star1" name="rating" [value]="1" [(ngModel)]="rating"/><label for="star1"></label>
       </span>
-      <span class="rating" *ngIf="visit.foundRated > -1">
-        <span class="stars-container stars-{{getRating(visit)}}">★★★★★</span>
+      <span class="rating" *ngIf="foundRated > -1 || rated">
+        <span class="stars-container stars-{{getRating()}}">★★★★★</span>
       </span>
       </h4>
     </div>
-    <div *ngIf="visit.foundRated === -1" mat-dialog-actions class="beforeRate" [ngClass]="{afterRate : rating}">
+    <div *ngIf="foundRated === -1 && !rated" mat-dialog-actions class="beforeRate" [ngClass]="{afterRate : rating}">
       <button (click)="onCancelClick()" class="actionBtn">Cancel</button>
-      <button [mat-dialog-close]="rating" class="actionBtn">Save</button>
+      <button (click)="rate(rating)" class="actionBtn">Save</button>
     </div>
+    <div *ngIf="rated" id="afterRate">Rate saved!</div>
   </div>
 </div>

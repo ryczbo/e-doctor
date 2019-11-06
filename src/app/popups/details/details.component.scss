@@ -159,6 +159,14 @@ a {
   visibility: visible;
 }
 
+#afterRate {
+  height: 17px;
+  margin-top: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: small;
+}
+
 .actionBtn:hover {
   color: cyan;
   cursor: pointer;

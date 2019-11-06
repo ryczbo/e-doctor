@@ -49,7 +49,10 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.patch(`${this.uri}/users/${user._id}`, user);
+    return this.http.patch(`${this.uri}/users/${user._id}`, user)
+      .pipe(map(resp => {
+        return resp;
+      }));
   }
 
   delete(id: number) {

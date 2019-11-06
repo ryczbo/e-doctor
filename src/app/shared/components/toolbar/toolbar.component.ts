@@ -89,7 +89,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   doctorNotifications() {
-    return this.currentUser.visits.filter(a => a.status === 'pending');
+    return this.currentUser.visits.filter(a => a.status !== 'completed');
   }
 
   confirm(visit) {

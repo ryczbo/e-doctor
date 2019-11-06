@@ -52,6 +52,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm.get('userType').valueChanges
       .subscribe(userType => {
         if (userType === 'Doctor') {
+          this.registerForm.get('specialty').setValidators([Validators.required]);
+          this.registerForm.get('npi').setValidators([Validators.required]);
           this.registerForm.get('npi').setValidators([Validators.required]);
         }
       });
