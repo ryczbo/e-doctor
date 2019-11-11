@@ -67,8 +67,9 @@ export class VisitConductComponent implements OnInit {
     const foundIndexPat = this.patient.visits.findIndex(x => x.id === this.visit.id);
     this.currentUser.visits[foundIndexDoc].exam = this.conductVisitForm.value;
     this.currentUser.visits[foundIndexDoc].status = 'completed';
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    this.userService.update(this.currentUser).subscribe();
+    this.userService.update(this.currentUser).subscribe(data => {
+      localStorage.setItem('currentUser', JSON.stringify(data));
+    });
     this.patient.visits[foundIndexPat].exam = this.conductVisitForm.value;
     this.patient.visits[foundIndexPat].status = 'completed';
     this.userService.update(this.patient).subscribe();

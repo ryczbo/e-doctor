@@ -151,7 +151,7 @@ mat-form-field * {
   border: 1px solid white;
   background: $primary-color;
   color: white;
-  font: 18px Raleway, sans-serif;
+  font: $button-font;
   padding: 3px 8px;
   width: 70px;
   margin-bottom: 10px;
@@ -196,7 +196,7 @@ mat-form-field * {
 }
 
 .card:focus h5 {
-  color: #3c4b56;
+  color: $alt-color;
 }
 
 @media(max-width: 480px) {
@@ -387,7 +387,7 @@ h4 {
   border: 1px solid white;
   background: #00aa30;
   color: white;
-  font: 16px Raleway, sans-serif;
+  font: $button-font;
   padding: 3px 8px;
   width: 140px;
   margin-bottom: 10px;
@@ -401,7 +401,7 @@ h4 {
   border: 1px solid white;
   background: #ff0000;
   color: white;
-  font: 16px Raleway, sans-serif;
+  font: $button-font;
   padding: 3px 8px;
   width: 70px;
   margin-bottom: 10px;

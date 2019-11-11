@@ -50,7 +50,8 @@ export class EditProfileComponent implements OnInit {
 
   update() {
     this.currentUser.profilePic = this.profilePicB64;
-    this.userService.update(this.currentUser).subscribe();
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    this.userService.update(this.currentUser).subscribe(data => {
+      localStorage.setItem('currentUser', JSON.stringify(data));
+    });
   }
 }

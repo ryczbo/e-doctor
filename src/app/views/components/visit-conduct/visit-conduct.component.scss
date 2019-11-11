@@ -183,10 +183,6 @@ mat-label {
   margin-top: 0;
 }
 
-/*mat-form-field * {*/
-/*  color: white;*/
-/*}*/
-
 textarea {
   border: 1px solid $alt-color;
   resize: none;
@@ -203,7 +199,7 @@ textarea.mat-input-element {
   border: 1px solid white;
   color: white;
   background: $primary-color;
-  font: 18px Raleway, sans-serif;
+  font: $button-font;
   padding: 3px 8px;
   width: 130px;
   margin-bottom: 10px;

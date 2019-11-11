@@ -1,7 +1,9 @@
+@import './src/styles/_variables';
+
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #3c4b56;
+  background-color: $alt-color;
   padding: 10px;
   border: 1px solid cyan;
   width: 500px;

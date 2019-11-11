@@ -1,3 +1,5 @@
+@import './src/styles/_variables';
+
 .container {
   display: flex;
   justify-content: center;
@@ -46,12 +48,12 @@ form {
   border: 1px solid black;
   background: white;
   color: black;
-  font: 18px Raleway, sans-serif;
+  font: $button-font;
   padding: 5px 10px;
 }
 
 .actionBtn:hover {
-  background: #2156f3;
+  background: $primary-color;
   color: white;
   cursor: pointer;
 }
@@ -62,7 +64,7 @@ input {
 }
 
 h2 {
-  color: #2156f3;
+  color: $primary-color;
   width: 70%;
   text-align: center;
   margin-bottom: 0;
@@ -78,7 +80,7 @@ h2 {
 
 h4 {
   margin: 0;
-  color: #2156f3;
+  color: $primary-color;
 }
 
 a {
@@ -87,5 +89,5 @@ a {
 
 a:hover {
   cursor: pointer;
-  color: #2156f3;
+  color: $primary-color;
 }

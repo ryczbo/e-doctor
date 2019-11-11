@@ -208,8 +208,9 @@ export class MainPickerComponent implements OnInit, OnDestroy {
         doctorId: this.selectedDoctorDetails._id,
         read: false
       });
-      this.userService.update(this.currentUser).subscribe();
-      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.userService.update(this.currentUser).subscribe(data => {
+        localStorage.setItem('currentUser', JSON.stringify(data));
+      });
       this.userService.update(this.selectedDoctorDetails).subscribe();
       this.requestSent = true;
       this.alertService.success('Request has been sent! Waiting for confirmation.', false);

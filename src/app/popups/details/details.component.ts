@@ -63,8 +63,9 @@ export class DetailsComponent implements OnInit {
     if (rating) {
       // rate a doctor
       this.currentUser.rates.push(obj);
-      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-      this.userService.update(this.currentUser).subscribe();
+      this.userService.update(this.currentUser).subscribe(data => {
+        localStorage.setItem('currentUser', JSON.stringify(data));
+      });
       this.doctorsList[this.foundIndex].rates.push(rating);
       // calculating the average rating
       const sum = this.doctorsList[this.foundIndex].rates.reduce((a, b) => a + b);

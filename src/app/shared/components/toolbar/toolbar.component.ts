@@ -95,8 +95,9 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   confirm(visit) {
     this.currentUser.visits.find(x => x.id === visit.id).status = 'confirmed';
     this.currentUser.visits.find(x => x.id === visit.id).read = true;
-    this.userService.update(this.currentUser).subscribe();
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    this.userService.update(this.currentUser).subscribe(data => {
+      localStorage.setItem('currentUser', JSON.stringify(data));
+    });
     this.notifications = this.currentUser.visits.filter(s => s.read === false).length;
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'confirmed';
@@ -107,13 +108,14 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   decline(visit) {
     this.currentUser.visits.find(x => x.id === visit.id).status = 'declined';
     this.currentUser.visits.find(x => x.id === visit.id).read = true;
-    this.userService.update(this.currentUser).subscribe();
+    this.userService.update(this.currentUser).subscribe(data => {
+      localStorage.setItem('currentUser', JSON.stringify(data));
+    });
     this.notifications = this.currentUser.visits.filter(s => s.read === false).length;
     const patient = this.patientsList.find(x => x.firstName + ' ' + x.lastName == visit.patientName);
     patient.visits.find(x => x.id === visit.id).status = 'declined';
     patient.visits.find(x => x.id === visit.id).read = false;
     this.userService.update(patient).subscribe();
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 }
 

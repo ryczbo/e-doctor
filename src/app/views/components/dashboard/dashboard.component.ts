@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit {
   ) {
     this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
       this.currentUser = user;
+      this.genHeatmap();
     });
   }
 

@@ -66,7 +66,7 @@
             <label for="npi">Type in your NPI number:</label>
             <input matInput type="number" formControlName="npi" class="form-control">
             <div *ngIf="submitted && f.npi.errors" class="invalid-feedback">
-              <div *ngIf="f.npi.errors.required">Please, type your NPI number</div>
+              <div *ngIf="f.npi.errors.required">Type your NPI number</div>
             </div>
           </mat-form-field>
 
@@ -78,11 +78,17 @@
                 {{specialty}}
               </mat-option>
             </mat-select>
+            <div *ngIf="submitted && f.specialty.errors" class="invalid-feedback">
+              <div *ngIf="f.specialty.errors.required">Pick your specialty</div>
+            </div>
           </mat-form-field>
 
           <mat-form-field *ngIf="pickedUserType === 'Doctor'">
             <label for="city">What's your city?</label>
             <input matInput type="text" formControlName="city" class="form-control">
+            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+              <div *ngIf="f.city.errors.required">Type your city</div>
+            </div>
           </mat-form-field>
 
           </div>
