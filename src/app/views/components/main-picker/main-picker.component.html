@@ -72,7 +72,7 @@
            (click)="selectedDoctorDetails = doctor; calendarClick(i)">
         <div class="cardTitle">
           <div class="cardBasic">
-            <img class="avatar" [src]="imgPath" *ngIf="doctor.profilePic"
+            <img class="avatar" [src]="imgPath()" *ngIf="doctor.profilePic"
                  alt="Avatar">
             <img class="avatar" src="http://fit.ie/fitnew/wp-content/uploads/2014/11/no-profile-image.jpg"
                  *ngIf="!doctor.profilePic"
@@ -138,7 +138,7 @@
       <div class="card">
         <div class="cardTitle">
           <div class="cardBasic">
-            <img class="avatar" [src]="imgPath" *ngIf="selectedDoctorDetails.profilePic"
+            <img class="avatar" [src]="imgPath()" *ngIf="selectedDoctorDetails.profilePic"
                  alt="Avatar">
             <img class="avatar" src="http://fit.ie/fitnew/wp-content/uploads/2014/11/no-profile-image.jpg"
                  *ngIf="!selectedDoctorDetails.profilePic"

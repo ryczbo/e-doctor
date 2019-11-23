@@ -29,10 +29,11 @@ form {
 
 @media(max-width: 580px) {
   .container {
-    width: 250px;
+    width: 200px;
+    height: 450px;
   }
   .accessDenied {
-    width: 250px;
+    width: 100%;
   }
   form {
     width: 150px;

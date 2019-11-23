@@ -41,7 +41,6 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   hourPicked = false;
   requestSent = false;
   visitsCount;
-  imgPath;
   doctorsList;
   avHours = ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
   request = {doctorId: 1, date: 'a', hour: 'b', status: 'c'};
@@ -63,10 +62,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
     this.renderer.addClass(document.body, 'landing1');
     this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
       this.currentUser = user;
-      if (this.currentUser && this.currentUser.userType === 'Patient') {
-        this.imgPath = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
-          + this.currentUser.profilePic);
-      } else if (this.currentUser && this.currentUser.userType === 'Doctor') {
+      if (this.currentUser && this.currentUser.userType === 'Doctor') {
         this.router.navigate([`${AppRouterLinks.HOME}`]);
       }
     });
@@ -91,7 +87,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
     this.date = moment((event.value.toLocaleDateString()), 'DD.MM.YYYY').format('DD.MM.YYYY');
-    console.log(this.date);
+    // console.log(this.date);
     this.datePicked = true;
     this.calendarClicked = false;
   }
@@ -109,7 +105,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   pickSpecialty(specialty) {
     this.cities = this.doctorsList.filter(e => e.specialty == specialty).map(d => d.city).filter((e, i, a) => a.indexOf(e) === i);
     this.specialty = specialty;
-    console.log(specialty);
+    // console.log(specialty);
   }
 
   submitSpecialty() {
@@ -124,7 +120,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   pickCity(specialty, city) {
     this.doctors = this.doctorsList.filter(e => e.specialty == specialty && e.city == city);
     this.city = city;
-    console.log(this.doctors);
+    // console.log(this.doctors);
   }
 
   submitCity() {
@@ -133,6 +129,13 @@ export class MainPickerComponent implements OnInit, OnDestroy {
       return;
     } else {
       this.stepCounter = 3;
+    }
+  }
+
+  imgPath() {
+    for (let i = 0; i < this.doctors.length; i++) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
+        + this.doctors[i].profilePic);
     }
   }
 
@@ -165,7 +168,7 @@ export class MainPickerComponent implements OnInit, OnDestroy {
   fetchDoctors() {
     this.userService.getAll().subscribe(doctors => {
       this.doctorsList = doctors.filter(e => e.userType === 'Doctor');
-      console.log(this.doctorsList);
+      // console.log(this.doctorsList);
     });
   }
 

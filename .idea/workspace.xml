@@ -2,22 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88059dbe-9a00-4357-9e7c-75b3f626cf97" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/src/user/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/user/user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/e-doctor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/e-doctor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/main-picker/main-picker.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_alert/alert.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_alert/alert.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/visit-conduct/visit-conduct.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/popups/not-logged/not-logged.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/popups/not-logged/not-logged.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_alert/alert.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_alert/alert.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,15 +22,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="57d2f140c4bbcfbc511f8482071cdeae65e62266" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1PbezeVkIeReuuYCBu5oAyXXvAR" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="PropertiesComponent">
@@ -44,6 +40,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../backend" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -157,6 +154,7 @@
       <workItem from="1571230981501" duration="8616000" />
       <workItem from="1571310488325" duration="4674000" />
       <workItem from="1571333136041" duration="25000" />
+      <workItem from="1574544010995" duration="1245000" />
     </task>
     <servers />
   </component>

@@ -313,6 +313,7 @@ form {
   justify-content: flex-start;
   width: 400px;
   flex-direction: column;
+  margin-top: 40px;
 }
 
 @media(max-width: 480px) {
@@ -387,7 +388,7 @@ h4 {
   border: 1px solid white;
   background: #00aa30;
   color: white;
-  font: $button-font;
+  font: 16px Raleway, sans-serif;
   padding: 3px 8px;
   width: 140px;
   margin-bottom: 10px;
@@ -401,7 +402,7 @@ h4 {
   border: 1px solid white;
   background: #ff0000;
   color: white;
-  font: $button-font;
+  font: 16px Raleway, sans-serif;
   padding: 3px 8px;
   width: 70px;
   margin-bottom: 10px;
