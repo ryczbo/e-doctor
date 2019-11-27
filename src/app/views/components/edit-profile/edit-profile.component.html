@@ -4,10 +4,12 @@
   <div class="wrapper">
     <form action="">
         <label for="pic">Upload your Profile Picture</label>
-        <input type="file" (change)="handleFileSelect($event)">
+        <input type="file" (change)="handleFileSelect($event)" name="profilePic">
     </form>
   </div>
 
-  <button (click)="update()">Save</button>
+  <button (click)="update()" *ngIf="!uploaded">Save</button>
+  <alert *ngIf="uploaded"></alert>
+
 
 </div>

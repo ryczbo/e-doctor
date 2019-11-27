@@ -3,7 +3,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin-top: 2em;
   width: auto;
 }
 
@@ -16,9 +15,6 @@
 }
 
 @media(max-width: 550px) {
-  .container {
-    margin-top: 0;
-  }
   .jumbotron {
     margin-bottom: 0;
   }

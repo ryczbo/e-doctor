@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../shared/services';
+import {Component, OnInit} from '@angular/core';
+import {AlertService, UserService} from '../../../shared/services';
 import { User } from '../../../_models/user';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
@@ -16,10 +16,12 @@ export class EditProfileComponent implements OnInit {
   users: User[] = [];
   user: User;
   profilePicB64;
+  uploaded = false;
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService,
   ) {
   this.currentUserSubscription = this.userService.currentUser.subscribe(user => {
     this.currentUser = user;
@@ -34,6 +36,7 @@ export class EditProfileComponent implements OnInit {
 
   // encoding and reading base64 images
   handleFileSelect(evt) {
+    this.uploaded = false;
     const files = evt.target.files;
     const file = files[0];
     if (files && file) {
@@ -49,9 +52,15 @@ export class EditProfileComponent implements OnInit {
   }
 
   update() {
+    this.uploaded = true;
     this.currentUser.profilePic = this.profilePicB64;
-    this.userService.update(this.currentUser).subscribe(data => {
+    this.userService.update(this.currentUser).subscribe(
+      data => {
       localStorage.setItem('currentUser', JSON.stringify(data));
-    });
+      this.alertService.success('File uploaded successfully! Refresh the page to see changes');
+    },
+      error => {
+        this.alertService.error(error.error);
+      });
   }
 }
