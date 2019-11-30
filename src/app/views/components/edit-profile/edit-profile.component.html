@@ -3,13 +3,14 @@
 
   <div class="wrapper">
     <form action="">
-        <label for="pic">Upload your Profile Picture</label>
-        <input type="file" (change)="handleFileSelect($event)" name="profilePic">
+      <label for="pic">Upload your Profile Picture (max. 400kb)</label>
+      <input type="file" (change)="handleFileSelect($event)" name="profilePic">
     </form>
   </div>
 
-  <button (click)="update()" *ngIf="!uploaded">Save</button>
-  <alert *ngIf="uploaded"></alert>
-
+  <div class="action">
+    <button (click)="update()" *ngIf="!uploaded">Save</button>
+    <alert *ngIf="uploaded"></alert>
+  </div>
 
 </div>

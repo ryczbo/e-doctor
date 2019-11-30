@@ -64,17 +64,13 @@
               <mat-form-field class="basicNumbers" appearance="legacy" floatLabel="always">
                 <mat-label>Weight (kg)</mat-label>
                 <input matInput type="number" formControlName="weight" class="form-control"
-                       placeholder="{{visit.exam?.weight}}"
-                       [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
-                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                </div>
+                       placeholder="{{visit.exam?.weight}}"/>
               </mat-form-field>
 
               <mat-form-field class="basicNumbers" floatLabel="always">
                 <mat-label>Heart Rate (bpm)</mat-label>
                 <input matInput type="number" formControlName="heartRate" class="form-control"
-                       placeholder="{{visit.exam?.heartRate}}"
-                       [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+                       placeholder="{{visit.exam?.heartRate}}"/>
               </mat-form-field>
 
             </div>
@@ -102,10 +98,7 @@
             <mat-form-field floatLabel="always">
               <mat-label>Diagnosis (ICD-10)</mat-label>
               <input matInput type="text" formControlName="diagnosis" class="form-control"
-                     placeholder="{{visit.exam?.diagnosis}}"
-                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-              </div>
+                     placeholder="{{visit.exam?.diagnosis}}"/>
             </mat-form-field>
 
             <mat-form-field appearance="none">

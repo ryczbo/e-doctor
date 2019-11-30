@@ -122,6 +122,79 @@ app-landing-page {
   }
 }
 
+app-edit-profile {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media(max-width: 600px) {
+  app-edit-profile {
+    height: auto;
+  }
+}
+
+app-news {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media(max-width: 600px) {
+  app-news {
+    height: auto;
+  }
+}
+
+app-main-picker {
+    margin-top: 5%;
+}
+
+@media(max-width: 600px) {
+  app-main-picker {
+    height: auto;
+  }
+}
+
+app-register {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media(max-width: 600px) {
+  app-register {
+    height: auto;
+  }
+}
+
+app-login {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+app-dashboard {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media(max-width: 600px) {
+  app-dashboard {
+    height: auto;
+  }
+}
+
+app-visit-conduct {
+  width: 100%;
+}
+
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 0.2; }

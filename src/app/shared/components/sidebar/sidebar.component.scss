@@ -124,7 +124,7 @@ ul li{
 
 .showSdbr {
   position: fixed;
-  margin-top: 250px;
+  margin-top: 20%;
   margin-left: auto;
   color: $primary-color;
   width: 30px;
@@ -140,6 +140,12 @@ ul li{
   background-color: $alt-color;
   color: cyan;
   cursor: pointer;
+}
+
+@media(max-width: 500px) {
+  .showSdbr {
+    margin-top: 250px;
+  }
 }
 
 .arrow {

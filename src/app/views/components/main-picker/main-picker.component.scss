@@ -5,8 +5,7 @@
   flex-direction: column;
   align-items: center;
   align-content: center;
-  margin-top: 4em;
-  width: auto;
+  //margin-top: 4em;
 }
 
 alert {
@@ -24,7 +23,7 @@ alert {
   text-shadow: $shadow;
   text-align: center;
   vertical-align: middle;
-  margin-top: 10px;
+  //margin-top: 10px;
   margin-bottom: 30px;
   height: 50px;
 }
@@ -32,6 +31,8 @@ alert {
 @media(max-width: 500px) {
   .jumbotron {
     font-size: smaller;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -207,6 +208,10 @@ mat-form-field * {
   .timePicker {
     width: 200px;
   }
+
+  .calendar {
+    width: 80%;
+  }
 }
 
 .cardTitle {
@@ -325,8 +330,10 @@ form {
 .calendar {
   display: flex;
   justify-content: flex-start;
+  //align-items: center;
   width: 400px;
-  flex-direction: column;
+  height: 200px;
+  //flex-direction: column;
 }
 
 .chooseDoctor {
@@ -350,6 +357,13 @@ form {
 
 .emptyDiv {
   width: 400px;
+  height: 200px;
+}
+
+@media(max-width: 600px) {
+  .emptyDiv {
+    height: 0;
+  }
 }
 
 .timePickerLabel {
@@ -361,8 +375,8 @@ form {
   width: 400px;
   border: 1px solid white;
   color: white;
-  padding: 10px;
-  margin-bottom: 5px;
+  //padding: 10px;
+  //margin-bottom: 5px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

@@ -5,7 +5,7 @@ export const AppRoutes = {
   LOGIN: 'login',
   REQUEST: 'request',
   EDIT: 'edit',
-  404: '**'
+  FOUROHFOUR: '**'
 };
 
 export const AppRouterLinks = {
@@ -15,7 +15,7 @@ export const AppRouterLinks = {
   LOGIN: [AppRoutes.LOGIN],
   REQUEST: [AppRoutes.REQUEST],
   EDIT: [AppRoutes.EDIT],
-  404: [AppRoutes['404']]
+  FOUROHFOUR: [AppRoutes.FOUROHFOUR]
 };
 
 export const AppRouterUrls = {
@@ -25,5 +25,5 @@ export const AppRouterUrls = {
   LOGIN: `/${AppRoutes.LOGIN}`,
   REQUEST: `/${AppRoutes.REQUEST}`,
   EDIT: `/${AppRoutes.EDIT}`,
-  404: `/${AppRoutes['404']}`
+  FOUROHFOUR: `/${AppRoutes.FOUROHFOUR}`
 };

@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: AppRoutes.LOGIN, component: LoginComponent},
   {path: AppRoutes.REGISTER, component: RegisterComponent},
   {path: AppRoutes.EDIT, component: EditProfileComponent},
-  {path: AppRoutes['404'], component: NotFoundComponent}
+  {path: AppRoutes.FOUROHFOUR, component: NotFoundComponent}
 ];
 
 
