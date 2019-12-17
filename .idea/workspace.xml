@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="88059dbe-9a00-4357-9e7c-75b3f626cf97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/sidebar/sidebar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/sidebar/sidebar.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/components/landing-page/landing-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/landing-page/landing-page.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/components/landing-page/landing-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/landing-page/landing-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/components/news/news.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/news/news.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_variables.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
