@@ -1,27 +1,19 @@
-# EDoctor
+# eDoctor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+Frontend repository for my MEAN Stack web app called eDoctor. eDoctor lets patients make doctor's appointments in easy way and the doctor's module helps to schedule visits and manage them in one place.
 
-## Development server
+live version of this app is available on: `https://blooming-sea-55548.herokuapp.com/`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The app is still under development, so you may see some improvements here and there in time.
 
-## Code scaffolding
+## Patient module
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Register as a Patient and you will have a possibility to make an appointment request with doctor of your choice. The doctor can either accept or decline your request - you will see the outcome in the Notifications section under a small bell icon. Every visit will be available for you on your sidebar. After a completed visit you can rate your doctor, and your rate will affect the doctor's global rate.
 
-## Build
+## Doctor's module
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Register as a Doctor and your profile will be available for patients to make a request appointment. You will see every request in your Notification section. Every accepted or declined request will be visible for you on your dashboard calendar. From there, you can conduct accepted visits. You will be presented with patient's previous medical history (if available) and the Exam form with basic elements crucial for every visit. You can always edit an already conducted visit.
 
-## Running unit tests
+-------------------------------------
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Feel free to let me know if you find any mistakes or bugs!
