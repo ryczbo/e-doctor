@@ -53,6 +53,6 @@ export class LandingPageComponent implements OnInit {
     this.landingType = 'landing3';
     this.renderer.removeClass(document.body, 'landing2');
     this.renderer.addClass(document.body, 'landing3');
-    this.renderer.setStyle(document.body, 'background', '#2156f3');
+    this.renderer.setStyle(document.body, 'background', '#3668ff');
   }
 }

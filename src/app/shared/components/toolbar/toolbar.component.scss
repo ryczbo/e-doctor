@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: cyan;
+  background-color: white;
   padding-left: 10px;
 }
 
@@ -15,7 +15,7 @@
 .title {
   display: flex;
   flex-direction: row;
-  color: $primary-color;
+  color: $bluer;
   height: 50px;
   align-items: center;
 }
@@ -25,7 +25,7 @@
 }
 
 .homeIcon {
-  color: $primary-color;
+  color: $bluer;
 }
 
 .altHomeIcon {
@@ -84,7 +84,7 @@ h4 {
 }
 
 a:active {
-  color: white;
+  color: cyan;
 }
 
 .buttonsList {
@@ -190,7 +190,7 @@ p {
 }
 
 .dropdownContent a {
-  color: $primary-color;
+  color: $bluer;
   text-decoration: none;
   display: block;
   text-align: left;
@@ -231,7 +231,7 @@ p {
   width: 73px;
   display: flex;
   align-items: center;
-  color: $alt-color;
+  color: $bluer;
   justify-content: space-around;
   text-align: center;
   padding-left: 5px;
@@ -260,7 +260,7 @@ p {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 2px solid $primary-color;
+  border: 2px solid $bluer;
 }
 
 .altAvatar {

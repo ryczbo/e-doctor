@@ -75,18 +75,20 @@ p {
 
 .actionBtn {
   border: 1px solid white;
-  background: $primary-color;
+  border-radius: 5px;
+  background: #2156f3;
   color: white;
   font: $button-font;
-  padding: 3px 8px;
-  width: 70px;
+  //font-weight: bold;
+  padding: 5px 8px;
+  width: 80px;
   margin-bottom: 10px;
   text-align: center;
 }
 
 .actionBtn:hover {
   cursor: pointer;
-  color: $primary-color;
+  color: #2156f3;
   background: white;
   border: 1px solid white;
 }

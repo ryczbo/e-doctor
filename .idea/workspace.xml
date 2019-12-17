@@ -3,20 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="88059dbe-9a00-4357-9e7c-75b3f626cf97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_alert/alert.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_alert/alert.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/_register/register.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/footer/footer.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/shared/components/sidebar/sidebar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/sidebar/sidebar.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/components/toolbar/toolbar.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/shared/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/components/dashboard/dashboard.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/dashboard/dashboard.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/components/edit-profile/edit-profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/edit-profile/edit-profile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/components/edit-profile/edit-profile.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/edit-profile/edit-profile.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/components/landing-page/landing-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/landing-page/landing-page.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/components/landing-page/landing-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/landing-page/landing-page.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/main-picker/main-picker.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/views/components/news/news.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/news/news.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/components/visit-conduct/visit-conduct.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/visit-conduct/visit-conduct.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/components/visit-conduct/visit-conduct.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/components/visit-conduct/visit-conduct.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_variables.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +37,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../backend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -164,7 +160,9 @@
       <workItem from="1574789234752" duration="4253000" />
       <workItem from="1574807941356" duration="895000" />
       <workItem from="1574879119279" duration="8854000" />
-      <workItem from="1575122192314" duration="11712000" />
+      <workItem from="1575122192314" duration="12306000" />
+      <workItem from="1575490021038" duration="69000" />
+      <workItem from="1576601352530" duration="7438000" />
     </task>
     <servers />
   </component>

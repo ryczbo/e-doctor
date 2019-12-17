@@ -3,28 +3,24 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 100%;
+  align-items: center;
 }
 
 .jumbotron {
   color: white;
-  margin-left: 10%;
-  width: 70%;
-  margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 50px;
+  text-align: center;
   text-shadow: $shadow;
-}
-
-@media(max-width: 550px) {
-  .jumbotron {
-    margin-bottom: 0;
-  }
 }
 
 .content {
   display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin-left: 10%;
+  //flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  //margin-left: 10%;
   flex-wrap: wrap;
 }
 
@@ -34,7 +30,7 @@
 
 .actionBtn {
   border: 1px solid white;
-  background: $primary-color;
+  background: #ffcd36;
   color: white;
   font: $button-font;
   padding: 3px 8px;
@@ -52,12 +48,17 @@
 #patient {
   max-width: 350px;
   min-height: 100%;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid white;
 }
 
 #doctor {
   max-width: 350px;
   min-height: 100%;
-  margin-top: 30px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid white;
 }
 
 h2 {
@@ -68,4 +69,20 @@ h2 {
 #line {
   border-left: 1px solid white;
   margin-top: 19.92px;
+}
+
+@media(max-width: 550px) {
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .jumbotron {
+    margin-bottom: 0;
+  }
+  #patient {
+    border: none;
+  }
+  #doctor {
+    border: none ;
+  }
 }

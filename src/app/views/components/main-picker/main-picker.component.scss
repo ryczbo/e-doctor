@@ -79,14 +79,14 @@ li {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  min-width: 36px;
-  min-height: 36px;
+  min-width: 26px;
+  min-height: 26px;
   padding: 8px;
   background: $primary-color;
   border: 2px solid white;
   color: white;
   text-align: center;
-  font: 32px Arial, sans-serif;
+  font: 23px Arial, sans-serif;
   margin-right: 10px;
 }
 
@@ -150,17 +150,20 @@ mat-form-field * {
 
 .actionBtn {
   border: 1px solid white;
-  background: $primary-color;
+  border-radius: 5px;
+  background: #2156f3;
   color: white;
   font: $button-font;
-  padding: 3px 8px;
-  width: 70px;
+  //font-weight: bold;
+  padding: 5px 8px;
+  width: 80px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .actionBtn:hover {
   cursor: pointer;
-  color: $primary-color;
+  color: #2156f3;
   background: white;
   border: 1px solid white;
 }

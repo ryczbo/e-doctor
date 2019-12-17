@@ -19,19 +19,19 @@ export class UserService {
   }
 
   getAll() {
-    return this.http.get<any[]>(`/users`);
+    return this.http.get<any[]>(`${this.uri}/users`);
   }
 
   getById(id: string) {
-    return this.http.get(`/users/${id}`);
+    return this.http.get(`${this.uri}/users/${id}`);
   }
 
   register(user: User) {
-    return this.http.post(`/register`, user);
+    return this.http.post(`${this.uri}/register`, user);
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>(`/login`, {username, password})
+    return this.http.post<any>(`${this.uri}/login`, {username, password})
       .pipe(map(user => {
         if (user) {
           localStorage.setItem('currentUser', JSON.stringify(user));
@@ -49,13 +49,13 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.patch(`/users/${user._id}`, user)
+    return this.http.patch(`${this.uri}/users/${user._id}`, user)
       .pipe(map(resp => {
         return resp;
       }));
   }
 
   delete(id: number) {
-    return this.http.delete(`/users/${id}`);
+    return this.http.delete(`${this.uri}/users/${id}`);
   }
 }
