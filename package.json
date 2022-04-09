@@ -35,7 +35,7 @@
     "hammerjs": "^2.0.8",
     "heroku": "^7.35.0",
     "heroku-cli": "^7.0.9",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ng-click-outside": "^5.0.0",
     "ng-lazyload-image": "^7.0.1",
     "ng2-file-size": "0.0.4",
